@@ -15,7 +15,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Orhan Elektrik Elektronik",
   description: "Orhan Elektrik Elektronik - Bilgi Ve Bilişim Teknolojileri",
-  keywords: ["Orhan Elektrik Elektronik", "Bilgi Ve Bilişim Teknolojileri", "Teknik Servis", "Elektrik", "Elektronik", "Bilgisayar", "Güvenlik Sistemleri", "Elektrik Altyapı Yönetimi"],
+  keywords: [
+    "Orhan Elektrik Elektronik",
+    "Bilgi Ve Bilişim Teknolojileri",
+    "Teknik Servis",
+    "Elektrik",
+    "Elektronik",
+    "Bilgisayar",
+    "Güvenlik Sistemleri",
+    "Elektrik Altyapı Yönetimi",
+  ],
   icons: {
     icon: "/favicon.ico",
   },

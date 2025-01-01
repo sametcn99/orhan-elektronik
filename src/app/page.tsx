@@ -65,7 +65,7 @@ const staggerChildren = {
 function AnimatedSection({
   children,
   className,
-  id
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -92,7 +92,10 @@ export default function Home() {
   return (
     <div className="container mx-auto min-h-screen">
       {/* Hero Section */}
-      <AnimatedSection id="ana-sayfa" className="flex min-h-screen items-center justify-center overflow-hidden">
+      <AnimatedSection
+        id="ana-sayfa"
+        className="flex min-h-screen items-center justify-center overflow-hidden"
+      >
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <motion.h1
             className="mb-6 text-4xl font-bold text-blue-900 sm:text-5xl md:text-6xl"
@@ -164,7 +167,10 @@ export default function Home() {
       </AnimatedSection>
 
       {/* Services Section */}
-      <AnimatedSection id="hizmetlerimiz" className="flex min-h-screen flex-col items-center justify-center px-4 py-16 md:px-8">
+      <AnimatedSection
+        id="hizmetlerimiz"
+        className="flex min-h-screen flex-col items-center justify-center px-4 py-16 md:px-8"
+      >
         <motion.h2
           className="mb-8 text-center text-3xl font-bold"
           variants={fadeInUp}
@@ -183,7 +189,9 @@ export default function Home() {
                     <service.icon className="mr-3 h-8 w-8 text-blue-600" />
                     <h3 className="text-xl font-semibold">{service.title}</h3>
                   </div>
-                  <p className="text-gray-600 flex-grow">{service.description}</p>
+                  <p className="text-gray-600 flex-grow">
+                    {service.description}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -191,7 +199,10 @@ export default function Home() {
         </motion.div>
       </AnimatedSection>
 
-      <AnimatedSection id="instagram" className="flex min-h-screen items-center justify-center py-16 max-w-2xl mx-auto">
+      <AnimatedSection
+        id="instagram"
+        className="flex min-h-screen items-center justify-center py-16 max-w-2xl mx-auto"
+      >
         <div className="container mx-auto px-4">
           <motion.h2
             className="mb-8 text-center text-3xl font-bold"
@@ -206,7 +217,10 @@ export default function Home() {
       </AnimatedSection>
 
       {/* Contact Section */}
-      <AnimatedSection id="iletisim" className="flex min-h-screen items-center justify-center py-16">
+      <AnimatedSection
+        id="iletisim"
+        className="flex min-h-screen items-center justify-center py-16"
+      >
         <div className="container mx-auto px-4">
           <motion.h2
             className="mb-12 text-center text-3xl font-bold text-gray-800"
