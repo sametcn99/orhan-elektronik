@@ -101,7 +101,7 @@ export default function Home() {
             className="mb-6 text-4xl font-bold text-blue-900 sm:text-5xl md:text-6xl"
             variants={fadeInUp}
           >
-            Orhan Elektrik Elektronik <br className="hidden sm:inline" />
+            Orhan Elektrik Elektronik <br />
             <span className="text-blue-600">
               Bilgi Ve Bilişim Teknolojileri
             </span>
@@ -147,10 +147,11 @@ export default function Home() {
               href="https://maps.app.goo.gl/3nwdPZaG1ac97vb79"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-blue-600 transition-colors hover:text-blue-800"
+              className="flex items-center justify-center text-start gap-2 text-blue-600 transition-colors hover:text-blue-800"
             >
-              <MapPin className="mr-2 h-5 w-5" />
-              Murat, Yavuzevler Sk. 18/C, 06670 Çankaya/Ankara
+              <MapPin className=" h-5 w-5" />
+              Murat Mah. Yavuzevler Sk. 18/C <br />
+              Çankaya/Ankara
             </Link>
           </motion.div>
           <motion.div variants={fadeInUp}>
