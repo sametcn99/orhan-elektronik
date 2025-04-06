@@ -1,55 +1,65 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { cookies } from "next/headers"
+import "./globals.css"
+import { ThemeProvider } from "@/src/lib/theme-provider"
+import MaintenancePage from "./maintenance"
+import { createServerSupabaseClient } from "@/src/lib/supabase"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Orhan Elektrik Elektronik",
-  description: "Orhan Elektrik Elektronik - Bilgi Ve Bilişim Teknolojileri",
-  keywords: [
-    "Orhan Elektrik Elektronik",
-    "Bilgi Ve Bilişim Teknolojileri",
-    "Teknik Servis",
-    "Elektrik",
-    "Elektronik",
-    "Bilgisayar",
-    "Güvenlik Sistemleri",
-    "Elektrik Altyapı Yönetimi",
-  ],
-  icons: {
-    icon: "/favicon.ico",
-  },
-  manifest: "/manifest.json",
-};
+  title: "Orhan Elektrik - Profesyonel Elektrik ve Elektronik Çözümleri",
+  description:
+    "Orhan Elektrik Elektronik olarak, kaliteli hizmet ve müşteri memnuniyeti odaklı çalışmalarımızla yanınızdayız.",
+    generator: 'v0.dev'
+}
 
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
+  // Bakım mesajını kontrol et
+  const cookieStore = cookies()
+  const maintenanceMessage = await cookieStore.get("maintenance_message")?.value
+
+  // Tema ayarını getir
+  const supabase = createServerSupabaseClient()
+  let theme = "blue" // Default theme
+
+  try {
+    const { data } = await supabase.from("settings").select("*").single()
+
+    if (data && data.theme) {
+      theme = data.theme
+    }
+  } catch (error) {
+    console.error("Error fetching theme settings:", error)
+    // Continue with default theme
+  }
+
+  // Bakım modu kontrolü
+  if (maintenanceMessage) {
+    return (
+      <html lang="tr">
+        <body className={inter.className}>
+          <MaintenancePage message={maintenanceMessage} />
+        </body>
+      </html>
+    )
+  }
+
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-        <Analytics />
+    <html lang="tr">
+      <body className={inter.className}>
+        <ThemeProvider defaultTheme={theme as any}>{children}</ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
+
+
+
+import './globals.css'
