@@ -3,8 +3,23 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { useState } from "react";
+import { Menu } from "lucide-react";
 
 export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const menuItems = [
+    { href: "#ana-sayfa", label: "Ana Sayfa" },
+    { href: "#hizmetlerimiz", label: "Hizmetlerimiz" },
+    { href: "#iletisim", label: "İletişim" },
+  ];
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -16,16 +31,17 @@ export function Header() {
           Orhan Elektronik
         </Link>
         
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="#ana-sayfa" className="text-gray-600 hover:text-blue-600">
-            Ana Sayfa
-          </Link>
-          <Link href="#hizmetlerimiz" className="text-gray-600 hover:text-blue-600">
-            Hizmetlerimiz
-          </Link>
-          <Link href="#iletisim" className="text-gray-600 hover:text-blue-600">
-            İletişim
-          </Link>
+          {menuItems.map((item) => (
+            <Link 
+              key={item.href}
+              href={item.href} 
+              className="text-gray-600 hover:text-blue-600"
+            >
+              {item.label}
+            </Link>
+          ))}
           <Link href="https://wa.me/905325749392" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white">
               WhatsApp İle Ulaşın
@@ -33,11 +49,39 @@ export function Header() {
           </Link>
         </div>
 
-        <button className="md:hidden text-gray-600">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        {/* Mobile Navigation */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[300px] sm:w-[400px]" title="Navigasyon Menüsü">
+            <nav className="flex flex-col gap-4 mt-8">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={handleLinkClick}
+                  className="text-lg font-medium text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link 
+                href="https://wa.me/905325749392" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={handleLinkClick}
+              >
+                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
+                  WhatsApp İle Ulaşın
+                </Button>
+              </Link>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </nav>
     </motion.header>
   );
