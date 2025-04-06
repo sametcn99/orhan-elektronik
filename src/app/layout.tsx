@@ -14,18 +14,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Orhan Elektrik Elektronik",
-  description: "Orhan Elektrik Elektronik - Bilgi Ve Bilişim Teknolojileri",
+  metadataBase: new URL('https://www.orhanelektronikbilgisayar.com'),
+  title: {
+    default: "Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri",
+    template: "%s | Orhan Elektrik Elektronik"
+  },
+  description: "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. CCTV kamera sistemleri, alarm sistemleri kurulumu ve bakımı, elektrik altyapı yönetimi ve teknik servis hizmetleri.",
   keywords: [
     "Orhan Elektrik Elektronik",
-    "Bilgi Ve Bilişim Teknolojileri",
-    "Teknik Servis",
-    "Elektrik",
-    "Elektronik",
-    "Bilgisayar",
+    "Elektrik Servisi Ankara",
     "Güvenlik Sistemleri",
-    "Elektrik Altyapı Yönetimi",
+    "CCTV Kamera Sistemleri",
+    "Alarm Sistemleri",
+    "Elektrik Bakım",
+    "Teknik Servis Ankara",
+    "Elektrik Altyapı",
+    "Elektronik Tamir",
+    "Profesyonel Elektrikçi"
   ],
+  authors: [{ name: "Orhan Elektrik Elektronik" }],
+  creator: "Orhan Elektrik Elektronik",
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: "https://www.orhanelektronikbilgisayar.com",
+    title: "Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri",
+    description: "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. Uzman ekip, kaliteli hizmet.",
+    siteName: "Orhan Elektrik Elektronik",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
+  },
+  alternates: {
+    canonical: "https://www.orhanelektronikbilgisayar.com",
+  },
+  other: {
+    "google-site-verification": "",  // Add your Google verification code here
+  },
   icons: {
     icon: "/favicon.ico",
   },
@@ -35,6 +66,7 @@ export const metadata: Metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#1E40AF",
 };
 
 export default function RootLayout({
@@ -43,10 +75,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="tr" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
         <Analytics />
       </body>
