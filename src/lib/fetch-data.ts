@@ -3,7 +3,7 @@ import { createServerSupabaseClient } from "./supabase"
 // Fetch all slides for the hero section
 export async function fetchSlides() {
   const supabase = createServerSupabaseClient()
-  const { data, error } = await supabase.from("slides").select("*").order("order_number", { ascending: true })
+  const { data, error } = await supabase.from("slides").select("*").order("order_no", { ascending: true })
 
   if (error) {
     console.error("Error fetching slides:", error)
@@ -19,7 +19,7 @@ export async function fetchReferences() {
   const { data, error } = await supabase
     .from("reference_companies")
     .select("*")
-    .order("order_number", { ascending: true })
+    .order("order_no", { ascending: true })
 
   if (error) {
     console.error("Error fetching references:", error)
@@ -32,7 +32,7 @@ export async function fetchReferences() {
 // Fetch all features for the expert team section
 export async function fetchFeatures() {
   const supabase = createServerSupabaseClient()
-  const { data, error } = await supabase.from("features").select("*").order("order_number", { ascending: true })
+  const { data, error } = await supabase.from("features").select("*").order("order_no", { ascending: true })
 
   if (error) {
     console.error("Error fetching features:", error)
@@ -45,7 +45,7 @@ export async function fetchFeatures() {
 // Fetch all services
 export async function fetchServices() {
   const supabase = createServerSupabaseClient()
-  const { data, error } = await supabase.from("services").select("*").order("order_number", { ascending: true })
+  const { data, error } = await supabase.from("services").select("*").order("order_no", { ascending: true })
 
   if (error) {
     console.error("Error fetching services:", error)
@@ -58,18 +58,24 @@ export async function fetchServices() {
 // Fetch featured projects
 export async function fetchFeaturedProjects() {
   const supabase = createServerSupabaseClient()
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .eq("featured", true)
-    .order("order_number", { ascending: true })
 
-  if (error) {
-    console.error("Error fetching featured projects:", error)
+  try {
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .eq("is_featured", true)
+      .order("order_no", { ascending: true })
+
+    if (error) {
+      console.error("Error fetching featured projects:", error)
+      return []
+    }
+
+    return data || []
+  } catch (error) {
+    console.error("Error in fetchFeaturedProjects:", error)
     return []
   }
-
-  return data || []
 }
 
 // Fetch about us information
@@ -88,7 +94,7 @@ export async function fetchAbout() {
 // Fetch testimonials
 export async function fetchTestimonials() {
   const supabase = createServerSupabaseClient()
-  const { data, error } = await supabase.from("testimonials").select("*").order("order_number", { ascending: true })
+  const { data, error } = await supabase.from("testimonials").select("*").order("order_no", { ascending: true })
 
   if (error) {
     console.error("Error fetching testimonials:", error)

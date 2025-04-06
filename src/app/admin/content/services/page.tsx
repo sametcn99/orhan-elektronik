@@ -80,7 +80,7 @@ export default function ServicesPage() {
   const fetchServices = async () => {
     setIsLoading(true)
     try {
-      const { data, error } = await supabase.from("services").select("*").order("order_number", { ascending: true })
+      const { data, error } = await supabase.from("services").select("*").order("order_no", { ascending: true })
 
       if (error) throw error
       setServices(data || [])
@@ -118,14 +118,14 @@ export default function ServicesPage() {
 
       if (isNewService) {
         // Get the highest order number and add 1
-        const maxOrder = services.length > 0 ? Math.max(...services.map((svc) => svc.order_number)) : 0
+        const maxOrder = services.length > 0 ? Math.max(...services.map((svc) => svc.order_no)) : 0
 
         // Add new service
         const { data, error } = await supabase
           .from("services")
           .insert({
             ...currentService,
-            order_number: maxOrder + 1,
+            order_no: maxOrder + 1,
           })
           .select()
 
@@ -323,7 +323,7 @@ export default function ServicesPage() {
                       <TableCell className="hidden md:table-cell">
                         <div className="line-clamp-1">{service.description}</div>
                       </TableCell>
-                      <TableCell>{service.order_number}</TableCell>
+                      <TableCell>{service.order_no}</TableCell>
                       <TableCell>
                         <div className="flex gap-2">
                           <Button variant="ghost" size="icon" onClick={() => handleEditService(service)}>

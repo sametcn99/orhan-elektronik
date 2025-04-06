@@ -45,7 +45,7 @@ export default function ReferencesPage() {
       const { data, error } = await supabase
         .from("reference_companies")
         .select("*")
-        .order("order_number", { ascending: true })
+        .order("order_no", { ascending: true })
 
       if (error) throw error
       setReferences(data || [])
@@ -77,14 +77,14 @@ export default function ReferencesPage() {
 
       if (isNewReference) {
         // Get the highest order number and add 1
-        const maxOrder = references.length > 0 ? Math.max(...references.map((ref) => ref.order_number)) : 0
+        const maxOrder = references.length > 0 ? Math.max(...references.map((ref) => ref.order_no)) : 0
 
         // Add new reference
         const { data, error } = await supabase
           .from("reference_companies")
           .insert({
             ...currentReference,
-            order_number: maxOrder + 1,
+            order_no: maxOrder + 1,
           })
           .select()
 
@@ -258,7 +258,7 @@ export default function ReferencesPage() {
                         </div>
                       </TableCell>
                       <TableCell className="font-medium">{reference.name}</TableCell>
-                      <TableCell>{reference.order_number}</TableCell>
+                      <TableCell>{reference.order_no}</TableCell>
                       <TableCell>
                         <div className="flex gap-2">
                           <Button variant="ghost" size="icon" onClick={() => handleEditReference(reference)}>

@@ -36,7 +36,7 @@ export default function HeroContentPage() {
   const fetchSlides = async () => {
     setIsLoading(true)
     try {
-      const { data, error } = await supabase.from("slides").select("*").order("order_number", { ascending: true })
+      const { data, error } = await supabase.from("slides").select("*").order("order_no", { ascending: true })
 
       if (error) throw error
 
@@ -50,7 +50,7 @@ export default function HeroContentPage() {
             description:
               "Orhan Elektrik Elektronik olarak, kaliteli hizmet ve müşteri memnuniyeti odaklı çalışmalarımızla yanınızdayız.",
             image_url: "/placeholder.svg?height=800&width=1920",
-            order_number: 1,
+            order_no: 1,
           },
         ])
       }
@@ -93,7 +93,7 @@ export default function HeroContentPage() {
           title: slide.title,
           description: slide.description,
           image_url: slide.image_url,
-          order_number: index + 1,
+          order_no: index + 1,
         }
 
         // Only include id if it's an existing slide (has a valid id)
@@ -134,7 +134,7 @@ export default function HeroContentPage() {
       title: "",
       description: "",
       image_url: "/placeholder.svg?height=800&width=1920",
-      order_number: slides.length + 1,
+      order_no: slides.length + 1,
     }
     setSlides([...slides, newSlide])
   }
