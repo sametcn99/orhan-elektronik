@@ -137,7 +137,7 @@ export default function Home() {
               variants={fadeInUp}
             >
               <Link
-                href="tel:+9005325749392"
+                href={`tel:${contactInfo.phone}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-blue-600 transition-colors hover:text-blue-800"
