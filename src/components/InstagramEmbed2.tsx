@@ -7,5 +7,7 @@ const InstagramEmbed = dynamic(
 );
 
 export default function InstagramEmbed2() {
-  return <InstagramEmbed url="https://www.instagram.com/orhan.elektrik.elektronik/" />;
+  return (
+    <InstagramEmbed url="https://www.instagram.com/orhan.elektrik.elektronik/" />
+  );
 }

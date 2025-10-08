@@ -4,45 +4,46 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
 
 const MainNav = () => {
   const pathname = usePathname();
 
   return (
     <nav className="hidden gap-6 lg:flex">
-      <Link 
+      <Link
         href="/"
         className={cn(
           "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/" ? "text-primary" : "text-muted-foreground"
+          pathname === "/" ? "text-primary" : "text-muted-foreground",
         )}
       >
         Ana Sayfa
       </Link>
-      <Link 
-        href="/#hizmetlerimiz" 
+      <Link
+        href="/#hizmetlerimiz"
         className={cn(
           "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/#hizmetlerimiz" ? "text-primary" : "text-muted-foreground"
+          pathname === "/#hizmetlerimiz"
+            ? "text-primary"
+            : "text-muted-foreground",
         )}
       >
-        Hizmetlerimiz  
+        Hizmetlerimiz
       </Link>
-      <Link 
-        href="/#instagram" 
+      <Link
+        href="/#instagram"
         className={cn(
           "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/#instagram" ? "text-primary" : "text-muted-foreground"
+          pathname === "/#instagram" ? "text-primary" : "text-muted-foreground",
         )}
       >
         Instagram
       </Link>
-      <Link 
-        href="/#iletisim" 
+      <Link
+        href="/#iletisim"
         className={cn(
           "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/#iletisim" ? "text-primary" : "text-muted-foreground"
+          pathname === "/#iletisim" ? "text-primary" : "text-muted-foreground",
         )}
       >
         İletişim

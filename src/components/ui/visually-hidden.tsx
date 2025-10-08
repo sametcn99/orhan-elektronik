@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { cn } from "@/lib/utils";
+import * as React from "react";
 
 const VisuallyHidden = React.forwardRef<
   HTMLSpanElement,
@@ -12,7 +12,7 @@ const VisuallyHidden = React.forwardRef<
       ref={ref}
       className={cn(
         "absolute left-[-9999px] top-[-9999px] overflow-hidden whitespace-nowrap",
-        className
+        className,
       )}
       {...props}
     />
