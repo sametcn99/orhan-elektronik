@@ -8,7 +8,6 @@ import {
 } from "framer-motion";
 import type React from "react";
 
-import InstagramEmbed2 from "@/components/InstagramEmbed2";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -29,6 +28,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+
+const InstagramEmbed = dynamic(
+  () => import("react-social-media-embed").then((mod) => mod.InstagramEmbed),
+  { ssr: false },
+);
 
 const contactInfo = {
   address: "Murat Mah. Yavuzevler Sk. 18/C Çankaya/Ankara",
@@ -344,6 +349,12 @@ function HeroSection() {
         </div>
       </motion.div>
     </section>
+  );
+}
+
+function InstagramEmbed2() {
+  return (
+    <InstagramEmbed url="https://www.instagram.com/orhan.elektrik.elektronik/" />
   );
 }
 
@@ -681,11 +692,10 @@ function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-background/95 shadow-lg backdrop-blur-md"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-4 md:px-8">
         {/* Logo */}
