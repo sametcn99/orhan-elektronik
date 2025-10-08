@@ -26,9 +26,9 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 
 const InstagramEmbed = dynamic(
   () => import("react-social-media-embed").then((mod) => mod.InstagramEmbed),
@@ -183,6 +183,34 @@ function HeroSection() {
       id="ana-sayfa"
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-background via-secondary/30 to-background"
     >
+      {/* Animated grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#06b6d410_1px,transparent_1px),linear-gradient(to_bottom,#06b6d410_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+      {/* Glowing orbs */}
+      <motion.div
+        className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/20 blur-[120px]"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-accent/20 blur-[120px]"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.5, 0.3, 0.5],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+      />
       {/* Enhanced decorative elements with animation */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -330,24 +358,6 @@ function HeroSection() {
           </Link>
         </motion.div>
       </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-muted-foreground">Aşağı Kaydır</span>
-          <div className="h-8 w-5 rounded-full border-2 border-primary/30">
-            <motion.div
-              className="mx-auto mt-1 h-2 w-1 rounded-full bg-primary"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-            />
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 }
@@ -361,9 +371,9 @@ function InstagramEmbed2() {
 function StatsSection() {
   return (
     <AnimatedSection className="bg-gradient-to-b from-background to-secondary/20 py-20">
-      <div className="container mx-auto max-w-6xl px-4">
+      <div className="container mx-auto max-w-6xl px-4 flex justify-center">
         <motion.div
-          className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8"
+          className="grid grid-cols-2 gap-6 md:grid-cols-2 md:gap-8 max-w-2xl"
           variants={staggerChildren}
           initial="hidden"
           whileInView="visible"
@@ -692,10 +702,11 @@ function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${isScrolled
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled
           ? "bg-background/95 shadow-lg backdrop-blur-md"
           : "bg-transparent"
-        }`}
+      }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-4 md:px-8">
         {/* Logo */}
