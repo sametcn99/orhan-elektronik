@@ -1,15 +1,15 @@
-"use client";
+'use client'
 import {
   easeOut,
   motion,
   useInView,
   useScroll,
   useTransform,
-} from "framer-motion";
-import type React from "react";
+} from 'framer-motion'
+import type React from 'react'
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   ArrowRight,
   Award,
@@ -25,62 +25,72 @@ import {
   Wrench,
   X,
   Zap,
-} from "lucide-react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+} from 'lucide-react'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { useEffect, useId, useRef, useState } from 'react'
 
 const InstagramEmbed = dynamic(
-  () => import("react-social-media-embed").then((mod) => mod.InstagramEmbed),
+  () => import('react-social-media-embed').then((mod) => mod.InstagramEmbed),
   { ssr: false },
-);
+)
 
 const contactInfo = {
-  address: "Murat Mah. Yavuzevler Sk. 18/C Çankaya/Ankara",
-  phone: "+90 0532 574 93 92",
-  mapIframe: "https://maps.app.goo.gl/3nwdPZaG1ac97vb79",
-};
+  address: 'Murat Mah. Yavuzevler Sk. 18/C Çankaya/Ankara',
+  phone: '+90 0532 574 93 92',
+  mapIframe: 'https://maps.app.goo.gl/3nwdPZaG1ac97vb79',
+}
+
+type SectionIds = {
+  hero: string
+  services: string
+  instagram: string
+  contact: string
+}
+
+const createSectionId = (reactId: string, slug: string) =>
+  `${reactId.replace(/[^A-Za-z0-9_-]/g, '')}-${slug}`
 
 const services = [
   {
-    title: "Garantili Servis",
+    title: 'Garantili Servis',
     description:
-      "Orhan Elektrik Elektronik olarak, müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Elektrik ve elektronik cihazlarınızın bakım ve onarımı için güvenilir ve hızlı bir servis sunuyoruz.",
+      'Orhan Elektrik Elektronik olarak, müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Elektrik ve elektronik cihazlarınızın bakım ve onarımı için güvenilir ve hızlı bir servis sunuyoruz.',
     icon: Shield,
-    color: "from-blue-500 to-cyan-500",
+    color: 'from-blue-500 to-cyan-500',
   },
   {
-    title: "Bakım ve Tamir Servisi",
+    title: 'Bakım ve Tamir Servisi',
     description:
-      "Her türlü elektrik ve elektronik cihazınızın bakım ve onarımını gerçekleştiriyoruz. Alanında uzman ekibimizle sorunlarınıza kalıcı çözümler sunuyoruz.",
+      'Her türlü elektrik ve elektronik cihazınızın bakım ve onarımını gerçekleştiriyoruz. Alanında uzman ekibimizle sorunlarınıza kalıcı çözümler sunuyoruz.',
     icon: Wrench,
-    color: "from-orange-500 to-red-500",
+    color: 'from-orange-500 to-red-500',
   },
   {
-    title: "Güvenlik Sistemleri",
+    title: 'Güvenlik Sistemleri',
     description:
-      "Ev ve işyerleriniz için profesyonel güvenlik sistemleri kurulumu ve bakımı yapıyoruz. CCTV kamera sistemleri, alarm sistemleri ve daha fazlası.",
+      'Ev ve işyerleriniz için profesyonel güvenlik sistemleri kurulumu ve bakımı yapıyoruz. CCTV kamera sistemleri, alarm sistemleri ve daha fazlası.',
     icon: ShieldCheck,
-    color: "from-green-500 to-emerald-500",
+    color: 'from-green-500 to-emerald-500',
   },
   {
-    title: "Uygun Fiyat",
+    title: 'Uygun Fiyat',
     description:
-      "Kaliteli hizmeti uygun fiyatlarla sunuyoruz. Şeffaf fiyatlandırma politikamızla müşterilerimize her zaman en iyi değeri sunmayı hedefliyoruz.",
+      'Kaliteli hizmeti uygun fiyatlarla sunuyoruz. Şeffaf fiyatlandırma politikamızla müşterilerimize her zaman en iyi değeri sunmayı hedefliyoruz.',
     icon: Banknote,
-    color: "from-purple-500 to-pink-500",
+    color: 'from-purple-500 to-pink-500',
   },
-];
+]
 
 const stats = [
-  { value: 15, label: "Yıllık Tecrübe", suffix: "+", icon: Award },
-  { value: 24, label: "Saat Destek", suffix: "/7", icon: Clock },
-];
+  { value: 15, label: 'Yıllık Tecrübe', suffix: '+', icon: Award },
+  { value: 24, label: 'Saat Destek', suffix: '/7', icon: Clock },
+]
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
-};
+}
 
 const staggerChildren = {
   hidden: { opacity: 0 },
@@ -90,7 +100,7 @@ const staggerChildren = {
       staggerChildren: 0.15,
     },
   },
-};
+}
 
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.9 },
@@ -99,46 +109,46 @@ const scaleIn = {
     scale: 1,
     transition: { duration: 0.6, ease: easeOut },
   },
-};
+}
 
 function AnimatedCounter({
   value,
-  suffix = "",
+  suffix = '',
 }: {
-  value: number;
-  suffix?: string;
+  value: number
+  suffix?: string
 }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
 
   useEffect(() => {
     if (isInView) {
-      let start = 0;
-      const end = value;
-      const duration = 2000;
-      const increment = end / (duration / 16);
+      let start = 0
+      const end = value
+      const duration = 2000
+      const increment = end / (duration / 16)
 
       const timer = setInterval(() => {
-        start += increment;
+        start += increment
         if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
+          setCount(end)
+          clearInterval(timer)
         } else {
-          setCount(Math.floor(start));
+          setCount(Math.floor(start))
         }
-      }, 16);
+      }, 16)
 
-      return () => clearInterval(timer);
+      return () => clearInterval(timer)
     }
-  }, [isInView, value]);
+  }, [isInView, value])
 
   return (
     <span ref={ref} className="tabular-nums">
       {count}
       {suffix}
     </span>
-  );
+  )
 }
 
 function AnimatedSection({
@@ -146,41 +156,47 @@ function AnimatedSection({
   className,
   id,
 }: {
-  children: React.ReactNode;
-  className?: string;
-  id?: string;
+  children: React.ReactNode
+  className?: string
+  id?: string
 }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
     <motion.section
       id={id}
       ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={isInView ? 'visible' : 'hidden'}
       variants={fadeInUp}
       className={className}
     >
       {children}
     </motion.section>
-  );
+  )
 }
 
-function HeroSection() {
-  const ref = useRef(null);
+function HeroSection({
+  id,
+  servicesSectionId,
+}: {
+  id: string
+  servicesSectionId: string
+}) {
+  const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
-  });
+    offset: ['start start', 'end start'],
+  })
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
   return (
     <section
       ref={ref}
-      id="ana-sayfa"
+      id={id}
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-background via-secondary/30 to-background"
     >
       {/* Animated grid background */}
@@ -196,7 +212,7 @@ function HeroSection() {
         transition={{
           duration: 8,
           repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
       <motion.div
@@ -208,7 +224,7 @@ function HeroSection() {
         transition={{
           duration: 8,
           repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
       {/* Enhanced decorative elements with animation */}
@@ -222,7 +238,7 @@ function HeroSection() {
           transition={{
             duration: 8,
             repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
         <motion.div
@@ -234,7 +250,7 @@ function HeroSection() {
           transition={{
             duration: 8,
             repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
         <motion.div
@@ -246,7 +262,7 @@ function HeroSection() {
           transition={{
             duration: 15,
             repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
+            ease: 'linear',
           }}
         />
       </div>
@@ -294,9 +310,9 @@ function HeroSection() {
           animate="visible"
         >
           {[
-            "Elektrik Altyapı Yönetimi",
-            "Güvenlik Sistemleri",
-            "Teknik Servis",
+            'Elektrik Altyapı Yönetimi',
+            'Güvenlik Sistemleri',
+            'Teknik Servis',
           ].map((item) => (
             <motion.li
               key={item}
@@ -347,7 +363,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <Link href="#hizmetlerimiz">
+          <Link href={`#${servicesSectionId}`}>
             <Button
               size="lg"
               className="group rounded-full bg-gradient-to-r from-primary to-primary/80 px-8 py-6 text-lg font-semibold text-primary-foreground shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
@@ -359,13 +375,13 @@ function HeroSection() {
         </motion.div>
       </motion.div>
     </section>
-  );
+  )
 }
 
 function InstagramEmbed2() {
   return (
     <InstagramEmbed url="https://www.instagram.com/orhan.elektrik.elektronik/" />
-  );
+  )
 }
 
 function StatsSection() {
@@ -379,9 +395,9 @@ function StatsSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {stats.map((stat, index) => (
+          {stats.map((stat) => (
             <motion.div
-              key={index}
+              key={stat.label}
               variants={scaleIn}
               className="group relative overflow-hidden rounded-2xl bg-card p-6 text-center shadow-lg transition-all hover:scale-105 hover:shadow-xl"
             >
@@ -402,13 +418,13 @@ function StatsSection() {
         </motion.div>
       </div>
     </AnimatedSection>
-  );
+  )
 }
 
-function ServicesSection() {
+function ServicesSection({ id }: { id: string }) {
   return (
     <AnimatedSection
-      id="hizmetlerimiz"
+      id={id}
       className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-secondary/20 to-background px-4 py-24 md:px-8"
     >
       <motion.div className="mb-4 text-center" variants={fadeInUp}>
@@ -436,8 +452,8 @@ function ServicesSection() {
         className="grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-2"
         variants={staggerChildren}
       >
-        {services.map((service, index) => (
-          <motion.div key={index} variants={scaleIn} className="h-full">
+        {services.map((service) => (
+          <motion.div key={service.title} variants={scaleIn} className="h-full">
             <Card className="group relative h-full overflow-hidden border-2 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl">
               {/* Gradient overlay on hover */}
               <div
@@ -460,13 +476,13 @@ function ServicesSection() {
         ))}
       </motion.div>
     </AnimatedSection>
-  );
+  )
 }
 
-function InstagramSection() {
+function InstagramSection({ id }: { id: string }) {
   return (
     <AnimatedSection
-      id="instagram"
+      id={id}
       className="flex min-h-screen items-center justify-center bg-gradient-to-b from-secondary/20 to-background py-24"
     >
       <div className="container mx-auto max-w-4xl px-4">
@@ -498,13 +514,13 @@ function InstagramSection() {
         </motion.div>
       </div>
     </AnimatedSection>
-  );
+  )
 }
 
-function ContactSection() {
+function ContactSection({ id }: { id: string }) {
   return (
     <AnimatedSection
-      id="iletisim"
+      id={id}
       className="flex min-h-screen items-center justify-center bg-gradient-to-b from-background to-secondary/20 py-24"
     >
       <div className="container mx-auto max-w-6xl px-4">
@@ -619,7 +635,7 @@ function ContactSection() {
         </motion.div>
       </div>
     </AnimatedSection>
-  );
+  )
 }
 
 function Footer() {
@@ -642,24 +658,24 @@ function Footer() {
         </div>
       </motion.div>
     </AnimatedSection>
-  );
+  )
 }
 
 function FloatingActionButton() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
-        setIsVisible(true);
+        setIsVisible(true)
       } else {
-        setIsVisible(false);
+        setIsVisible(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+    window.addEventListener('scroll', toggleVisibility)
+    return () => window.removeEventListener('scroll', toggleVisibility)
+  }, [])
 
   return (
     <motion.div
@@ -676,27 +692,27 @@ function FloatingActionButton() {
         </Button>
       </Link>
     </motion.div>
-  );
+  )
 }
 
-function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+function Header({ sectionIds }: { sectionIds: SectionIds }) {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks = [
-    { href: "#ana-sayfa", label: "Ana Sayfa" },
-    { href: "#hizmetlerimiz", label: "Hizmetlerimiz" },
-    { href: "#instagram", label: "Galeri" },
-    { href: "#iletisim", label: "İletişim" },
-  ];
+    { href: `#${sectionIds.hero}`, label: 'Ana Sayfa' },
+    { href: `#${sectionIds.services}`, label: 'Hizmetlerimiz' },
+    { href: `#${sectionIds.instagram}`, label: 'Galeri' },
+    { href: `#${sectionIds.contact}`, label: 'İletişim' },
+  ]
 
   return (
     <motion.header
@@ -704,14 +720,14 @@ function Header() {
       animate={{ y: 0 }}
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 shadow-lg backdrop-blur-md"
-          : "bg-transparent"
+          ? 'bg-background/95 shadow-lg backdrop-blur-md'
+          : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-4 md:px-8">
         {/* Logo */}
         <Link
-          href="#ana-sayfa"
+          href={`#${sectionIds.hero}`}
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
@@ -761,7 +777,7 @@ function Header() {
         initial={{ opacity: 0, height: 0 }}
         animate={{
           opacity: isMobileMenuOpen ? 1 : 0,
-          height: isMobileMenuOpen ? "auto" : 0,
+          height: isMobileMenuOpen ? 'auto' : 0,
         }}
         className="overflow-hidden bg-background/98 backdrop-blur-md md:hidden"
       >
@@ -788,22 +804,37 @@ function Header() {
         </div>
       </motion.div>
     </motion.header>
-  );
+  )
 }
 
 export default function Home() {
+  const heroSectionReactId = useId()
+  const servicesSectionReactId = useId()
+  const instagramSectionReactId = useId()
+  const contactSectionReactId = useId()
+
+  const sectionIds: SectionIds = {
+    hero: createSectionId(heroSectionReactId, 'ana-sayfa'),
+    services: createSectionId(servicesSectionReactId, 'hizmetlerimiz'),
+    instagram: createSectionId(instagramSectionReactId, 'instagram'),
+    contact: createSectionId(contactSectionReactId, 'iletisim'),
+  }
+
   return (
     <>
-      <Header />
+      <Header sectionIds={sectionIds} />
       <div className="min-h-screen pt-16">
-        <HeroSection />
+        <HeroSection
+          id={sectionIds.hero}
+          servicesSectionId={sectionIds.services}
+        />
         <StatsSection />
-        <ServicesSection />
-        <InstagramSection />
-        <ContactSection />
+        <ServicesSection id={sectionIds.services} />
+        <InstagramSection id={sectionIds.instagram} />
+        <ContactSection id={sectionIds.contact} />
         <Footer />
         <FloatingActionButton />
       </div>
     </>
-  );
+  )
 }

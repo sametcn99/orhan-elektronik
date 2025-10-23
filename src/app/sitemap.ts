@@ -1,10 +1,10 @@
 export default async function sitemap() {
   return [
     {
-      url: "https://www.orhanelektronikbilgisayar.com/",
+      url: 'https://www.orhanelektronikbilgisayar.com/',
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1,
     },
-  ];
+  ]
 }

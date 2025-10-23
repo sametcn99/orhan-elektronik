@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'
 
 const MainNav = () => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <nav className="hidden gap-6 lg:flex">
       <Link
         href="/"
         className={cn(
-          "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/" ? "text-primary" : "text-muted-foreground",
+          'text-lg font-medium transition-colors hover:text-primary',
+          pathname === '/' ? 'text-primary' : 'text-muted-foreground',
         )}
       >
         Ana Sayfa
@@ -22,10 +22,10 @@ const MainNav = () => {
       <Link
         href="/#hizmetlerimiz"
         className={cn(
-          "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/#hizmetlerimiz"
-            ? "text-primary"
-            : "text-muted-foreground",
+          'text-lg font-medium transition-colors hover:text-primary',
+          pathname === '/#hizmetlerimiz'
+            ? 'text-primary'
+            : 'text-muted-foreground',
         )}
       >
         Hizmetlerimiz
@@ -33,8 +33,8 @@ const MainNav = () => {
       <Link
         href="/#instagram"
         className={cn(
-          "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/#instagram" ? "text-primary" : "text-muted-foreground",
+          'text-lg font-medium transition-colors hover:text-primary',
+          pathname === '/#instagram' ? 'text-primary' : 'text-muted-foreground',
         )}
       >
         Instagram
@@ -42,14 +42,14 @@ const MainNav = () => {
       <Link
         href="/#iletisim"
         className={cn(
-          "text-lg font-medium transition-colors hover:text-primary",
-          pathname === "/#iletisim" ? "text-primary" : "text-muted-foreground",
+          'text-lg font-medium transition-colors hover:text-primary',
+          pathname === '/#iletisim' ? 'text-primary' : 'text-muted-foreground',
         )}
       >
         İletişim
       </Link>
     </nav>
-  );
-};
+  )
+}
 
-export default MainNav;
+export default MainNav
