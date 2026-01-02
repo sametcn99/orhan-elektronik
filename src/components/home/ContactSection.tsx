@@ -25,7 +25,10 @@ import { sectionIds, contactInfo } from '../../data/constants'
 
 export function ContactSection() {
   return (
-    <SectionContainer id={sectionIds.contact} sx={{ bgcolor: 'white', position: 'relative' }}>
+    <SectionContainer
+      id={sectionIds.contact}
+      sx={{ bgcolor: 'white', position: 'relative' }}
+    >
       <SectionBackground variant="alternate" />
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Grid container spacing={8} alignItems="center">

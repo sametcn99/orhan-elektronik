@@ -1,7 +1,15 @@
 'use client'
 
 import React from 'react'
-import { Box, Typography, Container, Grid, Stack, Button } from '@mui/material'
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Stack,
+  Button,
+  Link,
+} from '@mui/material'
 import {
   Bolt as BoltIcon,
   Shield as ShieldIcon,
@@ -117,6 +125,17 @@ export function Footer() {
           <Typography variant="body2">
             &copy; {new Date().getFullYear()} Orhan Elektrik Elektronik. Tüm
             hakları saklıdır.
+          </Typography>
+          <Typography variant="caption">
+            Bu web sitesi{' '}
+            <Link
+              href="https://sametcc.me"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              sametcc.me
+            </Link>{' '}
+            tarafından geliştirildi.
           </Typography>
         </Box>
       </Container>

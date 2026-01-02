@@ -70,7 +70,7 @@ export function ServicesSection() {
                         transform: 'translateX(4px)',
                         opacity: 1,
                         color: service.color,
-                      }
+                      },
                     },
                   }}
                 >
@@ -87,10 +87,23 @@ export function ServicesSection() {
                     }}
                   />
 
-                  <CardContent sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
-
+                  <CardContent
+                    sx={{
+                      p: 3,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
                     {/* Header with Icon */}
-                    <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <Box
+                      sx={{
+                        mb: 3,
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start',
+                      }}
+                    >
                       <Box
                         className="icon-wrapper"
                         sx={{
@@ -102,7 +115,8 @@ export function ServicesSection() {
                           justifyContent: 'center',
                           bgcolor: alpha(service.color, 0.1),
                           color: service.color,
-                          transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                          transition:
+                            'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
                         }}
                       >
                         <service.icon sx={{ fontSize: 30 }} />
@@ -114,7 +128,7 @@ export function ServicesSection() {
                           width: 8,
                           height: 8,
                           borderRadius: '50%',
-                          bgcolor: alpha(service.color, 0.3)
+                          bgcolor: alpha(service.color, 0.3),
                         }}
                       />
                     </Box>
@@ -145,7 +159,6 @@ export function ServicesSection() {
                         {service.description}
                       </Typography>
                     </Box>
-
                   </CardContent>
                 </Card>
               </Box>

@@ -115,6 +115,29 @@ const theme = createTheme({
         },
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: 'none',
+          color: '#0891b2',
+          fontWeight: 500,
+          transition: 'all 0.2s ease-in-out',
+          '&:hover': {
+            color: '#0e7490',
+            textDecoration: 'underline',
+            textDecorationColor: '#0e7490',
+          },
+        },
+      },
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        a: {
+          textDecoration: 'none',
+          transition: 'all 0.2s ease-in-out',
+        },
+      },
+    },
   },
 })
 

@@ -185,7 +185,9 @@ export const GallerySection = () => {
                       justifyContent: 'center',
                     }}
                   >
-                    <ZoomInIcon sx={{ color: 'white', fontSize: 40, opacity: 0.8 }} />
+                    <ZoomInIcon
+                      sx={{ color: 'white', fontSize: 40, opacity: 0.8 }}
+                    />
                   </Box>
 
                   {isLast && remainingCount > 0 && (
@@ -209,7 +211,11 @@ export const GallerySection = () => {
                       >
                         +{remainingCount}
                       </Typography>
-                      <Typography variant="body1" color="grey.300" fontWeight={500}>
+                      <Typography
+                        variant="body1"
+                        color="grey.300"
+                        fontWeight={500}
+                      >
                         Daha Fazla
                       </Typography>
                     </Box>
@@ -261,15 +267,31 @@ export const GallerySection = () => {
               border: '1px solid rgba(255,255,255,0.1)',
             }}
           >
-            <IconButton onClick={handleZoomOut} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+            <IconButton
+              onClick={handleZoomOut}
+              sx={{
+                color: 'white',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' },
+              }}
+            >
               <ZoomOutIcon />
             </IconButton>
-            <IconButton onClick={handleZoomIn} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+            <IconButton
+              onClick={handleZoomIn}
+              sx={{
+                color: 'white',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' },
+              }}
+            >
               <ZoomInIcon />
             </IconButton>
             <IconButton
               onClick={() => setModalOpen(false)}
-              sx={{ color: 'white', bgcolor: 'rgba(255,255,255,0.1)', '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' } }}
+              sx={{
+                color: 'white',
+                bgcolor: 'rgba(255,255,255,0.1)',
+                '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' },
+              }}
             >
               <CloseIcon />
             </IconButton>
@@ -287,7 +309,10 @@ export const GallerySection = () => {
               backdropFilter: 'blur(10px)',
               width: 56,
               height: 56,
-              '&:hover': { bgcolor: 'rgba(255,255,255,0.2)', transform: 'translateY(-50%) scale(1.1)' },
+              '&:hover': {
+                bgcolor: 'rgba(255,255,255,0.2)',
+                transform: 'translateY(-50%) scale(1.1)',
+              },
               transition: 'all 0.2s',
               zIndex: 10,
             }}
@@ -306,7 +331,10 @@ export const GallerySection = () => {
               backdropFilter: 'blur(10px)',
               width: 56,
               height: 56,
-              '&:hover': { bgcolor: 'rgba(255,255,255,0.2)', transform: 'translateY(-50%) scale(1.1)' },
+              '&:hover': {
+                bgcolor: 'rgba(255,255,255,0.2)',
+                transform: 'translateY(-50%) scale(1.1)',
+              },
               transition: 'all 0.2s',
               zIndex: 10,
             }}
@@ -401,9 +429,7 @@ export const GallerySection = () => {
                   overflow: 'hidden',
                   border: '2px solid',
                   borderColor:
-                    selectedIndex === index
-                      ? 'primary.main'
-                      : 'transparent',
+                    selectedIndex === index ? 'primary.main' : 'transparent',
                   opacity: selectedIndex === index ? 1 : 0.6,
                   transition: 'all 0.2s',
                   '&:hover': {
