@@ -229,7 +229,8 @@ export const GallerySection = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          bgcolor: 'rgba(0,0,0,0.98)',
+          bgcolor: 'rgba(0,0,0,0.96)',
+          backdropFilter: 'blur(8px)',
         }}
       >
         <Box
@@ -363,7 +364,7 @@ export const GallerySection = () => {
               transform: 'translateX(-50%)',
               maxWidth: '90%',
               bgcolor: 'rgba(0,0,0,0.5)',
-              backdropFilter: 'blur(16px)',
+              backdropFilter: 'blur(8px)',
               display: 'flex',
               alignItems: 'center',
               gap: 1,
@@ -396,7 +397,7 @@ export const GallerySection = () => {
                   height: { xs: 50, md: 70 },
                   position: 'relative',
                   cursor: 'pointer',
-                  borderRadius: 3,
+                  borderRadius: 1,
                   overflow: 'hidden',
                   border: '2px solid',
                   borderColor:
