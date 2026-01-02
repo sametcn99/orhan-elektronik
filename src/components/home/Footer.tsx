@@ -17,6 +17,7 @@ import {
   Instagram as InstagramIcon,
 } from '@mui/icons-material'
 import { sectionIds } from '../../data/constants'
+import Image from 'next/image'
 
 export function Footer() {
   return (
@@ -28,7 +29,13 @@ export function Footer() {
         <Grid container spacing={4}>
           <Grid size={{ xs: 12, md: 4 }}>
             <Stack direction="row" spacing={1} alignItems="center" mb={2}>
-              <BoltIcon color="primary" fontSize="large" />
+              <Image
+                src="/favicon.ico"
+                alt="Logo"
+                width={40}
+                height={40}
+                style={{ borderRadius: '12px' }}
+              />
               <Typography variant="h5" color="white" fontWeight="bold">
                 Orhan Elektrik
               </Typography>

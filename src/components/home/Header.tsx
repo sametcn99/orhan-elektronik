@@ -23,6 +23,7 @@ import {
   Menu as MenuIcon,
 } from '@mui/icons-material'
 import { sectionIds, contactInfo } from '../../data/constants'
+import Image from 'next/image'
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -60,7 +61,7 @@ export function Header() {
           borderColor: 'divider',
         }}
       >
-        <BoltIcon sx={{ color: 'primary.main', fontSize: 28 }} />
+        <Image src="/favicon.ico" alt="Logo" width={40} height={40} />
         <Typography variant="h6" sx={{ fontWeight: 800 }}>
           Orhan Elektrik
         </Typography>
@@ -115,14 +116,19 @@ export function Header() {
           >
             <Box
               sx={{
-                bgcolor: 'primary.main',
                 borderRadius: '12px',
                 p: 0.8,
                 display: 'flex',
-                boxShadow: '0 4px 12px rgba(6, 182, 212, 0.3)',
+                overflow: 'hidden',
               }}
             >
-              <BoltIcon sx={{ color: 'white', fontSize: 24 }} />
+              <Image
+                src="/favicon.ico"
+                alt="Logo"
+                width={40}
+                height={40}
+                style={{ borderRadius: '12px' }}
+              />
             </Box>
             <Typography
               variant="h6"
