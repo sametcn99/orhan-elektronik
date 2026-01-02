@@ -34,8 +34,9 @@ export function Header() {
 
   const navItems = [
     { label: 'Ana Sayfa', href: '#' + sectionIds.hero },
+    { label: 'Markalar', href: '#' + sectionIds.brands },
     { label: 'Hizmetlerimiz', href: '#' + sectionIds.services },
-    { label: 'Galeri', href: '#' + sectionIds.instagram },
+    { label: 'Galeri', href: '#' + sectionIds.gallery },
     { label: 'İletişim', href: '#' + sectionIds.contact },
   ]
 

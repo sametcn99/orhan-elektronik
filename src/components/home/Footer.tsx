@@ -1,11 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Box, Typography, Container, Grid, Stack } from '@mui/material'
+import { Box, Typography, Container, Grid, Stack, Button } from '@mui/material'
 import {
   Bolt as BoltIcon,
   Shield as ShieldIcon,
   AccessTime as ClockIcon,
+  Instagram as InstagramIcon,
 } from '@mui/icons-material'
 import { sectionIds } from '../../data/constants'
 
@@ -29,7 +30,26 @@ export function Footer() {
               çözümleri sunan güvenilir iş ortağınız.
             </Typography>
             <Stack direction="row" spacing={1}>
-              {/* Add social media links here if needed */}
+              <Button
+                component="a"
+                href="https://www.instagram.com/orhan.elektrik.elektronik/"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                color="inherit"
+                startIcon={<InstagramIcon />}
+                sx={{
+                  color: 'white',
+                  borderColor: 'rgba(255,255,255,0.3)',
+                  '&:hover': {
+                    borderColor: '#E1306C',
+                    color: '#E1306C',
+                    bgcolor: 'rgba(225, 48, 108, 0.08)',
+                  },
+                }}
+              >
+                Instagram
+              </Button>
             </Stack>
           </Grid>
           <Grid size={{ xs: 6, md: 4 }}>

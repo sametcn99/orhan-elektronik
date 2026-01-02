@@ -16,6 +16,8 @@ export const contactInfo = {
 export type SectionIds = {
   hero: string
   services: string
+  gallery: string
+  brands: string
   instagram: string
   contact: string
 }
@@ -23,6 +25,8 @@ export type SectionIds = {
 export const sectionIds: SectionIds = {
   hero: 'hero',
   services: 'services',
+  gallery: 'gallery',
+  brands: 'brands',
   instagram: 'instagram',
   contact: 'contact',
 }
