@@ -14,6 +14,8 @@ import {
 } from '@mui/material'
 import { WorkspacePremium as PremiumIcon } from '@mui/icons-material'
 import { sectionIds } from '@/data/constants'
+import { SectionHeader } from '../ui/SectionHeader'
+import { SectionBackground } from '../ui/SectionBackground'
 
 const brands = [
   {
@@ -79,56 +81,13 @@ export default function BrandsSection() {
         bgcolor: 'background.default',
       }}
     >
-      {/* Background Decorative Elements */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: -100,
-          right: -100,
-          width: 600,
-          height: 600,
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${alpha(theme.palette.primary.main, 0.1)} 0%, transparent 70%)`,
-          filter: 'blur(80px)',
-          zIndex: 0,
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: -100,
-          left: -100,
-          width: 500,
-          height: 500,
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${alpha(theme.palette.secondary.main, 0.1)} 0%, transparent 70%)`,
-          filter: 'blur(80px)',
-          zIndex: 0,
-        }}
-      />
-
+      <SectionBackground />
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Box textAlign="center" mb={8}>
-          <Typography
-            variant="overline"
-            color="primary"
-            fontWeight="bold"
-            sx={{ letterSpacing: 3, display: 'block', mb: 1 }}
-          >
-            MARKALAR
-          </Typography>
-          <Typography variant="h3" fontWeight="800" sx={{ mb: 3 }}>
-            Sektörün Liderleriyle Güçlü İşbirliği
-          </Typography>
-          <Typography
-            variant="h6"
-            color="text.secondary"
-            sx={{ maxWidth: 700, mx: 'auto', fontWeight: 400 }}
-          >
-            Kalite, güven ve teknolojide dünya standartlarını belirleyen
-            markalarla çalışarak size en iyi hizmeti sunuyoruz.
-          </Typography>
-        </Box>
+        <SectionHeader
+          overline="MARKALAR"
+          title="Sektörün Liderleriyle Güçlü İşbirliği"
+          description="Kalite, güven ve teknolojide dünya standartlarını belirleyen markalarla çalışarak size en iyi hizmeti sunuyoruz."
+        />
 
         {/* Brands Grid */}
         <Grid container spacing={4}>

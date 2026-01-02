@@ -13,36 +13,23 @@ import {
   Slide,
 } from '@mui/material'
 import { SectionContainer } from '../ui/SectionContainer'
+import { SectionHeader } from '../ui/SectionHeader'
+import { SectionBackground } from '../ui/SectionBackground'
 import { sectionIds, services } from '../../data/constants'
 
 export function ServicesSection() {
   return (
     <SectionContainer
       id={sectionIds.services}
-      sx={{ bgcolor: 'background.default' }}
+      sx={{ bgcolor: 'background.default', position: 'relative' }}
     >
-      <Container maxWidth="lg">
-        <Box textAlign="center" mb={8}>
-          <Typography
-            variant="overline"
-            color="primary"
-            fontWeight="bold"
-            sx={{ letterSpacing: 3, display: 'block', mb: 1 }}
-          >
-            HİZMETLERİMİZ
-          </Typography>
-          <Typography variant="h3" fontWeight="800" sx={{ mb: 3 }}>
-            Profesyonel Elektrik Çözümleri
-          </Typography>
-          <Typography
-            variant="h6"
-            color="text.secondary"
-            sx={{ maxWidth: 700, mx: 'auto', fontWeight: 400 }}
-          >
-            Modern teknoloji ve uzman kadromuzla tüm elektrik ve elektronik
-            ihtiyaçlarınız için yanınızdayız.
-          </Typography>
-        </Box>
+      <SectionBackground />
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <SectionHeader
+          overline="HİZMETLERİMİZ"
+          title="Profesyonel Elektrik Çözümleri"
+          description="Modern teknoloji ve uzman kadromuzla tüm elektrik ve elektronik ihtiyaçlarınız için yanınızdayız."
+        />
 
         <Grid container spacing={4}>
           {services.map((service, index) => (

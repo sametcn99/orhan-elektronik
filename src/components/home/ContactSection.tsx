@@ -19,33 +19,23 @@ import {
   Bolt as BoltIcon,
 } from '@mui/icons-material'
 import { SectionContainer } from '../ui/SectionContainer'
+import { SectionHeader } from '../ui/SectionHeader'
+import { SectionBackground } from '../ui/SectionBackground'
 import { sectionIds, contactInfo } from '../../data/constants'
 
 export function ContactSection() {
   return (
-    <SectionContainer id={sectionIds.contact} sx={{ bgcolor: 'white' }}>
-      <Container maxWidth="lg">
+    <SectionContainer id={sectionIds.contact} sx={{ bgcolor: 'white', position: 'relative' }}>
+      <SectionBackground variant="alternate" />
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Grid container spacing={8} alignItems="center">
           <Grid size={{ xs: 12, lg: 5 }}>
-            <Typography
-              variant="overline"
-              color="primary"
-              fontWeight="bold"
-              sx={{ letterSpacing: 3 }}
-            >
-              İLETİŞİM
-            </Typography>
-            <Typography variant="h3" fontWeight="800" sx={{ mt: 1, mb: 4 }}>
-              Size Nasıl Yardımcı Olabiliriz?
-            </Typography>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{ mb: 6, fontSize: '1.1rem' }}
-            >
-              Her türlü elektrik ve elektronik arızası, bakım veya kurulum
-              talepleriniz için bize ulaşın.
-            </Typography>
+            <SectionHeader
+              overline="İLETİŞİM"
+              title="Size Nasıl Yardımcı Olabiliriz?"
+              description="Her türlü elektrik ve elektronik arızası, bakım veya kurulum talepleriniz için bize ulaşın."
+              align="left"
+            />
 
             <Stack spacing={3}>
               <Card

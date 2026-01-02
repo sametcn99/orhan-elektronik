@@ -12,6 +12,8 @@ import {
   useTheme,
 } from '@mui/material'
 import Image from 'next/image'
+import { SectionHeader } from '../ui/SectionHeader'
+import { SectionBackground } from '../ui/SectionBackground'
 import CloseIcon from '@mui/icons-material/Close'
 import ZoomInIcon from '@mui/icons-material/ZoomIn'
 import ZoomOutIcon from '@mui/icons-material/ZoomOut'
@@ -113,39 +115,25 @@ export const GallerySection = () => {
         overflow: 'hidden',
       }}
     >
-      <Container maxWidth="xl">
-        {/* Header */}
-        <Box sx={{ mb: 6, textAlign: 'center' }}>
-          <Typography
-            variant="h2"
-            sx={{
-              mb: 2,
-              background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            Galeri
-          </Typography>
-          <Typography
-            variant="h5"
-            color="text.secondary"
-            sx={{ maxWidth: '600px', mx: 'auto', lineHeight: 1.6 }}
-          >
-            Tamamladığımız projelerden ve çalışma alanlarımızdan seçkiler.
-          </Typography>
-        </Box>
+      <SectionBackground variant="alternate" />
+
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+        <SectionHeader
+          overline="GALERİ"
+          title="Projelerimizden Kareler"
+          description="Tamamladığımız projelerden ve çalışma alanlarımızdan seçkiler. Kaliteyi detaylarda keşfedin."
+        />
 
         {/* Grid of Thumbnails */}
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
           {visibleImages.map((img, index) => {
             const isLast = index === displayCount - 1
             return (
               <Grid
                 key={index}
-                size={{ xs: 6, sm: 4, md: 3 }} // Adjust responsiveness here
+                size={{ xs: 6, sm: 4, md: 3 }}
                 sx={{
-                  height: { xs: 150, md: 250 },
+                  height: { xs: 180, md: 280 },
                   cursor: 'pointer',
                 }}
                 onClick={() => openModal(index)}
@@ -155,12 +143,19 @@ export const GallerySection = () => {
                     position: 'relative',
                     width: '100%',
                     height: '100%',
-                    borderRadius: 2,
+                    borderRadius: 4,
                     overflow: 'hidden',
+                    boxShadow: '0 10px 30px -10px rgba(0,0,0,0.1)',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                     '&:hover': {
-                      transform: 'scale(1.02)',
-                      transition: 'transform 0.3s ease',
-                      boxShadow: '0 8px 16px rgba(0,0,0,0.1)',
+                      transform: 'translateY(-8px)',
+                      boxShadow: '0 20px 40px -15px rgba(0,0,0,0.2)',
+                      '& .overlay': {
+                        opacity: 1,
+                      },
+                      '& .bg-image': {
+                        transform: 'scale(1.1)',
+                      },
                     },
                   }}
                 >
@@ -168,29 +163,54 @@ export const GallerySection = () => {
                     src={img}
                     alt={`Gallery ${index + 1}`}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    className="bg-image"
+                    style={{
+                      objectFit: 'cover',
+                      transition: 'transform 0.6s ease',
+                    }}
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   />
+
+                  {/* Hover Overlay with Zoom Icon */}
+                  <Box
+                    className="overlay"
+                    sx={{
+                      position: 'absolute',
+                      inset: 0,
+                      bgcolor: 'rgba(0,0,0,0.3)',
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <ZoomInIcon sx={{ color: 'white', fontSize: 40, opacity: 0.8 }} />
+                  </Box>
+
                   {isLast && remainingCount > 0 && (
                     <Box
                       sx={{
                         position: 'absolute',
                         inset: 0,
-                        bgcolor: 'rgba(0,0,0,0.6)',
+                        bgcolor: 'rgba(0, 0, 0, 0.7)',
+                        backdropFilter: 'blur(4px)',
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        zIndex: 2,
                         transition: 'background-color 0.3s',
-                        '&:hover': {
-                          bgcolor: 'rgba(0,0,0,0.7)',
-                        },
                       }}
                     >
                       <Typography
                         variant="h3"
-                        sx={{ color: 'white', fontWeight: 'bold' }}
+                        sx={{ color: 'white', fontWeight: 800 }}
                       >
                         +{remainingCount}
+                      </Typography>
+                      <Typography variant="body1" color="grey.300" fontWeight={500}>
+                        Daha Fazla
                       </Typography>
                     </Box>
                   )}
@@ -209,7 +229,7 @@ export const GallerySection = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          bgcolor: 'rgba(0,0,0,0.95)',
+          bgcolor: 'rgba(0,0,0,0.98)',
         }}
       >
         <Box
@@ -228,26 +248,27 @@ export const GallerySection = () => {
           <Box
             sx={{
               position: 'fixed',
-              top: 20,
-              right: 20,
-              zIndex: 10,
+              top: 24,
+              right: 24,
+              zIndex: 20,
               display: 'flex',
               gap: 2,
-              bgcolor: 'rgba(0,0,0,0.5)',
-              p: 1,
-              borderRadius: 4,
-              backdropFilter: 'blur(4px)',
+              bgcolor: 'rgba(255,255,255,0.1)',
+              p: 1.5,
+              borderRadius: 50,
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255,255,255,0.1)',
             }}
           >
-            <IconButton onClick={handleZoomOut} sx={{ color: 'white' }}>
+            <IconButton onClick={handleZoomOut} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
               <ZoomOutIcon />
             </IconButton>
-            <IconButton onClick={handleZoomIn} sx={{ color: 'white' }}>
+            <IconButton onClick={handleZoomIn} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
               <ZoomInIcon />
             </IconButton>
             <IconButton
               onClick={() => setModalOpen(false)}
-              sx={{ color: 'white' }}
+              sx={{ color: 'white', bgcolor: 'rgba(255,255,255,0.1)', '&:hover': { bgcolor: 'rgba(255,255,255,0.2)' } }}
             >
               <CloseIcon />
             </IconButton>
@@ -257,31 +278,39 @@ export const GallerySection = () => {
             onClick={(e) => handlePrev(e)}
             sx={{
               position: 'fixed',
-              left: 20,
+              left: 24,
               top: '50%',
               transform: 'translateY(-50%)',
               color: 'white',
-              bgcolor: 'rgba(0,0,0,0.3)',
-              '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' },
+              bgcolor: 'rgba(255,255,255,0.1)',
+              backdropFilter: 'blur(10px)',
+              width: 56,
+              height: 56,
+              '&:hover': { bgcolor: 'rgba(255,255,255,0.2)', transform: 'translateY(-50%) scale(1.1)' },
+              transition: 'all 0.2s',
               zIndex: 10,
             }}
           >
-            <ArrowBackIosNewIcon fontSize="large" />
+            <ArrowBackIosNewIcon />
           </IconButton>
           <IconButton
             onClick={(e) => handleNext(e)}
             sx={{
               position: 'fixed',
-              right: 20,
+              right: 24,
               top: '50%',
               transform: 'translateY(-50%)',
               color: 'white',
-              bgcolor: 'rgba(0,0,0,0.3)',
-              '&:hover': { bgcolor: 'rgba(0,0,0,0.5)' },
+              bgcolor: 'rgba(255,255,255,0.1)',
+              backdropFilter: 'blur(10px)',
+              width: 56,
+              height: 56,
+              '&:hover': { bgcolor: 'rgba(255,255,255,0.2)', transform: 'translateY(-50%) scale(1.1)' },
+              transition: 'all 0.2s',
               zIndex: 10,
             }}
           >
-            <ArrowForwardIosIcon fontSize="large" />
+            <ArrowForwardIosIcon />
           </IconButton>
 
           {/* Image Container */}
@@ -294,7 +323,7 @@ export const GallerySection = () => {
               justifyContent: 'center',
               cursor:
                 zoomLevel > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default',
-              pb: { xs: 8, md: 10 },
+              pb: { xs: 10, md: 12 },
             }}
             onMouseDown={handleMouseDown}
           >
@@ -314,11 +343,12 @@ export const GallerySection = () => {
                 src={images[selectedIndex]}
                 alt="Full screen"
                 style={{
-                  maxWidth: '100%',
-                  maxHeight: '100%',
+                  maxWidth: '90%',
+                  maxHeight: '90%',
                   objectFit: 'contain',
                   userSelect: 'none',
                   pointerEvents: 'none',
+                  boxShadow: '0 0 50px rgba(0,0,0,0.5)',
                 }}
               />
             </Box>
@@ -328,26 +358,23 @@ export const GallerySection = () => {
           <Box
             sx={{
               position: 'fixed',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: { xs: 80, md: 100 },
-              bgcolor: 'rgba(0,0,0,0.8)',
-              backdropFilter: 'blur(8px)',
+              bottom: 24,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              maxWidth: '90%',
+              bgcolor: 'rgba(0,0,0,0.5)',
+              backdropFilter: 'blur(16px)',
               display: 'flex',
               alignItems: 'center',
-              gap: 2,
-              p: 2,
+              gap: 1,
+              p: 1.5,
+              borderRadius: 4,
               overflowX: 'auto',
               zIndex: 10,
+              boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
               '&::-webkit-scrollbar': {
-                height: '6px',
+                display: 'none',
               },
-              '&::-webkit-scrollbar-thumb': {
-                backgroundColor: 'rgba(255,255,255,0.3)',
-                borderRadius: '3px',
-              },
-              overflowY: 'hidden',
             }}
             onWheel={(e) => {
               e.stopPropagation()
@@ -365,20 +392,23 @@ export const GallerySection = () => {
                 }}
                 sx={{
                   flexShrink: 0,
-                  width: { xs: 60, md: 100 },
-                  height: { xs: 45, md: 75 },
+                  width: { xs: 50, md: 70 },
+                  height: { xs: 50, md: 70 },
                   position: 'relative',
                   cursor: 'pointer',
-                  borderRadius: 1,
-                  border:
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  border: '2px solid',
+                  borderColor:
                     selectedIndex === index
-                      ? `2px solid ${theme.palette.primary.main}`
-                      : '2px solid transparent',
-                  opacity: selectedIndex === index ? 1 : 0.5,
+                      ? 'primary.main'
+                      : 'transparent',
+                  opacity: selectedIndex === index ? 1 : 0.6,
                   transition: 'all 0.2s',
                   '&:hover': {
                     opacity: 1,
-                    transform: 'scale(1.05)',
+                    transform: 'scale(1.1)',
+                    zIndex: 2,
                   },
                 }}
               >
@@ -388,7 +418,6 @@ export const GallerySection = () => {
                   fill
                   style={{
                     objectFit: 'cover',
-                    borderRadius: 4,
                   }}
                   sizes="100px"
                 />

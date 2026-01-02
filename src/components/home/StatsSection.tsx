@@ -5,6 +5,7 @@ import { Box, Typography, Container, Grid, Zoom, Stack } from '@mui/material'
 import { EmojiEvents as AwardIcon } from '@mui/icons-material'
 import { useOnScreen } from '../../hooks/useOnScreen'
 import { AnimatedCounter } from '../ui/AnimatedCounter'
+import { SectionBackground } from '../ui/SectionBackground'
 import { stats } from '../../data/constants'
 
 export function StatsSection() {
@@ -16,12 +17,15 @@ export function StatsSection() {
       sx={{
         bgcolor: 'white',
         py: 10,
+        position: 'relative',
+        overflow: 'hidden',
         borderBottom: '1px solid',
         borderColor: 'divider',
       }}
       ref={ref}
     >
-      <Container maxWidth="lg">
+      <SectionBackground variant="alternate" />
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Grid container spacing={4} justifyContent="center">
           {stats.map((stat, index) => (
             <Grid size={{ xs: 6, md: 4 }} key={stat.label}>
