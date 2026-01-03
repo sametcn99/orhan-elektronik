@@ -82,18 +82,7 @@ const StickyServiceCard = ({
             <p className="max-w-3xl text-base leading-relaxed text-slate-700">
               {service.description}
             </p>
-
-            <div className="flex flex-wrap gap-2">
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
-                Uzman ekip
-              </span>
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
-                Hızlı çözüm
-              </span>
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
-                Güvenilir hizmet
-              </span>
-            </div>
+          
           </div>
         </div>
       </motion.div>
