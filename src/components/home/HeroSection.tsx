@@ -18,6 +18,11 @@ import {
   Phone as PhoneIcon,
   Shield as ShieldIcon,
   AccessTime as ClockIcon,
+  Security as SecurityIcon,
+  Build as BuildIcon,
+  Home as HomeIcon,
+  SatelliteAlt as SatelliteIcon,
+  Lightbulb as LightbulbIcon,
 } from '@mui/icons-material'
 import { useOnScreen } from '../../hooks/useOnScreen'
 import { sectionIds, contactInfo, HEADER_HEIGHT } from '../../data/constants'
@@ -26,6 +31,21 @@ export function HeroSection() {
   const ref = useRef(null)
   const isVisible = useOnScreen(ref)
   const theme = useTheme()
+  const heroServices = [
+    {
+      label: 'Güvenlik Sistemleri',
+      icon: SecurityIcon,
+      color: theme.palette.primary.main,
+    },
+    { label: 'Bakım ve Tamir', icon: BuildIcon, color: '#f59e0b' },
+    { label: 'Akıllı Ev (KNX)', icon: HomeIcon, color: '#22c55e' },
+    {
+      label: 'Uydu Sistemleri',
+      icon: SatelliteIcon,
+      color: theme.palette.secondary.main,
+    },
+    { label: 'Aydınlatma', icon: LightbulbIcon, color: '#eab308' },
+  ]
 
   return (
     <Box
@@ -248,65 +268,45 @@ export function HeroSection() {
                   </Button>
                 </Stack>
 
-                <Stack direction="row" flexWrap="wrap" sx={{ gap: 3 }}>
-                  {/* Custom trust indicators with better visuals */}
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Box
-                      sx={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: '10px',
-                        bgcolor: alpha(theme.palette.success.light, 0.1),
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'success.main',
-                      }}
-                    >
-                      <ShieldIcon fontSize="small" />
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="body2"
-                        fontWeight="bold"
-                        color="text.primary"
+                <Stack
+                  direction={{ xs: 'column', sm: 'row' }}
+                  spacing={1}
+                  flexWrap="wrap"
+                  useFlexGap
+                  sx={{ gap: 1.5 }}
+                >
+                  {heroServices.map((service) => {
+                    const Icon = service.icon
+                    const color = service.color
+                    return (
+                      <Box
+                        key={service.label}
+                        sx={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: 1,
+                          px: 1.5,
+                          py: 1,
+                          borderRadius: '12px',
+                          bgcolor: alpha(color, 0.08),
+                          border: `1px solid ${alpha(color, 0.25)}`,
+                          color,
+                          fontWeight: 600,
+                          fontSize: '0.9rem',
+                          transition: 'all 0.2s ease',
+                          '&:hover': {
+                            bgcolor: alpha(color, 0.14),
+                            transform: 'translateY(-2px)',
+                          },
+                        }}
                       >
-                        Garantili İşçilik
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        1 Yıl Garanti
-                      </Typography>
-                    </Box>
-                  </Box>
-
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Box
-                      sx={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: '10px',
-                        bgcolor: alpha(theme.palette.warning.light, 0.1),
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'warning.main',
-                      }}
-                    >
-                      <ClockIcon fontSize="small" />
-                    </Box>
-                    <Box>
-                      <Typography
-                        variant="body2"
-                        fontWeight="bold"
-                        color="text.primary"
-                      >
-                        Hızlı Servis
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        Ort. 45 dk.
-                      </Typography>
-                    </Box>
-                  </Box>
+                        <Icon sx={{ fontSize: 18, opacity: 0.9 }} />
+                        <Typography variant="body2" fontWeight={700}>
+                          {service.label}
+                        </Typography>
+                      </Box>
+                    )
+                  })}
                 </Stack>
               </Box>
             </Fade>
