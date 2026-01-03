@@ -2,7 +2,12 @@
 
 import React, { useRef, useMemo, useEffect, useState } from 'react'
 import { alpha, useMediaQuery, useTheme } from '@mui/material'
-import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from 'framer-motion'
 import ReactLenis from 'lenis/react'
 import { SectionContainer } from '../ui/SectionContainer'
 import { SectionHeader } from '../ui/SectionHeader'
@@ -38,7 +43,10 @@ const StickyServiceCard = ({
     : `calc(-6vh + ${i * 18 + 200}px)`
 
   return (
-    <div ref={cardRef} className="sticky top-0 flex items-center justify-center px-4 md:px-0">
+    <div
+      ref={cardRef}
+      className="sticky top-0 flex items-center justify-center px-4 md:px-0"
+    >
       <motion.div
         style={{
           scale,
@@ -89,7 +97,6 @@ const StickyServiceCard = ({
             <p className="max-w-3xl text-sm md:text-base leading-relaxed text-slate-700">
               {service.description}
             </p>
-          
           </div>
         </div>
       </motion.div>
@@ -101,23 +108,31 @@ export function ServicesSection() {
   const container = useRef<HTMLDivElement>(null)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end'],
   })
 
   // Mobil için Lenis ayarları - daha yumuşak scroll
-  const lenisOptions = useMemo(() => ({
-    lerp: isMobile ? 0.08 : 0.1,
-    smoothWheel: true,
-    touchMultiplier: isMobile ? 1.5 : 2,
-  }), [isMobile])
+  const lenisOptions = useMemo(
+    () => ({
+      lerp: isMobile ? 0.08 : 0.1,
+      smoothWheel: true,
+      touchMultiplier: isMobile ? 1.5 : 2,
+    }),
+    [isMobile],
+  )
 
   return (
     <SectionContainer
       id={sectionIds.services}
-      sx={{ bgcolor: 'background.default', position: 'relative', overflowX: 'clip', overflowY: 'visible' }}
+      sx={{
+        bgcolor: 'background.default',
+        position: 'relative',
+        overflowX: 'clip',
+        overflowY: 'visible',
+      }}
     >
       <SectionBackground />
 
