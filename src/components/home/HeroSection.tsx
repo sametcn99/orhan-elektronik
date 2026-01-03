@@ -32,13 +32,12 @@ export function HeroSection() {
       id={sectionIds.hero}
       ref={ref}
       sx={{
-        minHeight: '100vh',
+        minHeight: 'calc(100vh - 73px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        pt: { xs: 8, md: 0 },
         background: `linear-gradient(to bottom, #fff, ${alpha(theme.palette.background.default, 0.5)})`,
       }}
     >
