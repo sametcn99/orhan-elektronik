@@ -209,6 +209,12 @@ export function Footer() {
                   href="https://www.instagram.com/orhan.elektrik.elektronik/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    track('social_click', {
+                      location: 'footer_instagram',
+                      href: 'https://www.instagram.com/orhan.elektrik.elektronik/',
+                    })
+                  }
                   sx={{
                     bgcolor: 'rgba(255,255,255,0.05)',
                     border: '1px solid rgba(255,255,255,0.1)',
@@ -227,6 +233,12 @@ export function Footer() {
                   href={`https://wa.me/${whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    track('social_click', {
+                      location: 'footer_whatsapp',
+                      href: `https://wa.me/${whatsappNumber}`,
+                    })
+                  }
                   sx={{
                     bgcolor: 'rgba(255,255,255,0.05)',
                     border: '1px solid rgba(255,255,255,0.1)',
