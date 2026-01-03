@@ -5,7 +5,6 @@ import theme from '@/theme'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import './globals.css'
-import Head from 'next/head'
 import Script from 'next/script'
 
 export const metadata: Metadata = {
@@ -82,17 +81,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" suppressHydrationWarning>
-      <Head>
-        <Script
-          defer
-          src="https://umami.sametcc.me/script.js"
-          data-website-id="b4b80e84-5709-4675-a6dd-cc938134079b"
-        />
-      </Head>
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+            <Script
+              src="https://umami.sametcc.me/script.js"
+              data-website-id="b4b80e84-5709-4675-a6dd-cc938134079b"
+              strategy="afterInteractive"
+            />
             {children}
             <Analytics />
           </ThemeProvider>
