@@ -9,7 +9,7 @@ import {
 
 export const contactInfo = {
   address: 'Murat Mah. Yavuzevler Sk. 18/C Çankaya/Ankara',
-  phone: '+90 0532 574 93 92',
+  phone: '+90 532 574 93 92',
   mapIframe: 'https://maps.app.goo.gl/3nwdPZaG1ac97vb79',
 }
 
