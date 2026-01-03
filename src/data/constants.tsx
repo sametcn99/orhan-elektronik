@@ -13,6 +13,8 @@ export const contactInfo = {
   mapIframe: 'https://maps.app.goo.gl/3nwdPZaG1ac97vb79',
 }
 
+export const HEADER_HEIGHT = 72
+
 export type SectionIds = {
   hero: string
   services: string

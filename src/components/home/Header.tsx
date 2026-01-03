@@ -22,7 +22,7 @@ import {
   Bolt as BoltIcon,
   Menu as MenuIcon,
 } from '@mui/icons-material'
-import { sectionIds, contactInfo } from '../../data/constants'
+import { sectionIds, contactInfo, HEADER_HEIGHT } from '../../data/constants'
 import Image from 'next/image'
 
 export function Header() {
@@ -104,7 +104,7 @@ export function Header() {
       <Container maxWidth="lg">
         <Toolbar
           disableGutters
-          sx={{ justifyContent: 'space-between', height: 72 }}
+          sx={{ justifyContent: 'space-between', height: HEADER_HEIGHT }}
         >
           <Stack
             direction="row"

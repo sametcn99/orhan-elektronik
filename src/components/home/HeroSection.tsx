@@ -20,7 +20,7 @@ import {
   AccessTime as ClockIcon,
 } from '@mui/icons-material'
 import { useOnScreen } from '../../hooks/useOnScreen'
-import { sectionIds, contactInfo } from '../../data/constants'
+import { sectionIds, contactInfo, HEADER_HEIGHT } from '../../data/constants'
 
 export function HeroSection() {
   const ref = useRef(null)
@@ -32,7 +32,7 @@ export function HeroSection() {
       id={sectionIds.hero}
       ref={ref}
       sx={{
-        minHeight: 'calc(100vh - 73px)',
+        minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
