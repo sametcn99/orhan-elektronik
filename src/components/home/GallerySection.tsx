@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import type React from 'react'
 import {
   Box,
   Container,
@@ -21,8 +22,12 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import { AnimatePresence, motion } from 'motion/react'
 
 const images = Array.from({ length: 86 }, (_, i) => `/gallery/${i + 1}.jpg`)
+
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(Math.max(value, min), max)
 
 export const GallerySection = () => {
   const theme = useTheme()
@@ -32,7 +37,15 @@ export const GallerySection = () => {
   const [zoomLevel, setZoomLevel] = useState(1)
   const [panPosition, setPanPosition] = useState({ x: 0, y: 0 })
   const [isDragging, setIsDragging] = useState(false)
+  const [direction, setDirection] = useState(1)
   const dragStartRef = useRef({ x: 0, y: 0 })
+  const pinchRef = useRef({
+    startDistance: 0,
+    startZoom: 1,
+    lastCenter: { x: 0, y: 0 },
+    isPinching: false,
+  })
+  const swipeRef = useRef({ startX: 0, startY: 0, startTime: 0 })
 
   // Determine how many images to show in the preview grid (e.g., 8)
   const displayCount = 8
@@ -47,11 +60,13 @@ export const GallerySection = () => {
 
   const handleNext = (e?: React.MouseEvent) => {
     e?.stopPropagation()
+    setDirection(1)
     setSelectedIndex((prev) => (prev + 1) % images.length)
   }
 
   const handlePrev = (e?: React.MouseEvent) => {
     e?.stopPropagation()
+    setDirection(-1)
     setSelectedIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
@@ -73,6 +88,8 @@ export const GallerySection = () => {
   }
 
   const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
     if (e.deltaY < 0) {
       setZoomLevel((prev) => Math.min(prev + 0.2, 4))
     } else {
@@ -101,6 +118,86 @@ export const GallerySection = () => {
   }
 
   const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const getTouchDistance = (touches: React.TouchList) =>
+    Math.hypot(
+      touches[0].clientX - touches[1].clientX,
+      touches[0].clientY - touches[1].clientY,
+    )
+
+  const getTouchCenter = (touches: React.TouchList) => ({
+    x: (touches[0].clientX + touches[1].clientX) / 2,
+    y: (touches[0].clientY + touches[1].clientY) / 2,
+  })
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      const distance = getTouchDistance(e.touches)
+      pinchRef.current = {
+        startDistance: distance,
+        startZoom: zoomLevel,
+        lastCenter: getTouchCenter(e.touches),
+        isPinching: true,
+      }
+    } else if (e.touches.length === 1) {
+      swipeRef.current = {
+        startX: e.touches[0].clientX,
+        startY: e.touches[0].clientY,
+        startTime: Date.now(),
+      }
+
+      if (zoomLevel > 1) {
+        setIsDragging(true)
+        dragStartRef.current = {
+          x: e.touches[0].clientX - panPosition.x,
+          y: e.touches[0].clientY - panPosition.y,
+        }
+      }
+    }
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2 && pinchRef.current.isPinching) {
+      e.preventDefault()
+      const distance = getTouchDistance(e.touches)
+      const center = getTouchCenter(e.touches)
+      const zoomRatio = distance / (pinchRef.current.startDistance || 1)
+      const nextZoom = clamp(pinchRef.current.startZoom * zoomRatio, 1, 4)
+      setZoomLevel(nextZoom)
+
+      // Keep focus near pinch center when zoomed
+      setPanPosition((prev) => ({
+        x: prev.x + (center.x - pinchRef.current.lastCenter.x),
+        y: prev.y + (center.y - pinchRef.current.lastCenter.y),
+      }))
+
+      pinchRef.current.lastCenter = center
+    } else if (e.touches.length === 1 && zoomLevel > 1 && isDragging) {
+      e.preventDefault()
+      setPanPosition({
+        x: e.touches[0].clientX - dragStartRef.current.x,
+        y: e.touches[0].clientY - dragStartRef.current.y,
+      })
+    }
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (pinchRef.current.isPinching && e.touches.length < 2) {
+      pinchRef.current.isPinching = false
+    }
+
+    if (zoomLevel === 1 && e.changedTouches.length === 1) {
+      const deltaX = e.changedTouches[0].clientX - swipeRef.current.startX
+      const deltaY = e.changedTouches[0].clientY - swipeRef.current.startY
+      const duration = Date.now() - swipeRef.current.startTime
+
+      if (Math.abs(deltaX) > 50 && Math.abs(deltaY) < 80 && duration < 600) {
+        deltaX > 0 ? handlePrev() : handleNext()
+      }
+    }
+
     setIsDragging(false)
   }
 
@@ -353,8 +450,12 @@ export const GallerySection = () => {
               cursor:
                 zoomLevel > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default',
               pb: { xs: 10, md: 12 },
+              touchAction: 'none',
             }}
             onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             <Box
               sx={{
@@ -368,18 +469,25 @@ export const GallerySection = () => {
                 justifyContent: 'center',
               }}
             >
-              <img
-                src={images[selectedIndex]}
-                alt="Full screen"
-                style={{
-                  maxWidth: '90%',
-                  maxHeight: '90%',
-                  objectFit: 'contain',
-                  userSelect: 'none',
-                  pointerEvents: 'none',
-                  boxShadow: '0 0 50px rgba(0,0,0,0.5)',
-                }}
-              />
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={selectedIndex}
+                  src={images[selectedIndex]}
+                  alt="Full screen"
+                  initial={{ opacity: 0, scale: 0.96, x: 24 * direction }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.96, x: -24 * direction }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  style={{
+                    maxWidth: '90%',
+                    maxHeight: '90%',
+                    objectFit: 'contain',
+                    userSelect: 'none',
+                    pointerEvents: 'none',
+                    boxShadow: '0 0 50px rgba(0,0,0,0.5)',
+                  }}
+                />
+              </AnimatePresence>
             </Box>
           </Box>
 
