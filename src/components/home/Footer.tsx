@@ -33,6 +33,7 @@ import {
 } from '@mui/icons-material'
 import { sectionIds, contactInfo } from '../../data/constants'
 import Image from 'next/image'
+import { useUmami } from '../../hooks/useUmami'
 
 const footerServices = [
   {
@@ -71,6 +72,7 @@ const quickLinks = [
 
 export function Footer() {
   const whatsappNumber = contactInfo.phone.replace(/\s/g, '').replace('+', '')
+  const { track } = useUmami()
 
   return (
     <Box
@@ -343,6 +345,9 @@ export function Footer() {
               <Box
                 component="a"
                 href={`tel:${contactInfo.phone}`}
+                onClick={() =>
+                  track('call_click', { location: 'footer_phone' })
+                }
                 sx={{
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -392,6 +397,9 @@ export function Footer() {
                 href={contactInfo.mapIframe}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  track('address_click', { location: 'footer_address' })
+                }
                 sx={{
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -542,6 +550,12 @@ export function Footer() {
                 href="https://sametcc.me"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  track('external_click', {
+                    location: 'footer_developer',
+                    href: 'https://sametcc.me',
+                  })
+                }
                 sx={{ color: 'primary.main', fontWeight: 600 }}
               >
                 sametcc.me

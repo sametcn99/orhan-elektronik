@@ -24,10 +24,12 @@ import {
 } from '@mui/icons-material'
 import { sectionIds, contactInfo, HEADER_HEIGHT } from '../../data/constants'
 import Image from 'next/image'
+import { useUmami } from '../../hooks/useUmami'
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const theme = useTheme()
+  const { track } = useUmami()
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -90,6 +92,7 @@ export function Header() {
             variant="contained"
             href={`tel:${contactInfo.phone}`}
             startIcon={<PhoneIcon />}
+            onClick={() => track('call_click', { location: 'header_drawer' })}
             sx={{ py: 1.5, borderRadius: 2 }}
           >
             Hemen Ara
@@ -170,6 +173,9 @@ export function Header() {
               variant="contained"
               href={`tel:${contactInfo.phone}`}
               startIcon={<PhoneIcon />}
+              onClick={() =>
+                track('call_click', { location: 'header_desktop' })
+              }
               sx={{ ml: 2, borderRadius: '50px', px: 3 }}
             >
               Hemen Ara
