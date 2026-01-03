@@ -9,6 +9,9 @@ import {
   SatelliteAlt as SatelliteIcon,
   Lightbulb as LightbulbIcon,
   EnergySavingsLeaf as EnergyLeafIcon,
+  Doorbell as DoorbellIcon,
+  ElectricalServices as ElectricalIcon,
+  Cable as CableIcon,
 } from '@mui/icons-material'
 
 export const contactInfo = {
@@ -88,11 +91,25 @@ export const services = [
     color: '#22c55e', // Green
   },
   {
-    title: 'Uygun Fiyat',
+    title: 'İnterkom ve Diafon Sistemleri',
     description:
-      'Kaliteli hizmeti uygun fiyatlarla sunuyoruz. Şeffaf fiyatlandırma politikamızla müşterilerimize her zaman en iyi değeri sunmayı hedefliyoruz.',
-    icon: AttachMoneyIcon,
-    color: '#a855f7', // Purple
+      'Audio marka görüntülü ve sesli diafon sistemleri, apartman interkomları, kapı zili çözümleri ve geçiş kontrol entegrasyonları kuruyoruz. Bina girişlerinden daire içi haberleşmeye kadar güvenli ve modern çözümler sunuyoruz.',
+    icon: DoorbellIcon,
+    color: '#ef4444', // Red
+  },
+  {
+    title: 'Elektrik Panoları ve Şalt Sistemleri',
+    description:
+      'Mutlusan ürünleriyle endüstriyel ve konut tipi elektrik panoları, sigorta kutuları, şalt malzemeleri ve dağıtım sistemleri kurulumu yapıyoruz. Proje bazlı özel pano tasarımı ve montaj hizmeti veriyoruz.',
+    icon: ElectricalIcon,
+    color: '#6366f1', // Indigo
+  },
+  {
+    title: 'Yapısal Kablolama ve Altyapı',
+    description:
+      'Netelsan kablo sistemleriyle profesyonel veri kablolaması, Cat6/Cat7 ağ altyapısı, fiber optik hatlar ve yapısal kablolama projeleri gerçekleştiriyoruz. Ofis, fabrika ve kurumsal binalarda uçtan uca altyapı çözümleri sunuyoruz.',
+    icon: CableIcon,
+    color: '#14b8a6', // Teal
   },
 ]
 

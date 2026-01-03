@@ -117,11 +117,11 @@ export function ServicesSection() {
   return (
     <SectionContainer
       id={sectionIds.services}
-      sx={{ bgcolor: 'background.default', position: 'relative', overflow: 'visible' }}
+      sx={{ bgcolor: 'background.default', position: 'relative', overflowX: 'clip', overflowY: 'visible' }}
     >
       <SectionBackground />
 
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-x-clip">
         <SectionHeader
           overline="HİZMETLERİMİZ"
           title="Profesyonel Elektrik Çözümleri"
@@ -135,8 +135,8 @@ export function ServicesSection() {
           >
             {services.map((service, i) => {
               const targetScale = isMobile
-                ? Math.max(0.85, 1 - (services.length - i - 1) * 0.04)
-                : Math.max(0.8, 1 - (services.length - i - 1) * 0.05)
+                ? Math.max(0.92, 1 - (services.length - i - 1) * 0.02)
+                : Math.max(0.9, 1 - (services.length - i - 1) * 0.025)
 
               return (
                 <StickyServiceCard
@@ -144,7 +144,7 @@ export function ServicesSection() {
                   i={i}
                   service={service}
                   progress={scrollYProgress}
-                  range={isMobile ? [i * 0.15, 1] : [i * 0.18, 1]}
+                  range={[i * 0.1, 1]}
                   targetScale={targetScale}
                   isMobile={isMobile}
                 />
