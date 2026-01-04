@@ -23,6 +23,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { AnimatePresence, motion } from 'motion/react'
+import { sectionIds } from '@/data/constants'
 
 const images = Array.from({ length: 86 }, (_, i) => `/gallery/${i + 1}.jpg`)
 
@@ -204,7 +205,7 @@ export const GallerySection = () => {
   return (
     <Box
       component="section"
-      id="gallery"
+      id={sectionIds.gallery}
       sx={{
         py: { xs: 8, md: 12 },
         bgcolor: 'background.paper',
