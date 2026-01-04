@@ -76,10 +76,10 @@ const partnerBrands = [
 
 const quickLinks = [
   { label: 'Ana Sayfa', href: '/' },
-  { label: 'Hizmetlerimiz', href: '/services' },
+  { label: 'Hizmetlerimiz', href: '/#hizmetlerimiz' },
   { label: 'Galeri', href: '/#gallery' },
-  { label: 'Markalar', href: '/brands' },
-  { label: 'İletişim', href: '/contact' },
+  { label: 'Markalar', href: '/#markalar' },
+  { label: 'İletişim', href: '/#iletisim' },
 ]
 
 export function Footer() {

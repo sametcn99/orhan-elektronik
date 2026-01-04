@@ -37,10 +37,10 @@ export function Header() {
 
   const navItems = [
     { label: 'Ana Sayfa', href: '/#' + sectionIds.hero },
-    { label: 'Hizmetlerimiz', href: '/services' },
-    { label: 'Markalar', href: '/brands' },
+    { label: 'Hizmetlerimiz', href: '/#hizmetlerimiz' },
+    { label: 'Markalar', href: '/#markalar' },
     { label: 'Galeri', href: '/#' + sectionIds.gallery },
-    { label: 'İletişim', href: '/contact' },
+    { label: 'İletişim', href: '/#iletisim' },
   ]
 
   const drawer = (
