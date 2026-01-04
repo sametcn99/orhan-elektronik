@@ -31,7 +31,7 @@ import {
   EmojiEvents as TrophyIcon,
   WhatsApp as WhatsAppIcon,
 } from '@mui/icons-material'
-import { contactInfo } from '../../data/constants'
+import { contactInfo, sectionIds } from '../../data/constants'
 import Image from 'next/image'
 import { useUmami } from '../../hooks/useUmami'
 
@@ -76,10 +76,10 @@ const partnerBrands = [
 
 const quickLinks = [
   { label: 'Ana Sayfa', href: '/' },
-  { label: 'Hizmetlerimiz', href: '/#hizmetlerimiz' },
-  { label: 'Galeri', href: '/#gallery' },
-  { label: 'Markalar', href: '/#markalar' },
-  { label: 'İletişim', href: '/#iletisim' },
+  { label: 'Hizmetlerimiz', href: '/#' + sectionIds.services },
+  { label: 'Galeri', href: '/#' + sectionIds.gallery },
+  { label: 'Markalar', href: '/#' + sectionIds.brands },
+  { label: 'İletişim', href: '/#' + sectionIds.contact },
 ]
 
 export function Footer() {

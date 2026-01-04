@@ -48,6 +48,7 @@ const StickyServiceCard = ({
     <div
       ref={cardRef}
       className="sticky top-0 flex items-center justify-center px-4 md:px-0"
+      id={sectionIds.services}
     >
       <motion.div
         style={{

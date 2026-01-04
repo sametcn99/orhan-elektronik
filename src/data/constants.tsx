@@ -22,12 +22,12 @@ export type SectionIds = {
 }
 
 export const sectionIds: SectionIds = {
-  hero: 'hero',
-  services: 'services',
-  gallery: 'gallery',
-  brands: 'brands',
+  hero: 'ana-sayfa',
+  services: 'hizmetlerimiz',
+  gallery: 'galeri',
+  brands: 'markalar',
   instagram: 'instagram',
-  contact: 'contact',
+  contact: 'iletisim',
 }
 
 export type SubService = {
