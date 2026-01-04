@@ -15,14 +15,7 @@ import BrandsSection from '@/components/home/BrandsSection'
 
 export default function Home() {
   return (
-    <Box
-      sx={{
-        bgcolor: 'background.default',
-        minHeight: '100vh',
-        color: 'text.primary',
-      }}
-    >
-      <Header />
+    <>
       <HeroSection />
       <BrandsSection />
       <ServicesSection />
@@ -30,8 +23,6 @@ export default function Home() {
       <InstagramSection />
       <StatsSection />
       <ContactSection />
-      <Footer />
-      <FloatingActionButton />
-    </Box>
+    </>
   )
 }

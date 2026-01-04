@@ -6,6 +6,10 @@ import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
 import './globals.css'
 import Script from 'next/script'
+import { Header } from '@/components/home/Header'
+import { Box } from '@mui/material'
+import { Footer } from '@/components/home/Footer'
+import { FloatingActionButton } from '@/components/home/FloatingActionButton'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.orhanelektronikbilgisayar.com'),
@@ -90,7 +94,18 @@ export default function RootLayout({
               data-website-id="b4b80e84-5709-4675-a6dd-cc938134079b"
               strategy="afterInteractive"
             />
-            {children}
+            <Box
+              sx={{
+                bgcolor: 'background.default',
+                minHeight: '100vh',
+                color: 'text.primary',
+              }}
+            >
+              <Header />
+              {children}
+              <Footer />
+              <FloatingActionButton />
+            </Box>
             <Analytics />
           </ThemeProvider>
         </AppRouterCacheProvider>

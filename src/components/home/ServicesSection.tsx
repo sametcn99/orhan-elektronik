@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useRef, useMemo, useEffect, useState } from 'react'
-import { alpha, useMediaQuery, useTheme } from '@mui/material'
+import React, { useRef, useMemo } from 'react'
+import Link from 'next/link'
+import { alpha, useMediaQuery, useTheme, Box, Button } from '@mui/material'
 import {
   motion,
   useScroll,
@@ -12,7 +13,8 @@ import ReactLenis from 'lenis/react'
 import { SectionContainer } from '../ui/SectionContainer'
 import { SectionHeader } from '../ui/SectionHeader'
 import { SectionBackground } from '../ui/SectionBackground'
-import { sectionIds, services } from '../../data/constants'
+import { sectionIds } from '../../data/constants'
+import { services } from '@/data/services'
 
 type Service = (typeof services)[number]
 
@@ -142,7 +144,6 @@ export function ServicesSection() {
           title="Profesyonel Elektrik Çözümleri"
           description="Modern teknoloji ve uzman kadromuzla tüm elektrik ve elektronik ihtiyaçlarınız için yanınızdayız."
         />
-
         <ReactLenis root options={lenisOptions}>
           <div
             ref={container}

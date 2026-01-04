@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import {
   Box,
   Container,
@@ -8,100 +9,18 @@ import {
   Card,
   CardContent,
   Chip,
+  Button,
   useTheme,
   alpha,
 } from '@mui/material'
 import { motion } from 'motion/react'
 import { sectionIds } from '@/data/constants'
+import { brands } from '@/data/brands'
 import { SectionHeader } from '../ui/SectionHeader'
 import { SectionBackground } from '../ui/SectionBackground'
 
 const MotionCard = motion.create(Card)
 const MotionBox = motion.create(Box)
-
-const brands = [
-  {
-    name: 'Hikvision',
-    logo: '/brands/hikvision.png',
-    description:
-      'Gelişmiş video gözetim teknolojileri ve güvenli yaşam çözümleri konusunda dünya lideri.',
-    specialties: ['Kamera Sistemleri', 'Güvenlik', 'Yapay Zeka'],
-    zoom: 160,
-    accent: '#e51c23',
-  },
-  {
-    name: 'KNX',
-    logo: '/brands/knx.png',
-    description:
-      'Akıllı ev ve bina otomasyonu için dünya standardı. Konforlu ve enerji verimli yaşam alanları.',
-    specialties: ['Akıllı Ev', 'Otomasyon', 'Enerji Tasarrufu'],
-    zoom: 100,
-    accent: '#00a651',
-  },
-  {
-    name: 'Next & Nextstar',
-    logo: '/brands/next-nextstar.png',
-    description:
-      "Uydu sistemleri ve tüketici elektroniğinde Türkiye'nin öncü markası ile kesintisiz yayın keyfi.",
-    specialties: ['Uydu Sistemleri', 'Görüntü Ses', 'Elektronik'],
-    zoom: 100,
-    accent: '#ff6b00',
-  },
-  {
-    name: 'Panasonic',
-    logo: '/brands/panasonic.png',
-    description:
-      'Yüksek kaliteli elektrik anahtar ve priz serileri ile yaşam alanlarınıza şıklık ve güvenlik katar.',
-    specialties: ['Anahtar-Priz', 'Aydınlatma', 'Elektronik'],
-    zoom: 180,
-    accent: '#0068b7',
-  },
-  {
-    name: 'Tiandy',
-    logo: '/brands/tiandy.png',
-    description:
-      'Yüksek çözünürlüklü güvenlik kameraları ve profesyonel izleme çözümleri ile tam koruma.',
-    specialties: ['IP Kamera', 'Gece Görüş', 'Güvenlik Çözümleri'],
-    zoom: 140,
-    accent: '#c41e3a',
-  },
-  {
-    name: 'Viko',
-    logo: '/brands/viko.png',
-    description:
-      "Türkiye'nin lider elektrik malzemeleri üreticisi. Kaliteli, dayanıklı ve şık anahtar-priz çözümleri.",
-    specialties: ['Elektrik Altyapı', 'Şalt Grubu', 'Anahtar-Priz'],
-    zoom: 100,
-    accent: '#e4002b',
-  },
-  {
-    name: 'Audio',
-    logo: '/brands/audio.png',
-    description:
-      "Türkiye'nin köklü interkom ve kapı sistemleri markası. Görüntülü diafon, ses sistemleri ve geçiş kontrol çözümleri.",
-    specialties: ['İnterkom', 'Diafon', 'Kapı Sistemleri'],
-    zoom: 120,
-    accent: '#1a237e',
-  },
-  {
-    name: 'Mutlusan',
-    logo: '/brands/mutlusan.png',
-    description:
-      'Elektrik dağıtım ve aydınlatma sektöründe güvenilir çözümler sunan Türk markası. Pano, sigorta ve şalt ürünleri.',
-    specialties: ['Elektrik Panoları', 'Şalt Malzemeleri', 'Aydınlatma'],
-    zoom: 140,
-    accent: '#f57c00',
-  },
-  {
-    name: 'Netelsan',
-    logo: '/brands/netelsan.png',
-    description:
-      'Profesyonel kablo ve iletişim altyapısı çözümleri. Veri kabloları, fiber optik ve yapısal kablolama sistemleri.',
-    specialties: ['Kablo Sistemleri', 'Fiber Optik', 'Yapısal Kablolama'],
-    zoom: 130,
-    accent: '#00695c',
-  },
-]
 
 const containerVariants = {
   hidden: { opacity: 0 },

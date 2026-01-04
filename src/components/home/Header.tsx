@@ -36,11 +36,11 @@ export function Header() {
   }
 
   const navItems = [
-    { label: 'Ana Sayfa', href: '#' + sectionIds.hero },
-    { label: 'Markalar', href: '#' + sectionIds.brands },
-    { label: 'Hizmetlerimiz', href: '#' + sectionIds.services },
-    { label: 'Galeri', href: '#' + sectionIds.gallery },
-    { label: 'İletişim', href: '#' + sectionIds.contact },
+    { label: 'Ana Sayfa', href: '/#' + sectionIds.hero },
+    { label: 'Hizmetlerimiz', href: '/services' },
+    { label: 'Markalar', href: '/brands' },
+    { label: 'Galeri', href: '/#' + sectionIds.gallery },
+    { label: 'İletişim', href: '/contact' },
   ]
 
   const drawer = (
@@ -169,7 +169,7 @@ export function Header() {
             alignItems="center"
             spacing={1}
             component="a"
-            href={'#' + sectionIds.hero}
+            href={'/#' + sectionIds.hero}
             sx={{
               textDecoration: 'none',
               color: 'text.primary',

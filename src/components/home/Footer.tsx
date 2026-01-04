@@ -31,7 +31,7 @@ import {
   EmojiEvents as TrophyIcon,
   WhatsApp as WhatsAppIcon,
 } from '@mui/icons-material'
-import { sectionIds, contactInfo } from '../../data/constants'
+import { contactInfo } from '../../data/constants'
 import Image from 'next/image'
 import { useUmami } from '../../hooks/useUmami'
 
@@ -39,16 +39,28 @@ const footerServices = [
   {
     label: 'Güvenlik Sistemleri',
     icon: SecurityIcon,
-    href: `#${sectionIds.services}`,
+    href: '/services/guvenlik-sistemleri',
   },
-  { label: 'Bakım ve Tamir', icon: BuildIcon, href: `#${sectionIds.services}` },
-  { label: 'Akıllı Ev (KNX)', icon: HomeIcon, href: `#${sectionIds.services}` },
+  {
+    label: 'Bakım ve Tamir',
+    icon: BuildIcon,
+    href: '/services/bakim-ve-tamir',
+  },
+  {
+    label: 'Akıllı Ev (KNX)',
+    icon: HomeIcon,
+    href: '/services/akilli-bina-otomasyonu-knx',
+  },
   {
     label: 'Uydu Sistemleri',
     icon: SatelliteIcon,
-    href: `#${sectionIds.services}`,
+    href: '/services/uydu-ve-iptv',
   },
-  { label: 'Aydınlatma', icon: LightbulbIcon, href: `#${sectionIds.services}` },
+  {
+    label: 'Aydınlatma',
+    icon: LightbulbIcon,
+    href: '/services/anahtar-priz-ve-aydinlatma',
+  },
 ]
 
 const partnerBrands = [
@@ -63,11 +75,11 @@ const partnerBrands = [
 ]
 
 const quickLinks = [
-  { label: 'Ana Sayfa', href: `#${sectionIds.hero}` },
-  { label: 'Hizmetlerimiz', href: `#${sectionIds.services}` },
-  { label: 'Galeri', href: `#${sectionIds.gallery}` },
-  { label: 'Markalar', href: `#${sectionIds.brands}` },
-  { label: 'İletişim', href: `#${sectionIds.contact}` },
+  { label: 'Ana Sayfa', href: '/' },
+  { label: 'Hizmetlerimiz', href: '/services' },
+  { label: 'Galeri', href: '/#gallery' },
+  { label: 'Markalar', href: '/brands' },
+  { label: 'İletişim', href: '/contact' },
 ]
 
 export function Footer() {
