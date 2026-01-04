@@ -63,10 +63,65 @@ export function Header() {
           borderColor: 'divider',
         }}
       >
-        <Image src="/favicon.ico" alt="Logo" width={40} height={40} />
-        <Typography variant="h6" sx={{ fontWeight: 800 }}>
-          Orhan Elektrik
-        </Typography>
+        <Box
+          sx={{
+            borderRadius: '14px',
+            p: 0.5,
+            display: 'flex',
+            boxShadow: `0 2px 12px ${theme.palette.primary.main}30`,
+          }}
+        >
+          <Image
+            src="/favicon.ico"
+            alt="Logo"
+            width={36}
+            height={36}
+            style={{ borderRadius: '10px' }}
+          />
+        </Box>
+        <Stack spacing={-0.2}>
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: 900,
+              fontSize: '1.1rem',
+              letterSpacing: '-0.03em',
+              lineHeight: 1.2,
+              background: `linear-gradient(135deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 100%)`,
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            ORHAN
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              fontWeight: 700,
+              fontSize: '0.65rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'primary.main',
+              lineHeight: 1.1,
+            }}
+          >
+            ELEKTRİK
+          </Typography>
+          <Typography
+            variant="caption"
+            sx={{
+              fontWeight: 600,
+              fontSize: '0.55rem',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              color: 'text.secondary',
+              lineHeight: 1,
+            }}
+          >
+            ELEKTRONİK
+          </Typography>
+        </Stack>
       </Box>
       <List sx={{ pt: 2 }}>
         {navItems.map((item) => (
@@ -112,39 +167,87 @@ export function Header() {
           <Stack
             direction="row"
             alignItems="center"
-            spacing={1.5}
+            spacing={1}
             component="a"
             href={'#' + sectionIds.hero}
-            sx={{ textDecoration: 'none', color: 'text.primary' }}
+            sx={{
+              textDecoration: 'none',
+              color: 'text.primary',
+              '&:hover': {
+                '& .logo-icon': {
+                  transform: 'scale(1.05)',
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}40`,
+                },
+              },
+            }}
           >
             <Box
+              className="logo-icon"
               sx={{
-                borderRadius: '12px',
-                p: 0.8,
+                borderRadius: '14px',
+                p: 0.5,
                 display: 'flex',
-                overflow: 'hidden',
+                boxShadow: `0 2px 12px ${theme.palette.primary.main}30`,
+                transition: 'all 0.3s ease',
               }}
             >
               <Image
                 src="/favicon.ico"
                 alt="Logo"
-                width={40}
-                height={40}
-                style={{ borderRadius: '12px' }}
+                width={36}
+                height={36}
+                style={{ borderRadius: '10px' }}
               />
             </Box>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{
-                fontWeight: 800,
-                fontSize: '1.25rem',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Orhan Elektrik
-            </Typography>
+            <Stack spacing={-0.2}>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{
+                  fontWeight: 900,
+                  fontSize: '1.1rem',
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.2,
+                  background: `linear-gradient(135deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 100%)`,
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                ORHAN
+              </Typography>
+              <Typography
+                variant="caption"
+                noWrap
+                component="div"
+                sx={{
+                  fontWeight: 700,
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: 'primary.main',
+                  lineHeight: 1.1,
+                }}
+              >
+                ELEKTRİK
+              </Typography>
+              <Typography
+                variant="caption"
+                noWrap
+                component="div"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: '0.55rem',
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: 'text.secondary',
+                  lineHeight: 1,
+                }}
+              >
+                ELEKTRONİK
+              </Typography>
+            </Stack>
           </Stack>
 
           <Box
