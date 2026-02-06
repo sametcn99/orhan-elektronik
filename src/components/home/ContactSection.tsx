@@ -1,28 +1,27 @@
 'use client'
 
-import React from 'react'
 import {
-  Box,
-  Typography,
-  Container,
-  Grid,
-  Card,
-  CardContent,
-  Stack,
-  Button,
-  alpha,
-} from '@mui/material'
-import {
-  Phone as PhoneIcon,
-  Place as PlaceIcon,
   ArrowForward as ArrowRightIcon,
   Bolt as BoltIcon,
+  Phone as PhoneIcon,
+  Place as PlaceIcon,
 } from '@mui/icons-material'
+import {
+  alpha,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from '@mui/material'
+import { contactInfo, sectionIds } from '../../data/constants'
+import { useUmami } from '../../hooks/useUmami'
+import { SectionBackground } from '../ui/SectionBackground'
 import { SectionContainer } from '../ui/SectionContainer'
 import { SectionHeader } from '../ui/SectionHeader'
-import { SectionBackground } from '../ui/SectionBackground'
-import { sectionIds, contactInfo } from '../../data/constants'
-import { useUmami } from '../../hooks/useUmami'
 
 export function ContactSection() {
   const { track } = useUmami()

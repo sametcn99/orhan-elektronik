@@ -1,16 +1,16 @@
-import { Service } from './constants'
 import {
-  Shield as ShieldIcon,
   Build as BuildIcon,
-  Security as SecurityIcon,
-  Home as HomeIcon,
-  SatelliteAlt as SatelliteIcon,
-  Lightbulb as LightbulbIcon,
-  EnergySavingsLeaf as EnergyLeafIcon,
+  Cable as CableIcon,
   Doorbell as DoorbellIcon,
   ElectricalServices as ElectricalIcon,
-  Cable as CableIcon,
+  EnergySavingsLeaf as EnergyLeafIcon,
+  Home as HomeIcon,
+  Lightbulb as LightbulbIcon,
+  SatelliteAlt as SatelliteIcon,
+  Security as SecurityIcon,
+  Shield as ShieldIcon,
 } from '@mui/icons-material'
+import type { Service } from './constants'
 
 export const services: Service[] = [
   {

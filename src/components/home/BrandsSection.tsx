@@ -1,23 +1,21 @@
 'use client'
 
-import Link from 'next/link'
 import {
+  alpha,
   Box,
-  Container,
-  Typography,
-  Grid,
   Card,
   CardContent,
   Chip,
-  Button,
+  Container,
+  Grid,
+  Typography,
   useTheme,
-  alpha,
 } from '@mui/material'
 import { motion } from 'motion/react'
-import { sectionIds } from '@/data/constants'
 import { brands } from '@/data/brands'
-import { SectionHeader } from '../ui/SectionHeader'
+import { sectionIds } from '@/data/constants'
 import { SectionBackground } from '../ui/SectionBackground'
+import { SectionHeader } from '../ui/SectionHeader'
 
 const MotionCard = motion.create(Card)
 const MotionBox = motion.create(Box)

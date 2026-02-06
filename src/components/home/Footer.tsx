@@ -1,38 +1,34 @@
 'use client'
 
-import React from 'react'
 import {
-  Box,
-  Typography,
-  Container,
-  Grid,
-  Stack,
-  Button,
-  Link,
-  Chip,
-  alpha,
-  Divider,
-  IconButton,
-} from '@mui/material'
-import {
-  Shield as ShieldIcon,
+  ArrowForward as ArrowForwardIcon,
+  Build as BuildIcon,
   AccessTime as ClockIcon,
+  Home as HomeIcon,
   Instagram as InstagramIcon,
+  Lightbulb as LightbulbIcon,
   Phone as PhoneIcon,
   Place as PlaceIcon,
-  Email as EmailIcon,
-  Security as SecurityIcon,
-  Build as BuildIcon,
-  Home as HomeIcon,
   SatelliteAlt as SatelliteIcon,
-  Lightbulb as LightbulbIcon,
-  ArrowForward as ArrowForwardIcon,
-  Verified as VerifiedIcon,
+  Security as SecurityIcon,
+  Shield as ShieldIcon,
   EmojiEvents as TrophyIcon,
+  Verified as VerifiedIcon,
   WhatsApp as WhatsAppIcon,
 } from '@mui/icons-material'
-import { contactInfo, sectionIds } from '../../data/constants'
+import {
+  Box,
+  Chip,
+  Container,
+  Divider,
+  Grid,
+  IconButton,
+  Link,
+  Stack,
+  Typography,
+} from '@mui/material'
 import Image from 'next/image'
+import { contactInfo, sectionIds } from '../../data/constants'
 import { useUmami } from '../../hooks/useUmami'
 
 const footerServices = [
@@ -76,10 +72,10 @@ const partnerBrands = [
 
 const quickLinks = [
   { label: 'Ana Sayfa', href: '/' },
-  { label: 'Hizmetlerimiz', href: '/#' + sectionIds.services },
-  { label: 'Galeri', href: '/#' + sectionIds.gallery },
-  { label: 'Markalar', href: '/#' + sectionIds.brands },
-  { label: 'İletişim', href: '/#' + sectionIds.contact },
+  { label: 'Hizmetlerimiz', href: `/#${sectionIds.services}` },
+  { label: 'Galeri', href: `/#${sectionIds.gallery}` },
+  { label: 'Markalar', href: `/#${sectionIds.brands}` },
+  { label: 'İletişim', href: `/#${sectionIds.contact}` },
 ]
 
 export function Footer() {

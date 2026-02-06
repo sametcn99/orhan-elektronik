@@ -1,29 +1,25 @@
 'use client'
 
-import React, { useState } from 'react'
+import { Menu as MenuIcon, Phone as PhoneIcon } from '@mui/icons-material'
 import {
+  AppBar,
   Box,
-  Typography,
   Button,
   Container,
-  IconButton,
-  AppBar,
-  Toolbar,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
-  useTheme,
   Stack,
+  Toolbar,
+  Typography,
+  useTheme,
 } from '@mui/material'
-import {
-  Phone as PhoneIcon,
-  Bolt as BoltIcon,
-  Menu as MenuIcon,
-} from '@mui/icons-material'
-import { sectionIds, contactInfo, HEADER_HEIGHT } from '../../data/constants'
 import Image from 'next/image'
+import { useState } from 'react'
+import { contactInfo, HEADER_HEIGHT, sectionIds } from '../../data/constants'
 import { useUmami } from '../../hooks/useUmami'
 
 export function Header() {
@@ -36,11 +32,11 @@ export function Header() {
   }
 
   const navItems = [
-    { label: 'Ana Sayfa', href: '/#' + sectionIds.hero },
-    { label: 'Hizmetlerimiz', href: '/#' + sectionIds.services },
-    { label: 'Markalar', href: '/#' + sectionIds.brands },
-    { label: 'Galeri', href: '/#' + sectionIds.gallery },
-    { label: 'İletişim', href: '/#' + sectionIds.contact },
+    { label: 'Ana Sayfa', href: `/#${sectionIds.hero}` },
+    { label: 'Hizmetlerimiz', href: `/#${sectionIds.services}` },
+    { label: 'Markalar', href: `/#${sectionIds.brands}` },
+    { label: 'Galeri', href: `/#${sectionIds.gallery}` },
+    { label: 'İletişim', href: `/#${sectionIds.contact}` },
   ]
 
   const drawer = (
@@ -169,7 +165,7 @@ export function Header() {
             alignItems="center"
             spacing={1}
             component="a"
-            href={'/#' + sectionIds.hero}
+            href={`/#${sectionIds.hero}`}
             sx={{
               textDecoration: 'none',
               color: 'text.primary',

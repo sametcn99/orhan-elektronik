@@ -1,29 +1,27 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
-import type React from 'react'
-import {
-  Box,
-  Container,
-  Typography,
-  IconButton,
-  Modal,
-  Grid,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material'
-import Image from 'next/image'
-import { SectionHeader } from '../ui/SectionHeader'
-import { SectionBackground } from '../ui/SectionBackground'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import CloseIcon from '@mui/icons-material/Close'
 import ZoomInIcon from '@mui/icons-material/ZoomIn'
 import ZoomOutIcon from '@mui/icons-material/ZoomOut'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import {
+  Box,
+  Container,
+  Grid,
+  IconButton,
+  Modal,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 import { AnimatePresence, motion } from 'motion/react'
+import Image from 'next/image'
+import type React from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { sectionIds } from '@/data/constants'
+import { SectionBackground } from '../ui/SectionBackground'
+import { SectionHeader } from '../ui/SectionHeader'
 
 const images = Array.from({ length: 86 }, (_, i) => `/gallery/${i + 1}.jpg`)
 
@@ -32,7 +30,7 @@ const clamp = (value: number, min: number, max: number) =>
 
 export const GallerySection = () => {
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const _isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [modalOpen, setModalOpen] = useState(false)
   const [zoomLevel, setZoomLevel] = useState(1)
@@ -471,6 +469,7 @@ export const GallerySection = () => {
               }}
             >
               <AnimatePresence mode="wait">
+                {/* biome-ignore lint/performance/noImgElement: motion.img is used for complex animations that are difficult with next/image */}
                 <motion.img
                   key={selectedIndex}
                   src={images[selectedIndex]}

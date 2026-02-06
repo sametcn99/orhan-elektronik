@@ -1,26 +1,25 @@
 'use client'
 
-import Link from 'next/link'
 import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Stack,
-  Button,
-  Chip,
-  Divider,
-} from '@mui/material'
-import { alpha } from '@mui/material/styles'
-import {
+  AccessTime as AccessTimeIcon,
   Phone as PhoneIcon,
   Place as PlaceIcon,
   WhatsApp as WhatsAppIcon,
-  Email as EmailIcon,
-  AccessTime as AccessTimeIcon,
 } from '@mui/icons-material'
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Container,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from '@mui/material'
+import { alpha } from '@mui/material/styles'
+import Link from 'next/link'
 import { contactInfo } from '@/data/constants'
 
 export default function ContactPage() {

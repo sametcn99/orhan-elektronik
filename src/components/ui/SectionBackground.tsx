@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, useTheme, alpha } from '@mui/material'
+import { alpha, Box, useTheme } from '@mui/material'
 
 export function SectionBackground({
   variant = 'default',

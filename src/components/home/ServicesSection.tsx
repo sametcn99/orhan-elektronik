@@ -1,20 +1,18 @@
 'use client'
 
-import React, { useRef, useMemo } from 'react'
-import Link from 'next/link'
-import { alpha, useMediaQuery, useTheme, Box, Button } from '@mui/material'
+import { alpha, useMediaQuery, useTheme } from '@mui/material'
 import {
+  type MotionValue,
   motion,
   useScroll,
   useTransform,
-  type MotionValue,
 } from 'framer-motion'
-import ReactLenis from 'lenis/react'
+import { useRef } from 'react'
+import { services } from '@/data/services'
+import { sectionIds } from '../../data/constants'
+import { SectionBackground } from '../ui/SectionBackground'
 import { SectionContainer } from '../ui/SectionContainer'
 import { SectionHeader } from '../ui/SectionHeader'
-import { SectionBackground } from '../ui/SectionBackground'
-import { sectionIds } from '../../data/constants'
-import { services } from '@/data/services'
 
 type Service = (typeof services)[number]
 
@@ -117,16 +115,6 @@ export function ServicesSection() {
     offset: ['start start', 'end end'],
   })
 
-  // Mobil için Lenis ayarları - daha yumuşak scroll
-  const lenisOptions = useMemo(
-    () => ({
-      lerp: isMobile ? 0.08 : 0.1,
-      smoothWheel: true,
-      touchMultiplier: isMobile ? 1.5 : 2,
-    }),
-    [isMobile],
-  )
-
   return (
     <SectionContainer
       id={sectionIds.services}
@@ -145,30 +133,28 @@ export function ServicesSection() {
           title="Profesyonel Elektrik Çözümleri"
           description="Modern teknoloji ve uzman kadromuzla tüm elektrik ve elektronik ihtiyaçlarınız için yanınızdayız."
         />
-        <ReactLenis root options={lenisOptions}>
-          <div
-            ref={container}
-            className="relative mx-auto flex w-full flex-col items-center justify-center pb-[15vh] md:pb-[25vh]"
-          >
-            {services.map((service, i) => {
-              const targetScale = isMobile
-                ? Math.max(0.92, 1 - (services.length - i - 1) * 0.02)
-                : Math.max(0.9, 1 - (services.length - i - 1) * 0.025)
+        <div
+          ref={container}
+          className="relative mx-auto flex w-full flex-col items-center justify-center pb-[15vh] md:pb-[25vh]"
+        >
+          {services.map((service, i) => {
+            const targetScale = isMobile
+              ? Math.max(0.92, 1 - (services.length - i - 1) * 0.02)
+              : Math.max(0.9, 1 - (services.length - i - 1) * 0.025)
 
-              return (
-                <StickyServiceCard
-                  key={service.title}
-                  i={i}
-                  service={service}
-                  progress={scrollYProgress}
-                  range={[i * 0.1, 1]}
-                  targetScale={targetScale}
-                  isMobile={isMobile}
-                />
-              )
-            })}
-          </div>
-        </ReactLenis>
+            return (
+              <StickyServiceCard
+                key={service.title}
+                i={i}
+                service={service}
+                progress={scrollYProgress}
+                range={[i * 0.1, 1]}
+                targetScale={targetScale}
+                isMobile={isMobile}
+              />
+            )
+          })}
+        </div>
       </div>
     </SectionContainer>
   )

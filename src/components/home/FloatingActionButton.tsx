@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-import { Box, Fab, Zoom, useScrollTrigger } from '@mui/material'
 import { Phone as PhoneIcon } from '@mui/icons-material'
+import { Box, Fab, useScrollTrigger, Zoom } from '@mui/material'
 import { contactInfo } from '../../data/constants'
 import { useUmami } from '../../hooks/useUmami'
 

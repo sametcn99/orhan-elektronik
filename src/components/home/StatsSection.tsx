@@ -1,12 +1,12 @@
 'use client'
 
-import React, { useRef } from 'react'
-import { Box, Typography, Container, Grid, Zoom, Stack } from '@mui/material'
 import { EmojiEvents as AwardIcon } from '@mui/icons-material'
+import { Box, Container, Grid, Stack, Typography, Zoom } from '@mui/material'
+import { useRef } from 'react'
+import { stats } from '../../data/constants'
 import { useOnScreen } from '../../hooks/useOnScreen'
 import { AnimatedCounter } from '../ui/AnimatedCounter'
 import { SectionBackground } from '../ui/SectionBackground'
-import { stats } from '../../data/constants'
 
 export function StatsSection() {
   const ref = useRef(null)

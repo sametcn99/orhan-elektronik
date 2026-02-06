@@ -1,29 +1,25 @@
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
+import {
+  ArrowForward,
+  CheckCircle as CheckCircleIcon,
+  Phone as PhoneIcon,
+} from '@mui/icons-material'
 import {
   Box,
-  Container,
-  Typography,
-  Chip,
-  Stack,
+  Button,
   Card,
   CardContent,
+  Chip,
+  Container,
   Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Button,
-  Breadcrumbs,
+  Stack,
+  Typography,
 } from '@mui/material'
-import {
-  ArrowBack,
-  ArrowForward,
-  CheckCircle as CheckCircleIcon,
-  Home as HomeIcon,
-  Phone as PhoneIcon,
-} from '@mui/icons-material'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
 

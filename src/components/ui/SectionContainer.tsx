@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, type SxProps, type Theme } from '@mui/material'
 
 export function SectionContainer({
   id,
@@ -7,7 +7,7 @@ export function SectionContainer({
 }: {
   id?: string
   children: React.ReactNode
-  sx?: any
+  sx?: SxProps<Theme>
 }) {
   return (
     <Box

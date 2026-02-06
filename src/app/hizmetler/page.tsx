@@ -1,25 +1,18 @@
 'use client'
 
-import Link from 'next/link'
+import { ArrowForward, Phone as PhoneIcon } from '@mui/icons-material'
 import {
   Box,
-  Container,
-  Typography,
-  Grid,
+  Button,
   Card,
   CardContent,
   Chip,
+  Container,
+  Grid,
   Stack,
-  Button,
-  Breadcrumbs,
+  Typography,
 } from '@mui/material'
-import {
-  ArrowForward,
-  Home as HomeIcon,
-  Phone as PhoneIcon,
-  Schedule,
-  Verified,
-} from '@mui/icons-material'
+import Link from 'next/link'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
 

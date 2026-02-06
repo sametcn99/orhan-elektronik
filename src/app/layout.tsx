@@ -1,15 +1,15 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
-import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import theme from '@/theme'
+import { ThemeProvider } from '@mui/material/styles'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
+import theme from '@/theme'
 import './globals.css'
-import Script from 'next/script'
-import { Header } from '@/components/home/Header'
 import { Box } from '@mui/material'
-import { Footer } from '@/components/home/Footer'
+import Script from 'next/script'
 import { FloatingActionButton } from '@/components/home/FloatingActionButton'
+import { Footer } from '@/components/home/Footer'
+import { Header } from '@/components/home/Header'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.orhanelektronikbilgisayar.com'),

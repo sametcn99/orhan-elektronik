@@ -1,31 +1,30 @@
 'use client'
 
-import React, { useRef } from 'react'
 import {
+  ArrowForward as ArrowRightIcon,
+  Build as BuildIcon,
+  Home as HomeIcon,
+  Lightbulb as LightbulbIcon,
+  Phone as PhoneIcon,
+  SatelliteAlt as SatelliteIcon,
+  Security as SecurityIcon,
+  Shield as ShieldIcon,
+  AutoAwesome as SparklesIcon,
+} from '@mui/icons-material'
+import {
+  alpha,
   Box,
-  Typography,
   Button,
   Container,
   Fade,
-  useTheme,
-  Stack,
-  alpha,
   Grid,
+  Stack,
+  Typography,
+  useTheme,
 } from '@mui/material'
-import {
-  AutoAwesome as SparklesIcon,
-  ArrowForward as ArrowRightIcon,
-  Phone as PhoneIcon,
-  Shield as ShieldIcon,
-  AccessTime as ClockIcon,
-  Security as SecurityIcon,
-  Build as BuildIcon,
-  Home as HomeIcon,
-  SatelliteAlt as SatelliteIcon,
-  Lightbulb as LightbulbIcon,
-} from '@mui/icons-material'
+import { useRef } from 'react'
+import { contactInfo, HEADER_HEIGHT, sectionIds } from '../../data/constants'
 import { useOnScreen } from '../../hooks/useOnScreen'
-import { sectionIds, contactInfo, HEADER_HEIGHT } from '../../data/constants'
 import { useUmami } from '../../hooks/useUmami'
 
 export function HeroSection() {

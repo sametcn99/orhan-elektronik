@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
-import { Box, Typography, Container, useTheme, alpha } from '@mui/material'
+import { alpha, Box, Container, Typography, useTheme } from '@mui/material'
 import dynamic from 'next/dynamic'
-import { SectionContainer } from '../ui/SectionContainer'
 import { sectionIds } from '../../data/constants'
+import { SectionContainer } from '../ui/SectionContainer'
 
 const InstagramEmbed = dynamic(
   () => import('react-social-media-embed').then((mod) => mod.InstagramEmbed),
