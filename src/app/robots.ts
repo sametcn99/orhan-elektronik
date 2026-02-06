@@ -9,5 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://www.orhanelektronikbilgisayar.com/sitemap.xml',
+    host: 'https://www.orhanelektronikbilgisayar.com',
   }
 }
