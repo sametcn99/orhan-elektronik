@@ -35,27 +35,27 @@ const footerServices = [
   {
     label: 'Güvenlik Sistemleri',
     icon: SecurityIcon,
-    href: '/services/guvenlik-sistemleri',
+    href: '/hizmetler/guvenlik-sistemleri',
   },
   {
     label: 'Bakım ve Tamir',
     icon: BuildIcon,
-    href: '/services/bakim-ve-tamir',
+    href: '/hizmetler/bakim-ve-tamir',
   },
   {
     label: 'Akıllı Ev (KNX)',
     icon: HomeIcon,
-    href: '/services/akilli-bina-otomasyonu-knx',
+    href: '/hizmetler/akilli-bina-otomasyonu-knx',
   },
   {
     label: 'Uydu Sistemleri',
     icon: SatelliteIcon,
-    href: '/services/uydu-ve-iptv',
+    href: '/hizmetler/uydu-ve-iptv',
   },
   {
     label: 'Aydınlatma',
     icon: LightbulbIcon,
-    href: '/services/anahtar-priz-ve-aydinlatma',
+    href: '/hizmetler/anahtar-priz-ve-aydinlatma',
   },
 ]
 
