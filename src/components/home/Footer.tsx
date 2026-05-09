@@ -565,9 +565,8 @@ export function Footer() {
           }}
         >
           <Stack
-            direction={{ xs: 'column', md: 'row' }}
+            direction={{ xs: 'column', md: 'column' }}
             sx={{ justifyContent: 'space-between', alignItems: 'center' }}
-            spacing={2}
           >
             <Typography
               variant="body2"
@@ -587,7 +586,11 @@ export function Footer() {
                   href: 'https://sametcc.me',
                 })
               }
-              sx={{ color: 'primary.main', fontWeight: 400 }}
+              sx={{
+                color: 'primary.main',
+                fontWeight: 400,
+                fontSize: '0.875rem',
+              }}
             >
               sametcc.me
             </Link>
