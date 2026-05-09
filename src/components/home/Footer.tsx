@@ -564,24 +564,21 @@ export function Footer() {
               &copy; {new Date().getFullYear()} Orhan Elektrik Elektronik. Tüm
               hakları saklıdır.
             </Typography>
-            <Typography variant="caption" sx={{ opacity: 0.6 }}>
-              Bu web sitesi{' '}
-              <Link
-                href="https://sametcc.me"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  track('external_click', {
-                    location: 'footer_developer',
-                    href: 'https://sametcc.me',
-                  })
-                }
-                sx={{ color: 'primary.main', fontWeight: 600 }}
-              >
-                sametcc.me
-              </Link>{' '}
-              tarafından geliştirildi.
-            </Typography>
+
+            <Link
+              href="https://sametcc.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                track('external_click', {
+                  location: 'footer_developer',
+                  href: 'https://sametcc.me',
+                })
+              }
+              sx={{ color: 'primary.main', fontWeight: 600 }}
+            >
+              sametcc.me
+            </Link>
           </Stack>
         </Box>
       </Container>
