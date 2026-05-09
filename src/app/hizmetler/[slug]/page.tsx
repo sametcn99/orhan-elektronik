@@ -22,6 +22,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
+import { RelatedServices } from './RelatedServices'
 
 type ServiceDetailPageProps = {
   params: Promise<{ slug: string }>
@@ -282,6 +283,8 @@ export default async function ServiceDetailPage({
             </Box>
           </CardContent>
         </Card>
+
+        <RelatedServices currentSlug={slug} />
       </Container>
     </Box>
   )

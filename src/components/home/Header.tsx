@@ -18,6 +18,7 @@ import {
   useTheme,
 } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import { contactInfo, HEADER_HEIGHT, sectionIds } from '../../data/constants'
 import { useUmami } from '../../hooks/useUmami'
@@ -123,7 +124,7 @@ export function Header() {
         {navItems.map((item) => (
           <ListItem key={item.label} disablePadding>
             <ListItemButton
-              component="a"
+              component={Link}
               href={item.href}
               sx={{ textAlign: 'center', py: 2 }}
             >
@@ -165,7 +166,7 @@ export function Header() {
           <Stack
             direction="row"
             spacing={1}
-            component="a"
+            component={Link}
             href={`/#${sectionIds.hero}`}
             sx={{
               alignItems: 'center',
@@ -258,6 +259,7 @@ export function Header() {
             {navItems.map((item) => (
               <Button
                 key={item.label}
+                component={Link}
                 href={item.href}
                 variant="text"
                 sx={{

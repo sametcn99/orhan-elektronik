@@ -2,17 +2,11 @@
 
 import {
   ArrowForward as ArrowForwardIcon,
-  Build as BuildIcon,
   AccessTime as ClockIcon,
-  Home as HomeIcon,
   Instagram as InstagramIcon,
-  Lightbulb as LightbulbIcon,
   Phone as PhoneIcon,
   Place as PlaceIcon,
-  SatelliteAlt as SatelliteIcon,
-  Security as SecurityIcon,
   Shield as ShieldIcon,
-  EmojiEvents as TrophyIcon,
   Verified as VerifiedIcon,
   WhatsApp as WhatsAppIcon,
 } from '@mui/icons-material'
@@ -28,36 +22,10 @@ import {
   Typography,
 } from '@mui/material'
 import Image from 'next/image'
+import NextLink from 'next/link'
 import { contactInfo, sectionIds } from '../../data/constants'
+import { services } from '../../data/services'
 import { useUmami } from '../../hooks/useUmami'
-
-const footerServices = [
-  {
-    label: 'Güvenlik Sistemleri',
-    icon: SecurityIcon,
-    href: '/hizmetler/guvenlik-sistemleri',
-  },
-  {
-    label: 'Bakım ve Tamir',
-    icon: BuildIcon,
-    href: '/hizmetler/bakim-ve-tamir',
-  },
-  {
-    label: 'Akıllı Ev (KNX)',
-    icon: HomeIcon,
-    href: '/hizmetler/akilli-bina-otomasyonu-knx',
-  },
-  {
-    label: 'Uydu Sistemleri',
-    icon: SatelliteIcon,
-    href: '/hizmetler/uydu-ve-iptv',
-  },
-  {
-    label: 'Aydınlatma',
-    icon: LightbulbIcon,
-    href: '/hizmetler/anahtar-priz-ve-aydinlatma',
-  },
-]
 
 const partnerBrands = [
   'Hikvision',
@@ -206,7 +174,6 @@ export function Footer() {
                   }}
                 />
                 <Chip
-                  icon={<TrophyIcon sx={{ fontSize: 16 }} />}
                   label="15+ Yıl Tecrübe"
                   size="small"
                   variant="outlined"
@@ -285,13 +252,13 @@ export function Footer() {
               Hizmetlerimiz
             </Typography>
             <Stack spacing={1.5}>
-              {footerServices.map((service) => {
+              {services.map((service) => {
                 const Icon = service.icon
                 return (
                   <Box
-                    key={service.label}
-                    component="a"
-                    href={service.href}
+                    key={service.slug}
+                    component={NextLink}
+                    href={`/hizmetler/${service.slug}`}
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -307,7 +274,7 @@ export function Footer() {
                     }}
                   >
                     <Icon sx={{ fontSize: 18, opacity: 0.7 }} />
-                    <Typography variant="body2">{service.label}</Typography>
+                    <Typography variant="body2">{service.title}</Typography>
                   </Box>
                 )
               })}
@@ -328,7 +295,7 @@ export function Footer() {
               {quickLinks.map((link) => (
                 <Box
                   key={link.label}
-                  component="a"
+                  component={NextLink}
                   href={link.href}
                   sx={{
                     color: 'inherit',
