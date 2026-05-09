@@ -26,7 +26,7 @@ export function StatsSection() {
     >
       <SectionBackground variant="alternate" />
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
           {stats.map((stat, index) => (
             <Grid size={{ xs: 6, md: 4 }} key={stat.label}>
               <Zoom
@@ -41,23 +41,21 @@ export function StatsSection() {
                 >
                   <Typography
                     variant="h2"
-                    fontWeight="800"
+                    sx={{ fontWeight: '800', mb: 1 }}
                     color="primary.main"
-                    sx={{ mb: 1 }}
                   >
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                   </Typography>
                   <Stack
                     direction="row"
-                    alignItems="center"
-                    justifyContent="center"
+                    sx={{ alignItems: 'center', justifyContent: 'center' }}
                     spacing={1}
                   >
                     <stat.icon sx={{ color: 'text.secondary', fontSize: 20 }} />
                     <Typography
                       variant="h6"
                       color="text.secondary"
-                      fontWeight="600"
+                      sx={{ fontWeight: '600' }}
                     >
                       {stat.label}
                     </Typography>
@@ -70,23 +68,21 @@ export function StatsSection() {
             <Box sx={{ textAlign: 'center', p: 3 }}>
               <Typography
                 variant="h2"
-                fontWeight="800"
+                sx={{ fontWeight: '800', marginBottom: 1 }}
                 color="primary.main"
-                sx={{ mb: 1 }}
               >
                 100%
               </Typography>
               <Stack
                 direction="row"
-                alignItems="center"
-                justifyContent="center"
+                sx={{ alignItems: 'center', justifyContent: 'center' }}
                 spacing={1}
               >
                 <AwardIcon sx={{ color: 'text.secondary', fontSize: 20 }} />
                 <Typography
                   variant="h6"
                   color="text.secondary"
-                  fontWeight="600"
+                  sx={{ fontWeight: '600' }}
                 >
                   Müşteri Memnuniyeti
                 </Typography>

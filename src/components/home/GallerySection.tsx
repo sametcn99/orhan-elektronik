@@ -226,7 +226,7 @@ export const GallerySection = () => {
             const isLast = index === displayCount - 1
             return (
               <Grid
-                key={index}
+                key={img}
                 size={{ xs: 6, sm: 4, md: 3 }}
                 sx={{
                   height: { xs: 180, md: 280 },
@@ -310,7 +310,7 @@ export const GallerySection = () => {
                       <Typography
                         variant="body1"
                         color="grey.300"
-                        fontWeight={500}
+                        sx={{ fontWeight: 500 }}
                       >
                         Daha Fazla
                       </Typography>
@@ -522,7 +522,7 @@ export const GallerySection = () => {
           >
             {images.map((img, index) => (
               <Box
-                key={index}
+                key={img}
                 onClick={(e) => {
                   e.stopPropagation()
                   openModal(index)

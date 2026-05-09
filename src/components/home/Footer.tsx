@@ -138,7 +138,11 @@ export function Footer() {
           {/* Company Info */}
           <Grid size={{ xs: 12, lg: 4 }}>
             <Stack spacing={3}>
-              <Stack direction="row" spacing={1.5} alignItems="center">
+              <Stack
+                direction="row"
+                spacing={1.5}
+                sx={{ alignItems: 'center' }}
+              >
                 <Box
                   sx={{
                     p: 1,
@@ -159,8 +163,7 @@ export function Footer() {
                   <Typography
                     variant="h5"
                     color="white"
-                    fontWeight="bold"
-                    sx={{ letterSpacing: '-0.02em' }}
+                    sx={{ fontWeight: 'bold', letterSpacing: '-0.02em' }}
                   >
                     Orhan Elektrik
                   </Typography>
@@ -183,11 +186,17 @@ export function Footer() {
               </Typography>
 
               {/* Trust Badges */}
-              <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+              <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
+                sx={{ flexWrap: 'wrap' }}
+              >
                 <Chip
                   icon={<VerifiedIcon sx={{ fontSize: 16 }} />}
                   label="Garantili Hizmet"
                   size="small"
+                  variant="outlined"
                   sx={{
                     bgcolor: 'rgba(16,185,129,0.15)',
                     color: '#10b981',
@@ -200,6 +209,7 @@ export function Footer() {
                   icon={<TrophyIcon sx={{ fontSize: 16 }} />}
                   label="15+ Yıl Tecrübe"
                   size="small"
+                  variant="outlined"
                   sx={{
                     bgcolor: 'rgba(245,158,11,0.15)',
                     color: '#f59e0b',
@@ -269,9 +279,8 @@ export function Footer() {
             <Typography
               variant="subtitle1"
               color="white"
-              fontWeight="bold"
+              sx={{ fontWeight: 'bold', mb: 2.5 }}
               gutterBottom
-              sx={{ mb: 2.5 }}
             >
               Hizmetlerimiz
             </Typography>
@@ -310,9 +319,8 @@ export function Footer() {
             <Typography
               variant="subtitle1"
               color="white"
-              fontWeight="bold"
+              sx={{ fontWeight: 'bold', mb: 2.5 }}
               gutterBottom
-              sx={{ mb: 2.5 }}
             >
               Hızlı Erişim
             </Typography>
@@ -355,9 +363,8 @@ export function Footer() {
             <Typography
               variant="subtitle1"
               color="white"
-              fontWeight="bold"
+              sx={{ fontWeight: 'bold', mb: 2.5 }}
               gutterBottom
-              sx={{ mb: 2.5 }}
             >
               İletişim Bilgileri
             </Typography>
@@ -406,7 +413,11 @@ export function Footer() {
                   >
                     TELEFON
                   </Typography>
-                  <Typography variant="body1" color="white" fontWeight="bold">
+                  <Typography
+                    variant="body1"
+                    color="white"
+                    sx={{ fontWeight: 'bold' }}
+                  >
                     {contactInfo.phone}
                   </Typography>
                 </Box>
@@ -519,10 +530,12 @@ export function Footer() {
             <Stack
               direction="row"
               spacing={{ xs: 2, md: 4 }}
-              justifyContent="center"
-              flexWrap="wrap"
               useFlexGap
-              sx={{ gap: { xs: 1.5, md: 3 } }}
+              sx={{
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                gap: { xs: 1.5, md: 3 },
+              }}
             >
               {partnerBrands.map((brand) => (
                 <Typography
@@ -553,8 +566,7 @@ export function Footer() {
         >
           <Stack
             direction={{ xs: 'column', md: 'row' }}
-            justifyContent="space-between"
-            alignItems="center"
+            sx={{ justifyContent: 'space-between', alignItems: 'center' }}
             spacing={2}
           >
             <Typography

@@ -93,6 +93,10 @@ export default function RootLayout({
               src="https://umami.sametcc.me/script.js"
               data-website-id="b4b80e84-5709-4675-a6dd-cc938134079b"
               strategy="afterInteractive"
+              data-performance="true"
+              data-sample-rate="0.15"
+              data-mask-level="moderate"
+              data-max-duration="300000"
             />
             <Box
               sx={{

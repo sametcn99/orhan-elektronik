@@ -19,7 +19,7 @@ export function InstagramSection() {
       sx={{ bgcolor: alpha(theme.palette.secondary.light, 0.03) }}
     >
       <Container maxWidth="md">
-        <Box textAlign="center" mb={6}>
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Box
             sx={{
               display: 'inline-flex',
@@ -39,7 +39,7 @@ export function InstagramSection() {
               sx={{ width: 32, height: 32 }}
             />
           </Box>
-          <Typography variant="h3" fontWeight="800" gutterBottom>
+          <Typography variant="h3" sx={{ fontWeight: '800' }} gutterBottom>
             Bizi Instagram'da Takip Edin
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">

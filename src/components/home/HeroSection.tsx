@@ -124,7 +124,7 @@ export function HeroSection() {
         }}
       />
       <Container maxWidth="lg" sx={{ zIndex: 1, position: 'relative' }}>
-        <Grid container spacing={4} alignItems="center">
+        <Grid container spacing={4} sx={{ alignItems: 'center' }}>
           <Grid size={{ xs: 12, md: 7 }}>
             <Fade in={isVisible} timeout={800}>
               <Box>
@@ -150,8 +150,7 @@ export function HeroSection() {
                   />
                   <Typography
                     variant="subtitle2"
-                    fontWeight="700"
-                    letterSpacing={0.5}
+                    sx={{ fontWeight: '700', letterSpacing: '0.05em' }}
                   >
                     Ankara'nın En Güvenilir Elektrik Servisi
                   </Typography>
@@ -206,7 +205,11 @@ export function HeroSection() {
                   }}
                 >
                   Eviniz ve iş yeriniz için{' '}
-                  <Box component="span" color="primary.main" fontWeight="bold">
+                  <Box
+                    component="span"
+                    color="primary.main"
+                    sx={{ fontWeight: 'bold' }}
+                  >
                     7/24
                   </Box>{' '}
                   profesyonel elektrik, elektronik ve güvenlik sistemleri
@@ -273,9 +276,8 @@ export function HeroSection() {
                 <Stack
                   direction={{ xs: 'column', sm: 'row' }}
                   spacing={1}
-                  flexWrap="wrap"
                   useFlexGap
-                  sx={{ gap: 1.5 }}
+                  sx={{ flexWrap: 'wrap', gap: 1.5 }}
                 >
                   {heroServices.map((service) => {
                     const Icon = service.icon
@@ -303,7 +305,7 @@ export function HeroSection() {
                         }}
                       >
                         <Icon sx={{ fontSize: 18, opacity: 0.9 }} />
-                        <Typography variant="body2" fontWeight={700}>
+                        <Typography variant="body2" sx={{ fontWeight: 700 }}>
                           {service.label}
                         </Typography>
                       </Box>
@@ -379,7 +381,7 @@ export function HeroSection() {
                       alignItems: 'center',
                     }}
                   >
-                    <Typography variant="h6" fontWeight="800">
+                    <Typography variant="h6" sx={{ fontWeight: '800' }}>
                       Canlı Durum
                     </Typography>
                     <Box
@@ -416,7 +418,11 @@ export function HeroSection() {
                       borderRadius: '16px',
                     }}
                   >
-                    <Stack direction="row" spacing={2} alignItems="center">
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      sx={{ alignItems: 'center' }}
+                    >
                       <Box
                         sx={{
                           width: 40,
@@ -435,7 +441,10 @@ export function HeroSection() {
                         <Typography variant="body2" color="text.secondary">
                           Çağrı Merkezi
                         </Typography>
-                        <Typography variant="subtitle2" fontWeight="bold">
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontWeight: 'bold' }}
+                        >
                           Çevrimiçi
                         </Typography>
                       </Box>
@@ -449,7 +458,11 @@ export function HeroSection() {
                       borderRadius: '16px',
                     }}
                   >
-                    <Stack direction="row" spacing={2} alignItems="center">
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      sx={{ alignItems: 'center' }}
+                    >
                       <Box
                         sx={{
                           width: 40,
@@ -468,7 +481,10 @@ export function HeroSection() {
                         <Typography variant="body2" color="text.secondary">
                           Ekip Durumu
                         </Typography>
-                        <Typography variant="subtitle2" fontWeight="bold">
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontWeight: 'bold' }}
+                        >
                           Saha Operasyonu
                         </Typography>
                       </Box>
@@ -501,9 +517,8 @@ export function HeroSection() {
                 <Box sx={{ textAlign: 'center' }}>
                   <Typography
                     variant="h4"
-                    fontWeight="800"
+                    sx={{ fontWeight: '800', lineHeight: 1 }}
                     color="warning.main"
-                    lineHeight={1}
                   >
                     4.9
                   </Typography>
@@ -516,7 +531,7 @@ export function HeroSection() {
                   </Stack>
                 </Box>
                 <Box>
-                  <Typography variant="body2" fontWeight="bold">
+                  <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
                     Müşteri Puanı
                   </Typography>
                   <Typography variant="caption" color="text.secondary">

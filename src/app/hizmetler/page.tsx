@@ -56,8 +56,7 @@ export default function ServicesPage() {
             />
             <Typography
               variant="h3"
-              fontWeight={800}
-              sx={{ letterSpacing: '-0.02em' }}
+              sx={{ fontWeight: 800, letterSpacing: '-0.02em' }}
             >
               Tüm hizmetler, tek merkezden
             </Typography>
@@ -93,8 +92,7 @@ export default function ServicesPage() {
               <Stack spacing={1}>
                 <Typography
                   variant="h5"
-                  fontWeight={800}
-                  sx={{ letterSpacing: '-0.01em' }}
+                  sx={{ fontWeight: 800, letterSpacing: '-0.01em' }}
                 >
                   Projenizi yöneten stratejik ekip
                 </Typography>
@@ -210,7 +208,11 @@ export default function ServicesPage() {
                     />
 
                     <Stack spacing={2.2} sx={{ position: 'relative' }}>
-                      <Stack direction="row" alignItems="center" spacing={1.5}>
+                      <Stack
+                        direction="row"
+                        sx={{ alignItems: 'center' }}
+                        spacing={1.5}
+                      >
                         <Box
                           sx={{
                             width: 52,
@@ -232,8 +234,7 @@ export default function ServicesPage() {
                       <Stack spacing={0.8}>
                         <Typography
                           variant="h6"
-                          fontWeight={800}
-                          sx={{ letterSpacing: '-0.01em' }}
+                          sx={{ fontWeight: 800, letterSpacing: '-0.01em' }}
                         >
                           {service.title}
                         </Typography>
@@ -249,8 +250,8 @@ export default function ServicesPage() {
                       <Stack
                         direction="row"
                         spacing={1}
-                        flexWrap="wrap"
                         useFlexGap
+                        sx={{ flexWrap: 'wrap' }}
                       >
                         {service.highlights.slice(0, 3).map((item) => (
                           <Chip
@@ -271,10 +272,13 @@ export default function ServicesPage() {
                       <Stack
                         direction="row"
                         spacing={1}
-                        alignItems="center"
-                        sx={{ color: service.color, fontWeight: 700 }}
+                        sx={{
+                          color: service.color,
+                          fontWeight: 700,
+                          alignItems: 'center',
+                        }}
                       >
-                        <Typography fontWeight={800}>
+                        <Typography sx={{ fontWeight: 800 }}>
                           Detayları incele
                         </Typography>
                         <ArrowForward fontSize="small" />

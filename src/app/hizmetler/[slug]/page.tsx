@@ -87,7 +87,7 @@ export default async function ServiceDetailPage({
             <Stack
               direction={{ xs: 'column', md: 'row' }}
               spacing={3}
-              alignItems={{ md: 'center' }}
+              sx={{ alignItems: { md: 'center' } }}
             >
               <Box
                 sx={{
@@ -104,7 +104,7 @@ export default async function ServiceDetailPage({
               >
                 <Icon fontSize="large" />
               </Box>
-              <Stack spacing={1} flex={1}>
+              <Stack spacing={1} sx={{ flex: 1 }}>
                 <Typography
                   variant="overline"
                   sx={{ color: 'primary.main', letterSpacing: '0.2em' }}
@@ -113,8 +113,7 @@ export default async function ServiceDetailPage({
                 </Typography>
                 <Typography
                   variant="h4"
-                  fontWeight={800}
-                  sx={{ letterSpacing: '-0.02em' }}
+                  sx={{ fontWeight: 800, letterSpacing: '-0.02em' }}
                 >
                   {service.title}
                 </Typography>
@@ -128,9 +127,8 @@ export default async function ServiceDetailPage({
                 <Stack
                   direction="row"
                   spacing={1}
-                  flexWrap="wrap"
                   useFlexGap
-                  sx={{ pt: 1 }}
+                  sx={{ flexWrap: 'wrap', pt: 1 }}
                 >
                   {service.highlights.map((item) => (
                     <Chip
@@ -153,7 +151,7 @@ export default async function ServiceDetailPage({
 
           <CardContent sx={{ p: { xs: 3, md: 5 } }}>
             <Stack spacing={3} sx={{ mb: 3 }}>
-              <Typography variant="h6" fontWeight={800}>
+              <Typography variant="h6" sx={{ fontWeight: 800 }}>
                 Alt hizmetler ve teslimatlar
               </Typography>
               <Typography
@@ -191,7 +189,10 @@ export default async function ServiceDetailPage({
                   >
                     <CardContent sx={{ p: 3 }}>
                       <Stack spacing={1.5}>
-                        <Typography variant="subtitle1" fontWeight={800}>
+                        <Typography
+                          variant="subtitle1"
+                          sx={{ fontWeight: 800 }}
+                        >
                           {sub.title}
                         </Typography>
                         <Typography
@@ -214,9 +215,11 @@ export default async function ServiceDetailPage({
                                 <CheckCircleIcon fontSize="small" />
                               </ListItemIcon>
                               <ListItemText
-                                primaryTypographyProps={{
-                                  variant: 'body2',
-                                  color: 'text.primary',
+                                slotProps={{
+                                  primary: {
+                                    variant: 'body2',
+                                    color: 'text.primary',
+                                  },
                                 }}
                                 primary={item}
                               />
@@ -243,8 +246,8 @@ export default async function ServiceDetailPage({
                 gap: 2.5,
               }}
             >
-              <Stack spacing={1} flex={1}>
-                <Typography variant="subtitle1" fontWeight={800}>
+              <Stack spacing={1} sx={{ flex: 1 }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 800 }}>
                   Projeniz için uygun kapsamı birlikte seçelim
                 </Typography>
                 <Typography

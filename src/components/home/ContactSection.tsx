@@ -33,7 +33,7 @@ export function ContactSection() {
     >
       <SectionBackground variant="alternate" />
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={8} alignItems="center">
+        <Grid container spacing={8} sx={{ alignItems: 'center' }}>
           <Grid size={{ xs: 12, lg: 5 }}>
             <SectionHeader
               overline="İLETİŞİM"
@@ -71,19 +71,19 @@ export function ContactSection() {
                     <Typography
                       variant="caption"
                       color="text.secondary"
-                      fontWeight="bold"
+                      sx={{ fontWeight: 'bold' }}
                     >
                       BİZİ ARAYIN
                     </Typography>
                     <Typography
                       variant="h6"
-                      fontWeight="bold"
                       component="a"
                       href={`tel:${contactInfo.phone}`}
                       onClick={() =>
                         track('call_click', { location: 'contact_card_tel' })
                       }
                       sx={{
+                        fontWeight: 'bold',
                         display: 'block',
                         textDecoration: 'none',
                         color: 'text.primary',
@@ -123,11 +123,11 @@ export function ContactSection() {
                     <Typography
                       variant="caption"
                       color="text.secondary"
-                      fontWeight="bold"
+                      sx={{ fontWeight: 'bold' }}
                     >
                       ADRES
                     </Typography>
-                    <Typography variant="body1" fontWeight="500">
+                    <Typography variant="body1" sx={{ fontWeight: 500 }}>
                       {contactInfo.address}
                     </Typography>
                     <Button
@@ -170,7 +170,11 @@ export function ContactSection() {
                 >
                   <BoltIcon sx={{ fontSize: 150 }} />
                 </Box>
-                <Typography variant="h6" fontWeight="bold" gutterBottom>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: 'bold' }}
+                  gutterBottom
+                >
                   Acil Durum mu?
                 </Typography>
                 <Typography variant="body2" sx={{ opacity: 0.9, mb: 3 }}>

@@ -75,8 +75,7 @@ export default function ContactPage() {
           </Typography>
           <Typography
             variant="h3"
-            fontWeight={800}
-            sx={{ letterSpacing: '-0.02em' }}
+            sx={{ fontWeight: 800, letterSpacing: '-0.02em' }}
           >
             Daha hızlı, daha modern iletişim
           </Typography>
@@ -108,7 +107,11 @@ export default function ContactPage() {
               <CardContent sx={{ p: { xs: 3, md: 4 } }}>
                 <Stack spacing={3.5}>
                   <Stack spacing={1.5}>
-                    <Stack direction="row" spacing={1.5} alignItems="center">
+                    <Stack
+                      direction="row"
+                      spacing={1.5}
+                      sx={{ alignItems: 'center' }}
+                    >
                       <Chip
                         label="Aynı gün dönüş"
                         color="primary"
@@ -123,8 +126,7 @@ export default function ContactPage() {
                     </Stack>
                     <Typography
                       variant="h5"
-                      fontWeight={800}
-                      sx={{ letterSpacing: '-0.02em' }}
+                      sx={{ fontWeight: 800, letterSpacing: '-0.02em' }}
                     >
                       Doğrudan ulaşın veya hızlıca not bırakın
                     </Typography>
@@ -166,11 +168,14 @@ export default function ContactPage() {
                     <Stack
                       direction="row"
                       spacing={1.5}
-                      alignItems="flex-start"
+                      sx={{ alignItems: 'flex-start' }}
                     >
                       <AccessTimeIcon color="primary" />
                       <Box>
-                        <Typography variant="subtitle2" fontWeight={700}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontWeight: 700 }}
+                        >
                           Çalışma saatleri
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
@@ -182,11 +187,16 @@ export default function ContactPage() {
                     <Stack
                       direction="row"
                       spacing={1.5}
-                      alignItems="flex-start"
+                      sx={{
+                        alignItems: 'flex-start',
+                      }}
                     >
                       <PlaceIcon color="primary" />
                       <Box>
-                        <Typography variant="subtitle2" fontWeight={700}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontWeight: 700 }}
+                        >
                           Adres
                         </Typography>
                         <Typography
@@ -215,7 +225,7 @@ export default function ContactPage() {
           </Grid>
 
           <Grid size={{ xs: 12, md: 5 }}>
-            <Stack spacing={2.5} height="100%">
+            <Stack spacing={2.5} sx={{ height: '100%' }}>
               <Card
                 sx={{
                   borderRadius: 3,
@@ -228,8 +238,7 @@ export default function ContactPage() {
                 <CardContent sx={{ p: { xs: 3, md: 3.5 } }}>
                   <Typography
                     variant="subtitle1"
-                    fontWeight={800}
-                    sx={{ mb: 1 }}
+                    sx={{ fontWeight: 800, mb: 1 }}
                   >
                     Neden aramalısınız?
                   </Typography>

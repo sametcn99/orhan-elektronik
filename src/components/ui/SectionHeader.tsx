@@ -14,24 +14,24 @@ export function SectionHeader({
   align = 'center',
 }: SectionHeaderProps) {
   return (
-    <Box textAlign={align} mb={8}>
+    <Box sx={{ textAlign: align, mb: 8 }}>
       <Typography
         variant="overline"
         color="primary"
-        fontWeight="bold"
         sx={{
           letterSpacing: 3,
           display: 'block',
           mb: 1,
           fontSize: '0.875rem',
+          fontWeight: 700,
         }}
       >
         {overline}
       </Typography>
       <Typography
         variant="h3"
-        fontWeight="800"
         sx={{
+          fontWeight: '800',
           mb: 3,
           fontSize: { xs: '2rem', md: '3rem' },
           background: (theme) =>

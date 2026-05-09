@@ -129,9 +129,11 @@ export function Header() {
             >
               <ListItemText
                 primary={item.label}
-                primaryTypographyProps={{
-                  fontWeight: 600,
-                  color: 'text.primary',
+                slotProps={{
+                  primary: {
+                    sx: { fontWeight: 600 },
+                    color: 'text.primary',
+                  },
                 }}
               />
             </ListItemButton>
@@ -162,11 +164,11 @@ export function Header() {
         >
           <Stack
             direction="row"
-            alignItems="center"
             spacing={1}
             component="a"
             href={`/#${sectionIds.hero}`}
             sx={{
+              alignItems: 'center',
               textDecoration: 'none',
               color: 'text.primary',
               '&:hover': {
