@@ -587,7 +587,7 @@ export function Footer() {
                   href: 'https://sametcc.me',
                 })
               }
-              sx={{ color: 'primary.main', fontWeight: 600 }}
+              sx={{ color: 'primary.main', fontWeight: 400 }}
             >
               sametcc.me
             </Link>
