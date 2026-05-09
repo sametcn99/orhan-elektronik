@@ -16,7 +16,6 @@ export function SectionContainer({
       sx={{
         py: { xs: 8, md: 12 },
         px: 2,
-        overflow: 'hidden',
         ...sx,
       }}
     >

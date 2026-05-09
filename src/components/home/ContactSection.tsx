@@ -29,7 +29,7 @@ export function ContactSection() {
   return (
     <SectionContainer
       id={sectionIds.contact}
-      sx={{ bgcolor: 'white', position: 'relative' }}
+      sx={{ bgcolor: 'white', position: 'relative', overflow: 'hidden' }}
     >
       <SectionBackground variant="alternate" />
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>

@@ -16,7 +16,10 @@ export function InstagramSection() {
   return (
     <SectionContainer
       id={sectionIds.instagram}
-      sx={{ bgcolor: alpha(theme.palette.secondary.light, 0.03) }}
+      sx={{
+        bgcolor: alpha(theme.palette.secondary.light, 0.03),
+        overflow: 'hidden',
+      }}
     >
       <Container maxWidth="md">
         <Box sx={{ textAlign: 'center', mb: 6 }}>

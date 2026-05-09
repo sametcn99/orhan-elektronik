@@ -20,6 +20,7 @@ import {
 } from '@mui/material'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
 import { RelatedServices } from './RelatedServices'
@@ -66,6 +67,12 @@ export default async function ServiceDetailPage({
   return (
     <Box sx={{ bgcolor: 'background.default', color: 'text.primary', py: 8 }}>
       <Container maxWidth="lg">
+        <Breadcrumb
+          items={[
+            { label: 'Hizmetlerimiz', href: '/hizmetler' },
+            { label: service.title },
+          ]}
+        />
         <Card
           sx={{
             mb: 4,

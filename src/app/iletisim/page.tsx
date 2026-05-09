@@ -20,6 +20,7 @@ import {
 } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import Link from 'next/link'
+import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { contactInfo } from '@/data/constants'
 
 export default function ContactPage() {
@@ -62,6 +63,7 @@ export default function ContactPage() {
       />
 
       <Container maxWidth="lg">
+        <Breadcrumb items={[{ label: 'İletişim' }]} />
         <Stack spacing={2} sx={{ mb: 6, position: 'relative' }}>
           <Typography
             variant="overline"

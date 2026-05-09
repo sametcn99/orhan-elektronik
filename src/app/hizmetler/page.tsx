@@ -13,6 +13,7 @@ import {
   Typography,
 } from '@mui/material'
 import Link from 'next/link'
+import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
 
@@ -38,6 +39,7 @@ export default function ServicesPage() {
       />
 
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        <Breadcrumb items={[{ label: 'Hizmetlerimiz', href: '/hizmetler' }]} />
         <Stack spacing={3} sx={{ mb: { xs: 5, md: 8 } }}>
           <Stack spacing={1.5}>
             <Chip
