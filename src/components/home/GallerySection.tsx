@@ -45,6 +45,7 @@ export const GallerySection = () => {
     isPinching: false,
   })
   const swipeRef = useRef({ startX: 0, startY: 0, startTime: 0 })
+  const thumbContainerRef = useRef<HTMLDivElement>(null)
 
   // Determine how many images to show in the preview grid (e.g., 8)
   const displayCount = 8
@@ -56,6 +57,18 @@ export const GallerySection = () => {
     setZoomLevel(1)
     setPanPosition({ x: 0, y: 0 })
   }, [selectedIndex])
+
+  // Scroll active thumbnail into center
+  useEffect(() => {
+    const el = document.getElementById(`thumb-${selectedIndex}`)
+    if (el) {
+      el.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      })
+    }
+  }, [selectedIndex, modalOpen])
 
   const handleNext = (e?: React.MouseEvent) => {
     e?.stopPropagation()
@@ -493,6 +506,7 @@ export const GallerySection = () => {
 
           {/* Bottom Thumbnails */}
           <Box
+            ref={thumbContainerRef}
             sx={{
               position: 'fixed',
               bottom: 24,
@@ -507,11 +521,13 @@ export const GallerySection = () => {
               p: 1.5,
               borderRadius: 4,
               overflowX: 'auto',
+              scrollBehavior: 'smooth',
               zIndex: 10,
               boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
               '&::-webkit-scrollbar': {
                 display: 'none',
               },
+              scrollbarWidth: 'none',
             }}
             onWheel={(e) => {
               e.stopPropagation()
@@ -523,6 +539,7 @@ export const GallerySection = () => {
             {images.map((img, index) => (
               <Box
                 key={img}
+                id={`thumb-${index}`}
                 onClick={(e) => {
                   e.stopPropagation()
                   openModal(index)
