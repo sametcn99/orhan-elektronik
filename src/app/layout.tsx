@@ -86,6 +86,10 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   category: 'electronics',
+  other: {
+    'og:logo':
+      'https://www.orhanelektronikbilgisayar.com/icons/icon-512x512.png',
+  },
 }
 
 export const viewport = {
