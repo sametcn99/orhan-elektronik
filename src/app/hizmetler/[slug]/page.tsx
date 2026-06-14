@@ -49,8 +49,6 @@ export async function generateMetadata({
     }
   }
 
-  const ogImageUrl = `/api/og?title=${encodeURIComponent(service.title)}&description=${encodeURIComponent(service.summary || service.description)}`
-
   return {
     title: `${service.title} | Orhan Elektrik Elektronik`,
     description: service.description,
@@ -64,20 +62,11 @@ export async function generateMetadata({
       type: 'website',
       locale: 'tr_TR',
       siteName: 'Orhan Elektrik Elektronik',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: `${service.title} - Orhan Elektrik Elektronik`,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${service.title} | Orhan Elektrik Elektronik`,
       description: service.summary || service.description,
-      images: [ogImageUrl],
     },
   }
 }

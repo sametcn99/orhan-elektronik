@@ -39,15 +39,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        source: '/api/og(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, s-maxage=86400, stale-while-revalidate=604800',
-          },
-        ],
-      },
+      
       {
         source: '/icons/(.*)',
         headers: [
@@ -85,14 +77,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/favicon.svg',
+        source: '/opengraph-image(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
           },
         ],
       },
+      
     ]
   },
 }

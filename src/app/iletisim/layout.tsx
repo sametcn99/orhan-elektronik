@@ -18,23 +18,12 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'tr_TR',
     siteName: 'Orhan Elektrik Elektronik',
-    images: [
-      {
-        url: `/api/og?title=${encodeURIComponent('İletişim')}&description=${encodeURIComponent('Orhan Elektrik Elektronik iletişim bilgileri. Hemen ulaşın.')}`,
-        width: 1200,
-        height: 630,
-        alt: 'İletişim - Orhan Elektrik Elektronik',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'İletişim | Orhan Elektrik Elektronik',
     description:
       'Orhan Elektrik Elektronik iletişim bilgileri. Telefon, WhatsApp ve adres bilgilerimiz.',
-    images: [
-      `/api/og?title=${encodeURIComponent('İletişim')}&description=${encodeURIComponent('Orhan Elektrik Elektronik iletişim bilgileri. Hemen ulaşın.')}`,
-    ],
   },
 }
 

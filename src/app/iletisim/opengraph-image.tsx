@@ -1,15 +1,17 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
-import type { NextRequest } from 'next/server'
 
-export const runtime = 'nodejs'
+export const alt = 'İletişim - Orhan Elektrik Elektronik'
+export const size = { width: 1200, height: 630 }
+export const contentType = 'image/png'
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url)
-
-  const title = searchParams.get('title') || 'Orhan Elektrik Elektronik'
-  const description =
-    searchParams.get('description') ||
-    'Ankara profesyonel elektrik ve guvenlik sistemleri'
+export default async function Image() {
+  const logoData = await readFile(
+    join(process.cwd(), 'public/icons/icon-512x512.png'),
+    'base64',
+  )
+  const logoSrc = `data:image/png;base64,${logoData}`
 
   return new ImageResponse(
     <div
@@ -35,22 +37,13 @@ export async function GET(request: NextRequest) {
           marginBottom: '40px',
         }}
       >
-        <div
-          style={{
-            width: '64px',
-            height: '64px',
-            borderRadius: '16px',
-            background: 'linear-gradient(135deg, #0ea5e9, #10b981)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '28px',
-            fontWeight: 800,
-            color: '#fff',
-          }}
-        >
-          OE
-        </div>
+        <img
+          alt="Orhan Elektrik Elektronik"
+          src={logoSrc}
+          width={64}
+          height={64}
+          style={{ borderRadius: 16 }}
+        />
         <div
           style={{
             fontSize: '24px',
@@ -64,7 +57,7 @@ export async function GET(request: NextRequest) {
 
       <div
         style={{
-          fontSize: title.length > 40 ? '38px' : '50px',
+          fontSize: '52px',
           fontWeight: 800,
           lineHeight: 1.2,
           maxWidth: '900px',
@@ -72,7 +65,7 @@ export async function GET(request: NextRequest) {
           color: '#0ea5e9',
         }}
       >
-        {title}
+        İletişim
       </div>
 
       <div
@@ -83,9 +76,7 @@ export async function GET(request: NextRequest) {
           lineHeight: 1.5,
         }}
       >
-        {description.length > 120
-          ? `${description.slice(0, 120)}...`
-          : description}
+        Telefon, WhatsApp ve adres bilgilerimiz. Hemen ulaşın.
       </div>
 
       <div
@@ -113,7 +104,7 @@ export async function GET(request: NextRequest) {
         >
           <span
             style={{
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               width: '20px',
@@ -126,7 +117,7 @@ export async function GET(request: NextRequest) {
           >
             A
           </span>{' '}
-          Ankara, Turkiye
+          Ankara, Türkiye
         </div>
         <div
           style={{
@@ -142,7 +133,7 @@ export async function GET(request: NextRequest) {
         >
           <span
             style={{
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               width: '20px',
@@ -171,7 +162,7 @@ export async function GET(request: NextRequest) {
         >
           <span
             style={{
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               width: '20px',
@@ -184,13 +175,10 @@ export async function GET(request: NextRequest) {
           >
             E
           </span>{' '}
-          15+ Yillik Tecrube
+          15+ Yıllık Tecrübe
         </div>
       </div>
     </div>,
-    {
-      width: 1200,
-      height: 630,
-    },
+    { ...size },
   )
 }

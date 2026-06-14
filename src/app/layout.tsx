@@ -54,23 +54,12 @@ export const metadata: Metadata = {
     description:
       "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm, elektrik altyapısı ve teknik servis.",
     siteName: 'Orhan Elektrik Elektronik',
-    images: [
-      {
-        url: '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik ve güvenlik sistemleri',
-        width: 1200,
-        height: 630,
-        alt: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
     description:
       "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm ve teknik servis.",
-    images: [
-      '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik ve güvenlik sistemleri',
-    ],
   },
   robots: {
     index: true,
@@ -88,8 +77,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', type: 'image/x-icon' },
       { url: '/icons/icon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
