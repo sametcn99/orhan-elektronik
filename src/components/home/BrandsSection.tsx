@@ -192,6 +192,7 @@ export default function BrandsSection() {
                         alt={`${brand.name} logo`}
                         width={56}
                         height={56}
+                        sizes="88px"
                         style={{
                           objectFit: 'contain',
                           transition: 'all 0.4s ease',

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ContactPageJsonLd } from '@/components/seo/JsonLd'
 
 const BASE_URL = 'https://www.orhanelektronikbilgisayar.com'
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'Orhan Elektrik Elektronik',
     images: [
       {
-        url: '/api/og?title=%C4%B0leti%C5%9Fim&description=Orhan Elektrik Elektronik ileleti%C5%9Fim bilgileri. Hemen ula%C5%9F%C4%B1n.',
+        url: `/api/og?title=${encodeURIComponent('İletişim')}&description=${encodeURIComponent('Orhan Elektrik Elektronik iletişim bilgileri. Hemen ulaşın.')}`,
         width: 1200,
         height: 630,
         alt: 'İletişim - Orhan Elektrik Elektronik',
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'Orhan Elektrik Elektronik iletişim bilgileri. Telefon, WhatsApp ve adres bilgilerimiz.',
     images: [
-      '/api/og?title=%C4%B0leti%C5%9Fim&description=Orhan Elektrik Elektronik ileleti%C5%9Fim bilgileri. Hemen ula%C5%9F%C4%B1n.',
+      `/api/og?title=${encodeURIComponent('İletişim')}&description=${encodeURIComponent('Orhan Elektrik Elektronik iletişim bilgileri. Hemen ulaşın.')}`,
     ],
   },
 }
@@ -42,5 +43,10 @@ export default function IletisimLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <>
+      <ContactPageJsonLd />
+      {children}
+    </>
+  )
 }

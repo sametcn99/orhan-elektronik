@@ -20,8 +20,8 @@ import {
 } from '@mui/material'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { ServiceJsonLd } from '@/components/seo/JsonLd'
+import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
 import { RelatedServices } from './RelatedServices'
@@ -156,6 +156,7 @@ export default async function ServiceDetailPage({
                 </Typography>
                 <Typography
                   variant="h4"
+                  component="h1"
                   sx={{ fontWeight: 800, letterSpacing: '-0.02em' }}
                 >
                   {service.title}

@@ -39,7 +39,7 @@ export default function ServicesPage() {
       />
 
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Breadcrumb items={[{ label: 'Hizmetlerimiz', href: '/hizmetler' }]} />
+        <Breadcrumb items={[{ label: 'Hizmetlerimiz' }]} />
         <Stack spacing={3} sx={{ mb: { xs: 5, md: 8 } }}>
           <Stack spacing={1.5}>
             <Chip
@@ -58,6 +58,7 @@ export default function ServicesPage() {
             />
             <Typography
               variant="h3"
+              component="h1"
               sx={{ fontWeight: 800, letterSpacing: '-0.02em' }}
             >
               Tüm hizmetler, tek merkezden

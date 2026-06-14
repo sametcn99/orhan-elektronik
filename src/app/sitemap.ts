@@ -7,7 +7,7 @@ export default async function sitemap() {
     url: `${baseUrl}/hizmetler/${service.slug}`,
     lastModified: '2025-01-01',
     changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    priority: 0.8,
   }))
 
   return [

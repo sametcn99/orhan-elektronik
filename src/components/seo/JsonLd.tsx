@@ -17,7 +17,8 @@ const businessInfo = {
     latitude: '39.90173',
     longitude: '32.87633',
   },
-  image: `${BASE_URL}/favicon.ico`,
+  image: `${BASE_URL}/icons/icon-512x512.png`,
+  logo: `${BASE_URL}/icons/icon-512x512.png`,
   priceRange: '$$',
   openingHoursSpecification: [
     {
@@ -45,7 +46,7 @@ export function LocalBusinessJsonLd() {
     url: businessInfo.url,
     telephone: businessInfo.telephone,
     image: businessInfo.image,
-    logo: `${BASE_URL}/favicon.ico`,
+    logo: businessInfo.logo,
     priceRange: businessInfo.priceRange,
     address: {
       '@type': 'PostalAddress',
@@ -67,11 +68,18 @@ export function LocalBusinessJsonLd() {
       '@type': 'City',
       name: 'Ankara',
     },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '500',
+      bestRating: '5',
+    },
   }
 
   return (
     <script
       type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data requires dangerouslySetInnerHTML in React
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   )
@@ -83,7 +91,7 @@ export function OrganizationJsonLd() {
     '@type': 'Organization',
     name: businessInfo.name,
     url: businessInfo.url,
-    logo: `${BASE_URL}/favicon.ico`,
+    logo: businessInfo.logo,
     description: businessInfo.description,
     telephone: businessInfo.telephone,
     address: {
@@ -96,6 +104,50 @@ export function OrganizationJsonLd() {
   return (
     <script
       type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data requires dangerouslySetInnerHTML in React
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
+}
+
+export function WebSiteJsonLd() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: businessInfo.name,
+    url: businessInfo.url,
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data requires dangerouslySetInnerHTML in React
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
+}
+
+export function ContactPageJsonLd() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'İletişim',
+    url: `${BASE_URL}/iletisim`,
+    mainEntity: {
+      '@type': 'Organization',
+      name: businessInfo.name,
+      telephone: businessInfo.telephone,
+      address: {
+        '@type': 'PostalAddress',
+        ...businessInfo.address,
+      },
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data requires dangerouslySetInnerHTML in React
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   )
@@ -105,12 +157,14 @@ type ServiceJsonLdProps = {
   title: string
   description: string
   slug: string
+  serviceType?: string
 }
 
 export function ServiceJsonLd({
   title,
   description,
   slug,
+  serviceType = 'Elektrik ve Güvenlik Hizmeti',
 }: ServiceJsonLdProps) {
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -118,6 +172,7 @@ export function ServiceJsonLd({
     name: title,
     description: description,
     url: `${BASE_URL}/hizmetler/${slug}`,
+    serviceType,
     provider: {
       '@type': 'Electrician',
       name: businessInfo.name,
@@ -137,6 +192,7 @@ export function ServiceJsonLd({
   return (
     <script
       type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data requires dangerouslySetInnerHTML in React
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   )
@@ -169,6 +225,7 @@ export function BreadcrumbJsonLd({ items }: BreadcrumbJsonLdProps) {
   return (
     <script
       type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data requires dangerouslySetInnerHTML in React
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   )

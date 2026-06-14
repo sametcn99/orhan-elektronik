@@ -77,6 +77,7 @@ export default function ContactPage() {
           </Typography>
           <Typography
             variant="h3"
+            component="h1"
             sx={{ fontWeight: 800, letterSpacing: '-0.02em' }}
           >
             Daha hızlı, daha modern iletişim

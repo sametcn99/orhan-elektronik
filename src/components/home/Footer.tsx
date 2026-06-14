@@ -193,7 +193,7 @@ export function Footer() {
                   component="a"
                   href="https://www.instagram.com/orhan.elektrik.elektronik/"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer me"
                   onClick={() =>
                     track('social_click', {
                       location: 'footer_instagram',
@@ -217,7 +217,7 @@ export function Footer() {
                   component="a"
                   href={`https://wa.me/${whatsappNumber}`}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer me"
                   onClick={() =>
                     track('social_click', {
                       location: 'footer_whatsapp',

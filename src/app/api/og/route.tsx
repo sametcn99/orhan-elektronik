@@ -110,9 +110,27 @@ export async function GET(request: NextRequest) {
             gap: '8px',
             fontSize: '18px',
             opacity: 0.8,
+            background: 'rgba(255,255,255,0.1)',
+            padding: '8px 16px',
+            borderRadius: '8px',
           }}
         >
-          📍 Ankara, Türkiye
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '20px',
+              height: '20px',
+              borderRadius: '50%',
+              background: '#0ea5e9',
+              fontSize: '11px',
+              fontWeight: 700,
+            }}
+          >
+            A
+          </span>{' '}
+          Ankara, Turkiye
         </div>
         <div
           style={{
@@ -121,9 +139,27 @@ export async function GET(request: NextRequest) {
             gap: '8px',
             fontSize: '18px',
             opacity: 0.8,
+            background: 'rgba(255,255,255,0.1)',
+            padding: '8px 16px',
+            borderRadius: '8px',
           }}
         >
-          📞 +90 532 574 93 92
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '20px',
+              height: '20px',
+              borderRadius: '50%',
+              background: '#10b981',
+              fontSize: '11px',
+              fontWeight: 700,
+            }}
+          >
+            T
+          </span>{' '}
+          +90 532 574 93 92
         </div>
         <div
           style={{
@@ -132,9 +168,27 @@ export async function GET(request: NextRequest) {
             gap: '8px',
             fontSize: '18px',
             opacity: 0.8,
+            background: 'rgba(255,255,255,0.1)',
+            padding: '8px 16px',
+            borderRadius: '8px',
           }}
         >
-          ⚡ 15+ Yıllık Tecrübe
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '20px',
+              height: '20px',
+              borderRadius: '50%',
+              background: '#f59e0b',
+              fontSize: '11px',
+              fontWeight: 700,
+            }}
+          >
+            E
+          </span>{' '}
+          15+ Yillik Tecrube
         </div>
       </div>
     </div>,

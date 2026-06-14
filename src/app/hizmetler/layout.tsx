@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'Orhan Elektrik Elektronik',
     images: [
       {
-        url: '/api/og?title=Hizmetlerimiz&description=Ankara%27da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri',
+        url: `/api/og?title=${encodeURIComponent('Hizmetlerimiz')}&description=${encodeURIComponent("Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri")}`,
         width: 1200,
         height: 630,
         alt: 'Hizmetlerimiz - Orhan Elektrik Elektronik',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description:
       "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. Tüm hizmetlerimizi keşfedin.",
     images: [
-      '/api/og?title=Hizmetlerimiz&description=Ankara%27da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri',
+      `/api/og?title=${encodeURIComponent('Hizmetlerimiz')}&description=${encodeURIComponent("Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri")}`,
     ],
   },
 }

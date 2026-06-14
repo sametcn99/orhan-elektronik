@@ -9,6 +9,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/(.*)',
+        has: [
+          {
+            type: 'host',
+            value: 'orhanelektronikbilgisayar.com',
+          },
+        ],
+        destination: 'https://www.orhanelektronikbilgisayar.com/$1',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

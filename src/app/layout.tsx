@@ -13,6 +13,7 @@ import { Header } from '@/components/home/Header'
 import {
   LocalBusinessJsonLd,
   OrganizationJsonLd,
+  WebSiteJsonLd,
 } from '@/components/seo/JsonLd'
 import { SkipToContent } from '@/components/ui/SkipToContent'
 
@@ -114,6 +115,7 @@ export default function RootLayout({
             <CssBaseline />
             <LocalBusinessJsonLd />
             <OrganizationJsonLd />
+            <WebSiteJsonLd />
             <Script
               src="https://umami.sametcc.me/script.js"
               data-website-id="b4b80e84-5709-4675-a6dd-cc938134079b"

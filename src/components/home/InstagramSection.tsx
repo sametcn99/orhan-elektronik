@@ -2,6 +2,7 @@
 
 import { alpha, Box, Container, Typography, useTheme } from '@mui/material'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { sectionIds } from '../../data/constants'
 import { SectionContainer } from '../ui/SectionContainer'
 
@@ -35,11 +36,11 @@ export function InstagramSection() {
               boxShadow: 2,
             }}
           >
-            <Box
-              component="img"
+            <Image
               src="/icons/instagram.svg"
               alt="Instagram"
-              sx={{ width: 32, height: 32 }}
+              width={32}
+              height={32}
             />
           </Box>
           <Typography variant="h3" sx={{ fontWeight: '800' }} gutterBottom>

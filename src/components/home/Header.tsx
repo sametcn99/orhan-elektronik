@@ -99,6 +99,7 @@ export function Header() {
         <Stack spacing={-0.2}>
           <Typography
             variant="h6"
+            component="div"
             sx={{
               fontWeight: 900,
               fontSize: '1.1rem',
