@@ -25,6 +25,24 @@ import { SectionHeader } from '../ui/SectionHeader'
 
 const images = Array.from({ length: 86 }, (_, i) => `/gallery/${i + 1}.jpg`)
 
+const galleryAltTexts: Record<number, string> = {
+  1: "Ankara'da yapılan güvenlik kamera sistemi kurulumu",
+  2: 'Orhan Elektronik elektrik pano montaj çalışması',
+  3: "Ankara'da CCTV kamera sistemleri projesi",
+  4: 'Elektrik altyapı ve şalt sistemi montajı',
+  5: 'Akıllı bina otomasyonu KNX kurulumu',
+  6: 'Güvenlik sistemi kablo çekme çalışması',
+  7: 'Yapısal kablolama ve veri ağı projesi',
+  8: 'İnterkom ve diafon sistemi montajı',
+  9: "Ankara'da uydu ve IPTV sistemi kurulumu",
+  10: 'Anahtar-priz ve aydınlatma projesi',
+}
+
+const getAltText = (index: number): string => {
+  if (galleryAltTexts[index]) return galleryAltTexts[index]
+  return `Ankara'da yapılan elektrik ve güvenlik sistemi projesi - Görsel ${index}`
+}
+
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max)
 
@@ -270,7 +288,7 @@ export const GallerySection = () => {
                 >
                   <Image
                     src={img}
-                    alt={`Gallery ${index + 1}`}
+                    alt={getAltText(index + 1)}
                     fill
                     className="bg-image"
                     style={{
@@ -340,6 +358,8 @@ export const GallerySection = () => {
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
+        aria-label="Galeri görsel görüntüleyici"
+        aria-modal="true"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -486,7 +506,7 @@ export const GallerySection = () => {
                 <motion.img
                   key={selectedIndex}
                   src={images[selectedIndex]}
-                  alt="Full screen"
+                  alt={getAltText(selectedIndex + 1)}
                   initial={{ opacity: 0, scale: 0.96, x: 24 * direction }}
                   animate={{ opacity: 1, scale: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.96, x: -24 * direction }}
@@ -566,7 +586,7 @@ export const GallerySection = () => {
               >
                 <Image
                   src={img}
-                  alt={`Thumbnail ${index + 1}`}
+                  alt={`Küçük resim - ${getAltText(index + 1)}`}
                   fill
                   style={{
                     objectFit: 'cover',

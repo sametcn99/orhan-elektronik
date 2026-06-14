@@ -37,7 +37,7 @@ export function InstagramSection() {
           >
             <Box
               component="img"
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+              src="/icons/instagram.svg"
               alt="Instagram"
               sx={{ width: 32, height: 32 }}
             />

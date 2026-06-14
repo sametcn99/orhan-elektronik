@@ -12,6 +12,7 @@ import {
   useTheme,
 } from '@mui/material'
 import { motion } from 'motion/react'
+import Image from 'next/image'
 import { brands } from '@/data/brands'
 import { sectionIds } from '@/data/constants'
 import { SectionBackground } from '../ui/SectionBackground'
@@ -118,7 +119,7 @@ export default function BrandsSection() {
                         bgcolor: 'white',
                         boxShadow: `0 8px 32px -8px ${alpha(brand.accent, 0.2)}`,
                       },
-                      '& .brand-logo': {
+                      '& .brand-logo-img': {
                         filter: 'grayscale(0%)',
                         opacity: 1,
                         transform: `scale(${(brand.zoom / 100) * 1.05})`,
@@ -186,20 +187,16 @@ export default function BrandsSection() {
                         overflow: 'hidden',
                       }}
                     >
-                      <Box
-                        className="brand-logo"
-                        component="img"
+                      <Image
                         src={brand.logo || '/placeholder.svg'}
                         alt={`${brand.name} logo`}
-                        sx={{
-                          maxHeight: '100%',
-                          maxWidth: '100%',
+                        width={56}
+                        height={56}
+                        style={{
                           objectFit: 'contain',
-                          filter: 'grayscale(100%)',
-                          opacity: 0.7,
                           transition: 'all 0.4s ease',
-                          transform: `scale(${brand.zoom / 100})`,
                         }}
+                        className="brand-logo-img"
                       />
                     </Box>
 

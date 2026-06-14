@@ -21,9 +21,12 @@ import {
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { ServiceJsonLd } from '@/components/seo/JsonLd'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
 import { RelatedServices } from './RelatedServices'
+
+const BASE_URL = 'https://www.orhanelektronikbilgisayar.com'
 
 type ServiceDetailPageProps = {
   params: Promise<{ slug: string }>
@@ -46,9 +49,36 @@ export async function generateMetadata({
     }
   }
 
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(service.title)}&description=${encodeURIComponent(service.summary || service.description)}`
+
   return {
     title: `${service.title} | Orhan Elektrik Elektronik`,
     description: service.description,
+    alternates: {
+      canonical: `${BASE_URL}/hizmetler/${service.slug}`,
+    },
+    openGraph: {
+      title: `${service.title} | Orhan Elektrik Elektronik`,
+      description: service.summary || service.description,
+      url: `${BASE_URL}/hizmetler/${service.slug}`,
+      type: 'website',
+      locale: 'tr_TR',
+      siteName: 'Orhan Elektrik Elektronik',
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${service.title} - Orhan Elektrik Elektronik`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${service.title} | Orhan Elektrik Elektronik`,
+      description: service.summary || service.description,
+      images: [ogImageUrl],
+    },
   }
 }
 
@@ -72,6 +102,11 @@ export default async function ServiceDetailPage({
             { label: 'Hizmetlerimiz', href: '/hizmetler' },
             { label: service.title },
           ]}
+        />
+        <ServiceJsonLd
+          title={service.title}
+          description={service.description}
+          slug={service.slug}
         />
         <Card
           sx={{

@@ -10,6 +10,11 @@ import Script from 'next/script'
 import { FloatingActionButton } from '@/components/home/FloatingActionButton'
 import { Footer } from '@/components/home/Footer'
 import { Header } from '@/components/home/Header'
+import {
+  LocalBusinessJsonLd,
+  OrganizationJsonLd,
+} from '@/components/seo/JsonLd'
+import { SkipToContent } from '@/components/ui/SkipToContent'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.orhanelektronikbilgisayar.com'),
@@ -50,6 +55,24 @@ export const metadata: Metadata = {
     description:
       "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. Uzman ekip, kaliteli hizmet.",
     siteName: 'Orhan Elektrik Elektronik',
+    images: [
+      {
+        url: '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik, elektronik ve güvenlik sistemleri',
+        width: 1200,
+        height: 630,
+        alt: 'Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title:
+      'Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri',
+    description:
+      "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri.",
+    images: [
+      '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik, elektronik ve güvenlik sistemleri',
+    ],
   },
   robots: {
     index: true,
@@ -58,18 +81,18 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
       'max-image-preview': 'large',
+      'max-video-preview': -1,
+      'max-snippet': -1,
     },
   },
   alternates: {
     canonical: 'https://www.orhanelektronikbilgisayar.com',
   },
-  other: {
-    'google-site-verification': '', // Add your Google verification code here
-  },
   icons: {
     icon: '/favicon.ico',
   },
   manifest: '/manifest.json',
+  category: 'electronics',
 }
 
 export const viewport = {
@@ -89,6 +112,8 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+            <LocalBusinessJsonLd />
+            <OrganizationJsonLd />
             <Script
               src="https://umami.sametcc.me/script.js"
               data-website-id="b4b80e84-5709-4675-a6dd-cc938134079b"
@@ -98,6 +123,7 @@ export default function RootLayout({
               data-mask-level="moderate"
               data-max-duration="300000"
             />
+            <SkipToContent />
             <Box
               sx={{
                 bgcolor: 'background.default',
@@ -106,7 +132,9 @@ export default function RootLayout({
               }}
             >
               <Header />
-              {children}
+              <Box id="main-content" component="main">
+                {children}
+              </Box>
               <Footer />
               <FloatingActionButton />
             </Box>
