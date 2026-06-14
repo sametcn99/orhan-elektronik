@@ -16,48 +16,42 @@ import {
   WebSiteJsonLd,
 } from '@/components/seo/JsonLd'
 import { SkipToContent } from '@/components/ui/SkipToContent'
+import {
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+  THEME_COLOR,
+} from '@/config/site'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.orhanelektronikbilgisayar.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Orhan Elektrik Elektronik - Ankara Elektrik',
-    template: '%s | Orhan Elektrik Elektronik',
+    default: `${SITE_NAME} - Ankara Elektrik`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV kamera sistemleri, alarm kurulumu ve bakımı, elektrik altyapı yönetimi ve teknik servis.",
-  keywords: [
-    'Orhan Elektrik Elektronik',
-    'Elektrik Servisi Ankara',
-    'Ankara Elektrik',
-    'CCTV Kamera Sistemleri',
-    'Alarm Sistemleri',
-    'Elektrik Bakım',
-    'Teknik Servis Ankara',
-    'Elektrik Altyapı',
-    'Elektronik Tamir',
-    'Profesyonel Elektrikçi',
-    'Ankara Elektrik Hizmetleri',
-    'Güvenlik Kamera Kurulumu',
-    'Ankara Elektronik Servis',
-    'Ankara Alarm Sistemleri',
-    'Ankara Elektrikçi',
-    'Elektrik ve Güvenlik Çözümleri',
-    'Ev ve İş Yeri Güvenliği',
-  ],
-  authors: [{ name: 'Orhan Elektrik Elektronik' }],
-  creator: 'Orhan Elektrik Elektronik',
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: {
+    telephone: true,
+    email: false,
+    address: true,
+  },
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
-    url: 'https://www.orhanelektronikbilgisayar.com',
-    title: 'Orhan Elektrik Elektronik - Ankara Elektrik',
+    url: SITE_URL,
+    title: `${SITE_NAME} - Ankara Elektrik`,
     description:
       "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm, elektrik altyapısı ve teknik servis.",
-    siteName: 'Orhan Elektrik Elektronik',
+    siteName: SITE_NAME,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Orhan Elektrik Elektronik - Ankara Elektrik',
+    title: `${SITE_NAME} - Ankara Elektrik`,
     description:
       "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm ve teknik servis.",
   },
@@ -73,7 +67,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.orhanelektronikbilgisayar.com',
+    canonical: SITE_URL,
   },
   icons: {
     icon: [
@@ -87,15 +81,14 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   category: 'electronics',
   other: {
-    'og:logo':
-      'https://www.orhanelektronikbilgisayar.com/icons/icon-512x512.png',
+    'og:logo': `${SITE_URL}/icons/icon-512x512.png`,
   },
 }
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#1E40AF',
+  themeColor: THEME_COLOR,
 }
 
 export default function RootLayout({

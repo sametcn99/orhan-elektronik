@@ -1,14 +1,15 @@
 import type { MetadataRoute } from 'next'
+import { SITE_DESCRIPTION, SITE_NAME, THEME_COLOR } from '@/config/site'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Orhan Elektrik Elektronik',
+    name: SITE_NAME,
     short_name: 'Orhan Elektrik',
-    description: 'Orhan Elektrik Elektronik - Ankara Elektrik',
+    description: SITE_DESCRIPTION,
     start_url: '/',
     display: 'standalone',
-    background_color: '#ffffff',
-    theme_color: '#1E40AF',
+    background_color: '#f8fafc',
+    theme_color: THEME_COLOR,
     icons: [
       {
         src: '/icons/icon-192x192.png',

@@ -20,13 +20,12 @@ import {
 } from '@mui/material'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { ServiceJsonLd } from '@/components/seo/JsonLd'
+import { FAQJsonLd, ServiceJsonLd } from '@/components/seo/JsonLd'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { SITE_URL } from '@/config/site'
 import { contactInfo } from '@/data/constants'
 import { services } from '@/data/services'
 import { RelatedServices } from './RelatedServices'
-
-const BASE_URL = 'https://www.orhanelektronikbilgisayar.com'
 
 type ServiceDetailPageProps = {
   params: Promise<{ slug: string }>
@@ -52,13 +51,20 @@ export async function generateMetadata({
   return {
     title: `${service.title} | Orhan Elektrik Elektronik`,
     description: service.description,
+    keywords: [
+      service.title,
+      `${service.title} Ankara`,
+      ...service.highlights,
+      'Ankara elektrik',
+      'profesyonel hizmet',
+    ],
     alternates: {
-      canonical: `${BASE_URL}/hizmetler/${service.slug}`,
+      canonical: `${SITE_URL}/hizmetler/${service.slug}`,
     },
     openGraph: {
       title: `${service.title} | Orhan Elektrik Elektronik`,
       description: service.summary || service.description,
-      url: `${BASE_URL}/hizmetler/${service.slug}`,
+      url: `${SITE_URL}/hizmetler/${service.slug}`,
       type: 'website',
       locale: 'tr_TR',
       siteName: 'Orhan Elektrik Elektronik',
@@ -96,6 +102,7 @@ export default async function ServiceDetailPage({
           title={service.title}
           description={service.description}
           slug={service.slug}
+          highlights={service.highlights}
         />
         <Card
           sx={{
@@ -315,6 +322,79 @@ export default async function ServiceDetailPage({
             </Box>
           </CardContent>
         </Card>
+
+        <Box sx={{ mt: 6 }}>
+          <Typography variant="h5" sx={{ fontWeight: 800, mb: 3 }}>
+            Sıkça Sorulan Sorular
+          </Typography>
+          <Stack spacing={2}>
+            {[
+              {
+                q: `${service.title} hizmeti kapsamında ne sunuluyor?`,
+                a: service.description,
+              },
+              {
+                q: `${service.title} için Ankara'da hangi bölgelere hizmet veriyorsunuz?`,
+                a: "Çankaya merkezli olarak Ankara'nın tüm ilçelerine hizmet veriyoruz. Sahada ve atölye içi çalışma seçeneklerimiz mevcuttur.",
+              },
+              {
+                q: 'Keşif ve fiyatlandırma süreci nasıl işliyor?',
+                a: 'İletişim formunu doldurduğunuzda veya bizi aradığınızda, aynı gün içinde dönüş yapıyoruz. Keşif sonrası detaylı fiyat teklifi ve ihtiyaç listesi taslağı paylaşıyoruz.',
+              },
+              ...service.subServices.slice(0, 2).map((sub) => ({
+                q: `${sub.title} sürecinde neler yapılıyor?`,
+                a: sub.description,
+              })),
+            ].map((faq) => (
+              <Card
+                key={faq.q}
+                variant="outlined"
+                sx={{
+                  borderRadius: 3,
+                  borderColor: 'divider',
+                }}
+              >
+                <CardContent sx={{ p: 3 }}>
+                  <Stack spacing={1.5}>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
+                      {faq.q}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{ lineHeight: 1.7 }}
+                    >
+                      {faq.a}
+                    </Typography>
+                  </Stack>
+                </CardContent>
+              </Card>
+            ))}
+          </Stack>
+        </Box>
+
+        <FAQJsonLd
+          faqs={[
+            {
+              question: `${service.title} hizmeti kapsamında ne sunuluyor?`,
+              answer: service.description,
+            },
+            {
+              question: `${service.title} için Ankara'da hangi bölgelere hizmet veriyorsunuz?`,
+              answer:
+                "Çankaya merkezli olarak Ankara'nın tüm ilçelerine hizmet veriyoruz. Sahada ve atölye içi çalışma seçeneklerimiz mevcuttur.",
+            },
+            {
+              question: 'Keşif ve fiyatlandırma süreci nasıl işliyor?',
+              answer:
+                'İletişim formunu doldurduğunuzda veya bizi aradığınızda, aynı gün içinde dönüş yapıyoruz. Keşif sonrası detaylı fiyat teklifi ve ihtiyaç listesi taslağı paylaşıyoruz.',
+            },
+            ...service.subServices.slice(0, 2).map((sub) => ({
+              question: `${sub.title} sürecinde neler yapılıyor?`,
+              answer: sub.description,
+            })),
+          ]}
+        />
 
         <RelatedServices currentSlug={slug} />
       </Container>

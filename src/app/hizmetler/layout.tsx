@@ -1,19 +1,33 @@
 import type { Metadata } from 'next'
-
-const BASE_URL = 'https://www.orhanelektronikbilgisayar.com'
+import { ServiceListJsonLd } from '@/components/seo/JsonLd'
+import { SITE_URL } from '@/config/site'
 
 export const metadata: Metadata = {
   title: 'Hizmetlerimiz',
   description:
-    "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. CCTV kamera sistemleri, akıllı bina otomasyonu, bakım ve tamir, uydu sistemleri ve daha fazlası.",
+    "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. CCTV kamera sistemleri, akıllı bina otomasyonu, bakım ve tamir, uydu sistemleri, yapısal kablolama ve daha fazlası.",
+  keywords: [
+    'Ankara Elektrik Hizmetleri',
+    'CCTV Kamera Kurulumu Ankara',
+    'Akıllı Bina Otomasyonu',
+    'KNX Ankara',
+    'Elektrik Bakım ve Tamir',
+    'Uydu ve IPTV Çözümleri',
+    'Yapısal Kablolama Ankara',
+    'Elektrik Pano ve Şalt',
+    'Güvenlik Sistemleri Ankara',
+    'İnterkom ve Diafon',
+    'Enerji Verimliliği Danışmanlık',
+    'Anahtar Priz Aydınlatma',
+  ],
   alternates: {
-    canonical: `${BASE_URL}/hizmetler`,
+    canonical: `${SITE_URL}/hizmetler`,
   },
   openGraph: {
     title: 'Hizmetlerimiz | Orhan Elektrik Elektronik',
     description:
       "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. Tüm hizmetlerimizi keşfedin.",
-    url: `${BASE_URL}/hizmetler`,
+    url: `${SITE_URL}/hizmetler`,
     type: 'website',
     locale: 'tr_TR',
     siteName: 'Orhan Elektrik Elektronik',
@@ -31,5 +45,10 @@ export default function HizmetlerLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <>
+      <ServiceListJsonLd />
+      {children}
+    </>
+  )
 }
