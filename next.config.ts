@@ -2,12 +2,7 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'upload.wikimedia.org',
-      },
-    ],
+    remotePatterns: [],
   },
   async headers() {
     return [
@@ -31,8 +26,16 @@ const nextConfig: NextConfig = {
             value: 'on',
           },
           {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+          {
             key: 'Link',
-            value: '<https://umami.sametcc.me>; rel="preconnect"',
+            value: '<https://umami.sametcc.me>; rel="preconnect", <https://www.google.com>; rel="preconnect"',
           },
         ],
       },

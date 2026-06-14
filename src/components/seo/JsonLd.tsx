@@ -68,12 +68,6 @@ export function LocalBusinessJsonLd() {
       '@type': 'City',
       name: 'Ankara',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '500',
-      bestRating: '5',
-    },
   }
 
   return (
@@ -116,6 +110,11 @@ export function WebSiteJsonLd() {
     '@type': 'WebSite',
     name: businessInfo.name,
     url: businessInfo.url,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${businessInfo.url}/?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
   }
 
   return (

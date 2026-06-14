@@ -40,10 +40,10 @@ const partnerBrands = [
 
 const quickLinks = [
   { label: 'Ana Sayfa', href: '/' },
-  { label: 'Hizmetlerimiz', href: `/#${sectionIds.services}` },
+  { label: 'Hizmetlerimiz', href: '/hizmetler' },
   { label: 'Galeri', href: `/#${sectionIds.gallery}` },
   { label: 'Markalar', href: `/#${sectionIds.brands}` },
-  { label: 'İletişim', href: `/#${sectionIds.contact}` },
+  { label: 'İletişim', href: '/iletisim' },
 ]
 
 export function Footer() {
@@ -242,10 +242,15 @@ export function Footer() {
           </Grid>
 
           {/* Services */}
-          <Grid size={{ xs: 12, sm: 6, lg: 2.5 }}>
+          <Grid
+            size={{ xs: 12, sm: 6, lg: 2.5 }}
+            component="nav"
+            aria-label="Hizmetler"
+          >
             <Typography
               variant="subtitle1"
               color="white"
+              component="h3"
               sx={{ fontWeight: 'bold', mb: 2.5 }}
               gutterBottom
             >
@@ -282,10 +287,15 @@ export function Footer() {
           </Grid>
 
           {/* Quick Links */}
-          <Grid size={{ xs: 6, sm: 3, lg: 1.5 }}>
+          <Grid
+            size={{ xs: 6, sm: 3, lg: 1.5 }}
+            component="nav"
+            aria-label="Hızlı erişim"
+          >
             <Typography
               variant="subtitle1"
               color="white"
+              component="h3"
               sx={{ fontWeight: 'bold', mb: 2.5 }}
               gutterBottom
             >
@@ -391,13 +401,7 @@ export function Footer() {
               </Box>
 
               <Box
-                component="a"
-                href={contactInfo.mapIframe}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  track('address_click', { location: 'footer_address' })
-                }
+                component="address"
                 sx={{
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -409,6 +413,7 @@ export function Footer() {
                   bgcolor: 'rgba(255,255,255,0.03)',
                   border: '1px solid rgba(255,255,255,0.06)',
                   transition: 'all 0.2s',
+                  fontStyle: 'normal',
                   '&:hover': {
                     bgcolor: 'rgba(8,145,178,0.1)',
                     borderColor: 'rgba(8,145,178,0.3)',
@@ -441,7 +446,22 @@ export function Footer() {
                     color="white"
                     sx={{ lineHeight: 1.6 }}
                   >
-                    {contactInfo.address}
+                    <Box
+                      component="a"
+                      href={contactInfo.mapIframe}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        track('address_click', { location: 'footer_address' })
+                      }
+                      sx={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        '&:hover': { color: 'primary.main' },
+                      }}
+                    >
+                      {contactInfo.address}
+                    </Box>
                   </Typography>
                 </Box>
               </Box>

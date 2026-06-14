@@ -4,7 +4,7 @@ import { Home, Refresh } from '@mui/icons-material'
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 
-export default function GlobalError({
+export default function PageError({
   reset,
 }: {
   error: Error & { digest?: string }

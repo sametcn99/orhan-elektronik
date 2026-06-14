@@ -6,22 +6,14 @@ import { HeroSection } from '../components/home/HeroSection'
 import { InstagramSection } from '../components/home/InstagramSection'
 import { StatsSection } from '../components/home/StatsSection'
 
-const BrandsSection = dynamic(() => import('@/components/home/BrandsSection'), {
-  ssr: false,
-})
-const GallerySection = dynamic(
-  () =>
-    import('@/components/home/GallerySection').then(
-      (mod) => mod.GallerySection,
-    ),
-  { ssr: false },
+const BrandsSection = dynamic(() => import('@/components/home/BrandsSection'))
+const GallerySection = dynamic(() =>
+  import('@/components/home/GallerySection').then((mod) => mod.GallerySection),
 )
-const ServicesSection = dynamic(
-  () =>
-    import('@/components/home/ServicesSection').then(
-      (mod) => mod.ServicesSection,
-    ),
-  { ssr: false },
+const ServicesSection = dynamic(() =>
+  import('@/components/home/ServicesSection').then(
+    (mod) => mod.ServicesSection,
+  ),
 )
 
 export default function Home() {

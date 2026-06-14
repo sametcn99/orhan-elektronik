@@ -188,7 +188,7 @@ export default function BrandsSection() {
                       }}
                     >
                       <Image
-                        src={brand.logo || '/placeholder.svg'}
+                        src={brand.logo}
                         alt={`${brand.name} logo`}
                         width={56}
                         height={56}

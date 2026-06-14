@@ -210,10 +210,11 @@ export function ContactSection() {
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                title="Orhan Elektrik Elektronik konum haritası"
+                title="Orhan Elektrik Elektronik - Ankara Kızılay Mahallesi konum haritası"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                sandbox="allow-scripts allow-same-origin allow-popups"
               />
             </Box>
           </Grid>

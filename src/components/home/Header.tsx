@@ -93,6 +93,7 @@ export function Header() {
             alt="Orhan Elektrik Elektronik Logo"
             width={36}
             height={36}
+            priority
             style={{ borderRadius: '10px' }}
           />
         </Box>
@@ -404,6 +405,8 @@ export function Header() {
                   />
                 }
                 variant="text"
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
                 sx={{
                   color: 'text.secondary',
                   fontWeight: 600,
@@ -418,6 +421,7 @@ export function Header() {
                 anchorEl={anchorEl}
                 transition
                 placement="bottom-start"
+                role="menu"
                 sx={{ zIndex: 1300 }}
               >
                 {({ TransitionProps }) => (
@@ -440,6 +444,7 @@ export function Header() {
                           component={Link}
                           href="/hizmetler"
                           onClick={handleServicesClose}
+                          role="menuitem"
                           sx={{
                             py: 1.2,
                             px: 2.5,
@@ -463,6 +468,7 @@ export function Header() {
                             component={Link}
                             href={`/hizmetler/${service.slug}`}
                             onClick={handleServicesClose}
+                            role="menuitem"
                             sx={{ py: 1, px: 2.5 }}
                           >
                             <ListItemText
@@ -530,6 +536,7 @@ export function Header() {
         ModalProps={{
           keepMounted: true,
         }}
+        aria-label="Navigasyon menüsü"
         sx={{
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {

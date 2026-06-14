@@ -224,7 +224,7 @@ export function HeroSection() {
                 >
                   <Button
                     component="a"
-                    href="#hizmetlerimiz"
+                    href="/hizmetler"
                     variant="contained"
                     size="large"
                     endIcon={<ArrowRightIcon />}
