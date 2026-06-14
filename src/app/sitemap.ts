@@ -14,10 +14,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: `${SITE_URL}/`,
+      url: SITE_URL,
       lastModified: today,
       changeFrequency: 'weekly',
       priority: 1,
+      images: [`${SITE_URL}/opengraph-image.png`],
     },
     {
       url: `${SITE_URL}/hizmetler`,

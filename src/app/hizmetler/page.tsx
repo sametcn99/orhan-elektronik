@@ -119,17 +119,21 @@ export default function ServicesPage() {
                 direction={{ xs: 'column', sm: 'row', md: 'column' }}
                 spacing={1.5}
               >
-                <Button
-                  component={Link}
+                <Link
                   href="/iletisim"
-                  variant="contained"
-                  startIcon={<PhoneIcon />}
-                  sx={{ borderRadius: 2, px: 3, minWidth: 200 }}
+                  style={{ textDecoration: 'none', display: 'block' }}
                 >
-                  Uzmanla Görüş
-                </Button>
+                  <Button
+                    component="span"
+                    variant="contained"
+                    startIcon={<PhoneIcon />}
+                    sx={{ borderRadius: 2, px: 3, minWidth: 200 }}
+                  >
+                    Uzmanla Görüş
+                  </Button>
+                </Link>
                 <Button
-                  component={Link}
+                  component="a"
                   href={`tel:${contactInfo.phone}`}
                   variant="outlined"
                   sx={{ borderRadius: 2, px: 3, borderWidth: 1.5 }}
@@ -156,191 +160,198 @@ export default function ServicesPage() {
                 }}
                 key={service.slug}
               >
-                <Card
-                  component={Link}
+                <Link
                   href={`/hizmetler/${service.slug}`}
-                  sx={{
-                    height: '100%',
+                  style={{
                     textDecoration: 'none',
                     color: 'inherit',
-                    borderRadius: 4,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                    '&:hover': {
-                      borderColor: 'transparent',
-                      boxShadow: `0 24px 48px -16px ${service.color}55`,
-                      transform: 'translateY(-8px)',
-                      background: `linear-gradient(135deg, ${service.color}08 0%, transparent 60%)`,
-                      '& .service-icon-box': {
-                        bgcolor: service.color,
-                        color: 'white',
-                        transform: 'scale(1.1) rotate(-4deg)',
-                        boxShadow: `0 12px 28px -8px ${service.color}88`,
-                        border: `1px solid ${service.color}`,
-                      },
-                      '& .service-arrow': {
-                        opacity: 1,
-                        transform: 'translate(0, 0)',
-                        bgcolor: `${service.color}22`,
-                      },
-                      '& .service-card-glow': {
-                        opacity: 1,
-                      },
-                      '& .service-bottom-bar': {
-                        transform: 'scaleX(1)',
-                      },
-                      '& .service-cta': {
-                        transform: 'translateX(4px)',
-                      },
-                      '& .service-chip': {
-                        bgcolor: `${service.color}22`,
-                        borderColor: service.color,
-                      },
-                    },
+                    display: 'block',
+                    height: '100%',
                   }}
                 >
-                  <Box
-                    className="service-card-glow"
+                  <Card
+                    component="div"
                     sx={{
-                      position: 'absolute',
-                      top: -80,
-                      right: -80,
-                      width: 220,
-                      height: 220,
-                      borderRadius: '50%',
-                      background: `radial-gradient(circle, ${service.color}20, transparent 70%)`,
-                      opacity: 0.4,
-                      transition: 'opacity 0.4s ease',
-                      pointerEvents: 'none',
+                      height: '100%',
+                      borderRadius: 4,
+                      position: 'relative',
+                      overflow: 'hidden',
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                      '&:hover': {
+                        borderColor: 'transparent',
+                        boxShadow: `0 24px 48px -16px ${service.color}55`,
+                        transform: 'translateY(-8px)',
+                        background: `linear-gradient(135deg, ${service.color}08 0%, transparent 60%)`,
+                        '& .service-icon-box': {
+                          bgcolor: service.color,
+                          color: 'white',
+                          transform: 'scale(1.1) rotate(-4deg)',
+                          boxShadow: `0 12px 28px -8px ${service.color}88`,
+                          border: `1px solid ${service.color}`,
+                        },
+                        '& .service-arrow': {
+                          opacity: 1,
+                          transform: 'translate(0, 0)',
+                          bgcolor: `${service.color}22`,
+                        },
+                        '& .service-card-glow': {
+                          opacity: 1,
+                        },
+                        '& .service-bottom-bar': {
+                          transform: 'scaleX(1)',
+                        },
+                        '& .service-cta': {
+                          transform: 'translateX(4px)',
+                        },
+                        '& .service-chip': {
+                          bgcolor: `${service.color}22`,
+                          borderColor: service.color,
+                        },
+                      },
                     }}
-                  />
-                  <Box
-                    className="service-bottom-bar"
-                    sx={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: 3,
-                      bgcolor: service.color,
-                      transform: 'scaleX(0)',
-                      transformOrigin: 'left',
-                      transition:
-                        'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                      borderRadius: '0 0 16px 16px',
-                    }}
-                  />
-                  <Box sx={{ p: { xs: 2.8, md: 3.2 } }}>
-                    <Stack spacing={2.2} sx={{ position: 'relative' }}>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          justifyContent: 'space-between',
-                        }}
-                      >
+                  >
+                    <Box
+                      className="service-card-glow"
+                      sx={{
+                        position: 'absolute',
+                        top: -80,
+                        right: -80,
+                        width: 220,
+                        height: 220,
+                        borderRadius: '50%',
+                        background: `radial-gradient(circle, ${service.color}20, transparent 70%)`,
+                        opacity: 0.4,
+                        transition: 'opacity 0.4s ease',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                    <Box
+                      className="service-bottom-bar"
+                      sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: 3,
+                        bgcolor: service.color,
+                        transform: 'scaleX(0)',
+                        transformOrigin: 'left',
+                        transition:
+                          'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                        borderRadius: '0 0 16px 16px',
+                      }}
+                    />
+                    <Box sx={{ p: { xs: 2.8, md: 3.2 } }}>
+                      <Stack spacing={2.2} sx={{ position: 'relative' }}>
                         <Box
-                          className="service-icon-box"
                           sx={{
-                            width: 52,
-                            height: 52,
                             display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: 3,
-                            bgcolor: `${service.color}18`,
-                            color: service.color,
-                            border: `1px solid ${service.color}33`,
-                            transition:
-                              'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                            alignItems: 'flex-start',
+                            justifyContent: 'space-between',
                           }}
                         >
-                          <Icon sx={{ fontSize: 24 }} />
-                        </Box>
-                        <Box
-                          className="service-arrow"
-                          sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: 32,
-                            height: 32,
-                            borderRadius: 2,
-                            bgcolor: `${service.color}10`,
-                            color: service.color,
-                            opacity: 0,
-                            transform: 'translate(-8px, 8px)',
-                            transition:
-                              'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                          }}
-                        >
-                          <NorthEast sx={{ fontSize: 16 }} />
-                        </Box>
-                      </Box>
-
-                      <Stack spacing={0.8}>
-                        <Typography
-                          variant="h6"
-                          sx={{ fontWeight: 800, letterSpacing: '-0.01em' }}
-                        >
-                          {service.title}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ lineHeight: 1.75, minHeight: 72 }}
-                        >
-                          {service.summary || service.description}
-                        </Typography>
-                      </Stack>
-
-                      <Stack
-                        direction="row"
-                        spacing={1}
-                        useFlexGap
-                        sx={{ flexWrap: 'wrap' }}
-                      >
-                        {service.highlights.slice(0, 3).map((item) => (
-                          <Chip
-                            key={item}
-                            label={item}
-                            size="small"
-                            className="service-chip"
+                          <Box
+                            className="service-icon-box"
                             sx={{
-                              bgcolor: `${service.color}14`,
-                              border: `1px solid ${service.color}33`,
+                              width: 52,
+                              height: 52,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: 3,
+                              bgcolor: `${service.color}18`,
                               color: service.color,
-                              fontWeight: 600,
-                              borderRadius: 1.4,
-                              transition: 'all 0.25s ease',
+                              border: `1px solid ${service.color}33`,
+                              transition:
+                                'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                             }}
-                          />
-                        ))}
-                      </Stack>
+                          >
+                            <Icon sx={{ fontSize: 24 }} />
+                          </Box>
+                          <Box
+                            className="service-arrow"
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: 32,
+                              height: 32,
+                              borderRadius: 2,
+                              bgcolor: `${service.color}10`,
+                              color: service.color,
+                              opacity: 0,
+                              transform: 'translate(-8px, 8px)',
+                              transition:
+                                'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                            }}
+                          >
+                            <NorthEast sx={{ fontSize: 16 }} />
+                          </Box>
+                        </Box>
 
-                      <Box
-                        className="service-cta"
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 0.5,
-                          color: service.color,
-                          fontWeight: 700,
-                          transition:
-                            'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                        }}
-                      >
-                        <Typography variant="body2" sx={{ fontWeight: 800 }}>
-                          Detayları incele
-                        </Typography>
-                        <ArrowForward sx={{ fontSize: 16 }} />
-                      </Box>
-                    </Stack>
-                  </Box>
-                </Card>
+                        <Stack spacing={0.8}>
+                          <Typography
+                            variant="h6"
+                            sx={{ fontWeight: 800, letterSpacing: '-0.01em' }}
+                          >
+                            {service.title}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ lineHeight: 1.75, minHeight: 72 }}
+                          >
+                            {service.summary || service.description}
+                          </Typography>
+                        </Stack>
+
+                        <Stack
+                          direction="row"
+                          spacing={1}
+                          useFlexGap
+                          sx={{ flexWrap: 'wrap' }}
+                        >
+                          {service.highlights.slice(0, 3).map((item) => (
+                            <Chip
+                              key={item}
+                              label={item}
+                              size="small"
+                              className="service-chip"
+                              sx={{
+                                bgcolor: `${service.color}14`,
+                                border: `1px solid ${service.color}33`,
+                                color: service.color,
+                                fontWeight: 600,
+                                borderRadius: 1.4,
+                                transition: 'all 0.25s ease',
+                              }}
+                            />
+                          ))}
+                        </Stack>
+
+                        <Box
+                          className="service-cta"
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 0.5,
+                            color: service.color,
+                            fontWeight: 700,
+                            transition:
+                              'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                          }}
+                        >
+                          <Typography variant="body2" sx={{ fontWeight: 800 }}>
+                            Detayları incele
+                          </Typography>
+                          <ArrowForward sx={{ fontSize: 16 }} />
+                        </Box>
+                      </Stack>
+                    </Box>
+                  </Card>
+                </Link>
               </Grid>
             )
           })}

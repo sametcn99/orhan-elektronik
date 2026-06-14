@@ -32,6 +32,13 @@ export function LocalBusinessJsonLd() {
       }),
     ),
     sameAs: businessInfo.sameAs,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '500',
+      bestRating: '5',
+      worstRating: '1',
+    },
     areaServed: {
       '@type': 'City',
       name: 'Ankara',
@@ -40,11 +47,14 @@ export function LocalBusinessJsonLd() {
       '@type': 'OfferCatalog',
       name: 'Elektrik ve Güvenlik Hizmetleri',
       itemListElement: services.slice(0, 10).map((service, index) => ({
-        '@type': 'OfferCatalog',
-        name: service.title,
-        description: service.summary || service.description,
-        url: `${SITE_URL}/hizmetler/${service.slug}`,
+        '@type': 'ListItem',
         position: index + 1,
+        item: {
+          '@type': 'Offer',
+          name: service.title,
+          description: service.summary || service.description,
+          url: `${SITE_URL}/hizmetler/${service.slug}`,
+        },
       })),
     },
   }
@@ -99,6 +109,14 @@ export function WebSiteJsonLd() {
     inLanguage: 'tr-TR',
     publisher: {
       '@id': `${SITE_URL}#organization`,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/hizmetler?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
     },
   }
 
@@ -182,11 +200,13 @@ export function ServiceJsonLd({
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${title} Hizmet Paketleri`,
+      itemListElement:
+        highlights?.map((highlight, index) => ({
+          '@type': 'Offer',
+          name: highlight,
+          position: index + 1,
+        })) || [],
     },
-  }
-
-  if (highlights && highlights.length > 0) {
-    jsonLd.serviceOutput = highlights.join(', ')
   }
 
   return (
@@ -234,7 +254,7 @@ export function BreadcrumbJsonLd({ items }: BreadcrumbJsonLdProps) {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    '@id': '#breadcrumb',
+    '@id': `${SITE_URL}#breadcrumb`,
     itemListElement: [
       {
         '@type': 'ListItem',

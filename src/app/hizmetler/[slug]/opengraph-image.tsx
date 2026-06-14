@@ -3,13 +3,14 @@ import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
 import { services } from '@/data/services'
 
-export const alt = 'Hizmet - Orhan Elektrik Elektronik'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
 }
+
+export const alt = 'Profesyonel Elektrik Hizmeti - Orhan Elektrik Elektronik'
 
 export default async function Image({
   params,
