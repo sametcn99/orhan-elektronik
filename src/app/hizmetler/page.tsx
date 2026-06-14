@@ -1,11 +1,14 @@
 'use client'
 
-import { ArrowForward, Phone as PhoneIcon } from '@mui/icons-material'
+import {
+  ArrowForward,
+  NorthEast,
+  Phone as PhoneIcon,
+} from '@mui/icons-material'
 import {
   Box,
   Button,
   Card,
-  CardContent,
   Chip,
   Container,
   Grid,
@@ -162,77 +165,123 @@ export default function ServicesPage() {
                     height: '100%',
                     textDecoration: 'none',
                     color: 'inherit',
-                    borderRadius: 3,
-                    background: `linear-gradient(150deg, ${service.color}14 0%, rgba(255,255,255,0.02) 55%, transparent 100%)`,
-                    boxShadow: '0 16px 50px -30px rgba(0,0,0,0.45)',
-                    transition: 'all 0.26s ease',
+                    borderRadius: 4,
                     position: 'relative',
                     overflow: 'hidden',
-                    backdropFilter: 'blur(8px)',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                     '&:hover': {
+                      borderColor: 'transparent',
+                      boxShadow: `0 24px 48px -16px ${service.color}55`,
                       transform: 'translateY(-8px)',
-                      boxShadow: `0 20px 52px -26px ${service.color}aa`,
+                      background: `linear-gradient(135deg, ${service.color}08 0%, transparent 60%)`,
+                      '& .service-icon-box': {
+                        bgcolor: service.color,
+                        color: 'white',
+                        transform: 'scale(1.1) rotate(-4deg)',
+                        boxShadow: `0 12px 28px -8px ${service.color}88`,
+                        border: `1px solid ${service.color}`,
+                      },
+                      '& .service-arrow': {
+                        opacity: 1,
+                        transform: 'translate(0, 0)',
+                        bgcolor: `${service.color}22`,
+                      },
+                      '& .service-card-glow': {
+                        opacity: 1,
+                      },
+                      '& .service-bottom-bar': {
+                        transform: 'scaleX(1)',
+                      },
+                      '& .service-cta': {
+                        transform: 'translateX(4px)',
+                      },
+                      '& .service-chip': {
+                        bgcolor: `${service.color}22`,
+                        borderColor: service.color,
+                      },
                     },
-                    '&:before': {
-                      content: '""',
-                      position: 'absolute',
-                      inset: 0,
-                      background: `radial-gradient(circle at 20% 20%, ${service.color}0f 0%, transparent 32%), radial-gradient(circle at 82% 24%, ${service.color}12 0%, transparent 30%)`,
-                      opacity: 0.8,
-                      pointerEvents: 'none',
-                    },
-                    '&:after': {
-                      content: '""',
-                      position: 'absolute',
-                      top: -2,
-                      left: -2,
-                      right: -2,
-                      height: 6,
-                      borderRadius: 18,
-                      background: `linear-gradient(90deg, transparent 0%, ${service.color}55 40%, ${service.color}99 60%, transparent 100%)`,
-                      opacity: 0,
-                      transition: 'opacity 0.26s ease',
-                    },
-                    '&:hover:after': { opacity: 1 },
                   }}
                 >
-                  <CardContent
-                    sx={{ p: { xs: 2.8, md: 3.2 }, position: 'relative' }}
-                  >
-                    <Box
-                      sx={{
-                        position: 'absolute',
-                        inset: 16,
-                        borderRadius: 2.2,
-                        background: `linear-gradient(135deg, ${service.color}08 0%, transparent 80%)`,
-                        filter: 'blur(0px)',
-                        pointerEvents: 'none',
-                      }}
-                    />
-
+                  <Box
+                    className="service-card-glow"
+                    sx={{
+                      position: 'absolute',
+                      top: -80,
+                      right: -80,
+                      width: 220,
+                      height: 220,
+                      borderRadius: '50%',
+                      background: `radial-gradient(circle, ${service.color}20, transparent 70%)`,
+                      opacity: 0.4,
+                      transition: 'opacity 0.4s ease',
+                      pointerEvents: 'none',
+                    }}
+                  />
+                  <Box
+                    className="service-bottom-bar"
+                    sx={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: 3,
+                      bgcolor: service.color,
+                      transform: 'scaleX(0)',
+                      transformOrigin: 'left',
+                      transition:
+                        'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                      borderRadius: '0 0 16px 16px',
+                    }}
+                  />
+                  <Box sx={{ p: { xs: 2.8, md: 3.2 } }}>
                     <Stack spacing={2.2} sx={{ position: 'relative' }}>
-                      <Stack
-                        direction="row"
-                        sx={{ alignItems: 'center' }}
-                        spacing={1.5}
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          justifyContent: 'space-between',
+                        }}
                       >
                         <Box
+                          className="service-icon-box"
                           sx={{
                             width: 52,
                             height: 52,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            borderRadius: 2,
+                            borderRadius: 3,
                             bgcolor: `${service.color}18`,
                             color: service.color,
                             border: `1px solid ${service.color}33`,
-                            boxShadow: `0 14px 34px -20px ${service.color}`,
+                            transition:
+                              'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                           }}
                         >
-                          <Icon fontSize="small" />
+                          <Icon sx={{ fontSize: 24 }} />
                         </Box>
-                      </Stack>
+                        <Box
+                          className="service-arrow"
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: 32,
+                            height: 32,
+                            borderRadius: 2,
+                            bgcolor: `${service.color}10`,
+                            color: service.color,
+                            opacity: 0,
+                            transform: 'translate(-8px, 8px)',
+                            transition:
+                              'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                          }}
+                        >
+                          <NorthEast sx={{ fontSize: 16 }} />
+                        </Box>
+                      </Box>
 
                       <Stack spacing={0.8}>
                         <Typography
@@ -261,33 +310,38 @@ export default function ServicesPage() {
                             key={item}
                             label={item}
                             size="small"
+                            className="service-chip"
                             sx={{
                               bgcolor: `${service.color}14`,
                               border: `1px solid ${service.color}33`,
                               color: service.color,
                               fontWeight: 600,
                               borderRadius: 1.4,
+                              transition: 'all 0.25s ease',
                             }}
                           />
                         ))}
                       </Stack>
 
-                      <Stack
-                        direction="row"
-                        spacing={1}
+                      <Box
+                        className="service-cta"
                         sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 0.5,
                           color: service.color,
                           fontWeight: 700,
-                          alignItems: 'center',
+                          transition:
+                            'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                         }}
                       >
-                        <Typography sx={{ fontWeight: 800 }}>
+                        <Typography variant="body2" sx={{ fontWeight: 800 }}>
                           Detayları incele
                         </Typography>
-                        <ArrowForward fontSize="small" />
-                      </Stack>
+                        <ArrowForward sx={{ fontSize: 16 }} />
+                      </Box>
                     </Stack>
-                  </CardContent>
+                  </Box>
                 </Card>
               </Grid>
             )
