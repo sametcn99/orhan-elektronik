@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Orhan Elektrik Elektronik - Güvenlik Sistemleri'
+export const alt = 'Orhan Elektrik Elektronik - Ankara Elektrik'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -37,6 +37,7 @@ export default async function Image() {
           marginBottom: '40px',
         }}
       >
+        {/* biome-ignore lint/performance/noImgElement: Satori OG image renderer requires native <img> */}
         <img
           alt="Orhan Elektrik Elektronik"
           src={logoSrc}
@@ -65,7 +66,7 @@ export default async function Image() {
           color: '#0ea5e9',
         }}
       >
-        Güvenlik Sistemleri
+        Ankara Elektrik
       </div>
 
       <div

@@ -37,6 +37,7 @@ export default async function Image() {
           marginBottom: '40px',
         }}
       >
+        {/* biome-ignore lint/performance/noImgElement: Satori OG image renderer requires native <img> */}
         <img
           alt="Orhan Elektrik Elektronik"
           src={logoSrc}

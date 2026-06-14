@@ -20,7 +20,7 @@ import { SkipToContent } from '@/components/ui/SkipToContent'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.orhanelektronikbilgisayar.com'),
   title: {
-    default: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
+    default: 'Orhan Elektrik Elektronik - Ankara Elektrik',
     template: '%s | Orhan Elektrik Elektronik',
   },
   description:
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   keywords: [
     'Orhan Elektrik Elektronik',
     'Elektrik Servisi Ankara',
-    'Güvenlik Sistemleri',
+    'Ankara Elektrik',
     'CCTV Kamera Sistemleri',
     'Alarm Sistemleri',
     'Elektrik Bakım',
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'tr_TR',
     url: 'https://www.orhanelektronikbilgisayar.com',
-    title: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
+    title: 'Orhan Elektrik Elektronik - Ankara Elektrik',
     description:
       "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm, elektrik altyapısı ve teknik servis.",
     siteName: 'Orhan Elektrik Elektronik',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
+    title: 'Orhan Elektrik Elektronik - Ankara Elektrik',
     description:
       "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm ve teknik servis.",
   },

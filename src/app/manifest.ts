@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Orhan Elektrik Elektronik',
     short_name: 'Orhan Elektrik',
-    description: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
+    description: 'Orhan Elektrik Elektronik - Ankara Elektrik',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
