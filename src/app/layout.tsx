@@ -20,12 +20,11 @@ import { SkipToContent } from '@/components/ui/SkipToContent'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.orhanelektronikbilgisayar.com'),
   title: {
-    default:
-      'Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri',
+    default: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
     template: '%s | Orhan Elektrik Elektronik',
   },
   description:
-    "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. CCTV kamera sistemleri, alarm sistemleri kurulumu ve bakımı, elektrik altyapı yönetimi ve teknik servis hizmetleri.",
+    "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV kamera sistemleri, alarm kurulumu ve bakımı, elektrik altyapı yönetimi ve teknik servis.",
   keywords: [
     'Orhan Elektrik Elektronik',
     'Elektrik Servisi Ankara',
@@ -51,28 +50,26 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'tr_TR',
     url: 'https://www.orhanelektronikbilgisayar.com',
-    title:
-      'Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri',
+    title: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
     description:
-      "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. Uzman ekip, kaliteli hizmet.",
+      "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm, elektrik altyapısı ve teknik servis.",
     siteName: 'Orhan Elektrik Elektronik',
     images: [
       {
-        url: '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik, elektronik ve güvenlik sistemleri',
+        url: '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik ve güvenlik sistemleri',
         width: 1200,
         height: 630,
-        alt: 'Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri',
+        alt: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title:
-      'Orhan Elektrik Elektronik - Profesyonel Elektrik ve Güvenlik Sistemleri',
+    title: 'Orhan Elektrik Elektronik - Güvenlik Sistemleri',
     description:
-      "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri.",
+      "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV, alarm ve teknik servis.",
     images: [
-      '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik, elektronik ve güvenlik sistemleri',
+      '/api/og?title=Orhan Elektrik Elektronik&description=Ankara%27da profesyonel elektrik ve güvenlik sistemleri',
     ],
   },
   robots: {
@@ -92,6 +89,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icons/icon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
       { url: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
     ],

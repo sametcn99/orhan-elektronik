@@ -3,7 +3,7 @@ const BASE_URL = 'https://www.orhanelektronikbilgisayar.com'
 const businessInfo = {
   name: 'Orhan Elektrik Elektronik',
   description:
-    "Ankara'da profesyonel elektrik, elektronik ve güvenlik sistemleri hizmetleri. CCTV kamera sistemleri, alarm sistemleri kurulumu ve bakımı, elektrik altyapı yönetimi ve teknik servis hizmetleri.",
+    "Ankara'da profesyonel elektrik ve güvenlik sistemleri. CCTV kamera sistemleri, alarm kurulumu ve bakımı, elektrik altyapı yönetimi ve teknik servis.",
   url: BASE_URL,
   telephone: '+90 532 574 93 92',
   address: {
