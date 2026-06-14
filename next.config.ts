@@ -9,21 +9,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: '/(.*)',
-        has: [
-          {
-            type: 'host',
-            value: 'orhanelektronikbilgisayar.com',
-          },
-        ],
-        destination: 'https://www.orhanelektronikbilgisayar.com/$1',
-        permanent: true,
-      },
-    ]
-  },
   async headers() {
     return [
       {
@@ -44,6 +29,19 @@ const nextConfig: NextConfig = {
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',
+          },
+          {
+            key: 'Link',
+            value: '<https://umami.sametcc.me>; rel="preconnect"',
+          },
+        ],
+      },
+      {
+        source: '/api/og(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=86400, stale-while-revalidate=604800',
           },
         ],
       },

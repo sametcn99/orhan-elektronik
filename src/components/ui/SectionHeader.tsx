@@ -29,7 +29,7 @@ export function SectionHeader({
         {overline}
       </Typography>
       <Typography
-        variant="h3"
+        variant="h2"
         sx={{
           fontWeight: '800',
           mb: 3,
@@ -45,6 +45,7 @@ export function SectionHeader({
       {description && (
         <Typography
           variant="h6"
+          component="p"
           color="text.secondary"
           sx={{
             maxWidth: 700,

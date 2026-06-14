@@ -14,6 +14,7 @@ export function StatsSection() {
 
   return (
     <Box
+      component="section"
       sx={{
         bgcolor: 'white',
         py: 10,
@@ -41,6 +42,7 @@ export function StatsSection() {
                 >
                   <Typography
                     variant="h2"
+                    component="span"
                     sx={{ fontWeight: '800', mb: 1 }}
                     color="primary.main"
                   >
@@ -53,7 +55,8 @@ export function StatsSection() {
                   >
                     <stat.icon sx={{ color: 'text.secondary', fontSize: 20 }} />
                     <Typography
-                      variant="h6"
+                      variant="body1"
+                      component="span"
                       color="text.secondary"
                       sx={{ fontWeight: '600' }}
                     >
@@ -68,6 +71,7 @@ export function StatsSection() {
             <Box sx={{ textAlign: 'center', p: 3 }}>
               <Typography
                 variant="h2"
+                component="span"
                 sx={{ fontWeight: '800', marginBottom: 1 }}
                 color="primary.main"
               >
@@ -80,7 +84,8 @@ export function StatsSection() {
               >
                 <AwardIcon sx={{ color: 'text.secondary', fontSize: 20 }} />
                 <Typography
-                  variant="h6"
+                  variant="body1"
+                  component="span"
                   color="text.secondary"
                   sx={{ fontWeight: '600' }}
                 >

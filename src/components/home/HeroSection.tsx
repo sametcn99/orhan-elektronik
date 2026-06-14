@@ -52,6 +52,7 @@ export function HeroSection() {
     <Box
       id={sectionIds.hero}
       ref={ref}
+      component="section"
       sx={{
         minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
         display: 'flex',
