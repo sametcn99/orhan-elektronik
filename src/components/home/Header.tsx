@@ -31,7 +31,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { contactInfo, HEADER_HEIGHT, sectionIds } from '../../data/constants'
 import { services } from '../../data/services'
-import { useUmami } from '../../hooks/useUmami'
 
 const dropdownNavItems = [
   { label: 'Markalar', href: `/#${sectionIds.brands}` },
@@ -45,7 +44,6 @@ export function Header() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
   const servicesOpen = Boolean(anchorEl)
   const theme = useTheme()
-  const { track } = useUmami()
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -265,7 +263,8 @@ export function Header() {
           variant="contained"
           href={`tel:${contactInfo.phone}`}
           startIcon={<PhoneIcon />}
-          onClick={() => track('call_click', { location: 'header_drawer' })}
+          data-umami-event="call_click"
+          data-umami-event-location="header_drawer"
           sx={{ py: 1.5, borderRadius: 2 }}
         >
           Hemen Ara
@@ -509,9 +508,8 @@ export function Header() {
               variant="contained"
               href={`tel:${contactInfo.phone}`}
               startIcon={<PhoneIcon />}
-              onClick={() =>
-                track('call_click', { location: 'header_desktop' })
-              }
+              data-umami-event="call_click"
+              data-umami-event-location="header_desktop"
               sx={{ ml: 2, borderRadius: '50px', px: 3 }}
             >
               Hemen Ara

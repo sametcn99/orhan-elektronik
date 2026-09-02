@@ -18,14 +18,11 @@ import {
   Typography,
 } from '@mui/material'
 import { contactInfo, sectionIds } from '../../data/constants'
-import { useUmami } from '../../hooks/useUmami'
 import { SectionBackground } from '../ui/SectionBackground'
 import { SectionContainer } from '../ui/SectionContainer'
 import { SectionHeader } from '../ui/SectionHeader'
 
 export function ContactSection() {
-  const { track } = useUmami()
-
   return (
     <SectionContainer
       id={sectionIds.contact}
@@ -79,9 +76,8 @@ export function ContactSection() {
                       variant="h6"
                       component="a"
                       href={`tel:${contactInfo.phone}`}
-                      onClick={() =>
-                        track('call_click', { location: 'contact_card_tel' })
-                      }
+                      data-umami-event="call_click"
+                      data-umami-event-location="contact_card_tel"
                       sx={{
                         fontWeight: 'bold',
                         display: 'block',
@@ -136,11 +132,8 @@ export function ContactSection() {
                       target="_blank"
                       size="small"
                       startIcon={<ArrowRightIcon />}
-                      onClick={() =>
-                        track('address_click', {
-                          location: 'contact_map_button',
-                        })
-                      }
+                      data-umami-event="address_click"
+                      data-umami-event-location="contact_map_button"
                       sx={{ mt: 0.5, p: 0 }}
                     >
                       Haritada Göster
@@ -185,9 +178,8 @@ export function ContactSection() {
                   color="inherit"
                   href={`tel:${contactInfo.phone}`}
                   startIcon={<PhoneIcon />}
-                  onClick={() =>
-                    track('call_click', { location: 'contact_primary_cta' })
-                  }
+                  data-umami-event="call_click"
+                  data-umami-event-location="contact_primary_cta"
                   sx={{ color: 'primary.main', fontWeight: 'bold' }}
                 >
                   Hemen Arayın

@@ -25,13 +25,11 @@ import {
 import { useRef } from 'react'
 import { contactInfo, HEADER_HEIGHT, sectionIds } from '../../data/constants'
 import { useOnScreen } from '../../hooks/useOnScreen'
-import { useUmami } from '../../hooks/useUmami'
 
 export function HeroSection() {
   const ref = useRef(null)
   const isVisible = useOnScreen(ref)
   const theme = useTheme()
-  const { track } = useUmami()
   const heroServices = [
     {
       label: 'Güvenlik Sistemleri',
@@ -250,7 +248,8 @@ export function HeroSection() {
                     variant="outlined"
                     size="large"
                     startIcon={<PhoneIcon />}
-                    onClick={() => track('call_click', { location: 'hero' })}
+                    data-umami-event="call_click"
+                    data-umami-event-location="hero"
                     sx={{
                       borderRadius: '12px',
                       px: 4,

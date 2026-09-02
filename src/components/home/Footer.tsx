@@ -25,7 +25,6 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { contactInfo, sectionIds } from '../../data/constants'
 import { services } from '../../data/services'
-import { useUmami } from '../../hooks/useUmami'
 
 const partnerBrands = [
   'Hikvision',
@@ -48,7 +47,6 @@ const quickLinks = [
 
 export function Footer() {
   const whatsappNumber = contactInfo.phone.replace(/\s/g, '').replace('+', '')
-  const { track } = useUmami()
 
   return (
     <Box
@@ -194,12 +192,9 @@ export function Footer() {
                   href="https://www.instagram.com/orhan.elektrik.elektronik/"
                   target="_blank"
                   rel="noopener noreferrer me"
-                  onClick={() =>
-                    track('social_click', {
-                      location: 'footer_instagram',
-                      href: 'https://www.instagram.com/orhan.elektrik.elektronik/',
-                    })
-                  }
+                  data-umami-event="social_click"
+                  data-umami-event-location="footer_instagram"
+                  data-umami-event-href="https://www.instagram.com/orhan.elektrik.elektronik/"
                   sx={{
                     bgcolor: 'rgba(255,255,255,0.05)',
                     border: '1px solid rgba(255,255,255,0.1)',
@@ -218,12 +213,9 @@ export function Footer() {
                   href={`https://wa.me/${whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer me"
-                  onClick={() =>
-                    track('social_click', {
-                      location: 'footer_whatsapp',
-                      href: `https://wa.me/${whatsappNumber}`,
-                    })
-                  }
+                  data-umami-event="social_click"
+                  data-umami-event-location="footer_whatsapp"
+                  data-umami-event-href={`https://wa.me/${whatsappNumber}`}
                   sx={{
                     bgcolor: 'rgba(255,255,255,0.05)',
                     border: '1px solid rgba(255,255,255,0.1)',
@@ -349,9 +341,8 @@ export function Footer() {
               <Box
                 component="a"
                 href={`tel:${contactInfo.phone}`}
-                onClick={() =>
-                  track('call_click', { location: 'footer_phone' })
-                }
+                data-umami-event="call_click"
+                data-umami-event-location="footer_phone"
                 sx={{
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -451,9 +442,8 @@ export function Footer() {
                       href={contactInfo.mapIframe}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() =>
-                        track('address_click', { location: 'footer_address' })
-                      }
+                      data-umami-event="address_click"
+                      data-umami-event-location="footer_address"
                       sx={{
                         color: 'inherit',
                         textDecoration: 'none',
@@ -567,12 +557,9 @@ export function Footer() {
               href="https://sametcc.me"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() =>
-                track('external_click', {
-                  location: 'footer_developer',
-                  href: 'https://sametcc.me',
-                })
-              }
+              data-umami-event="external_click"
+              data-umami-event-location="footer_developer"
+              data-umami-event-href="https://sametcc.me"
               sx={{
                 color: 'primary.main',
                 fontWeight: 400,
